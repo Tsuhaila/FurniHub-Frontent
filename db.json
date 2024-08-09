@@ -1,0 +1,254 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "suhaila",
+      "email": "suhaila@gmail.com",
+      "password": "suhaila123"
+    },
+    {
+      "id": "1",
+      "username": "nasha",
+      "email": "nasha@gmail.com",
+      "password": "nasha123"
+    },
+    {
+      "id": "a47c",
+      "username": "suhaila",
+      "email": "suhailathalappill@gmail.com",
+      "password": "suhaila098",
+      "confirm_password": "suhaila098"
+    },
+  
+    {
+      "id": "eb15",
+      "username": "suhaila",
+      "email": "suhailathalappill@gmail.com",
+      "password": "12345678",
+      "confirm_password": "12345678"
+    },
+    {
+      "id": "e91b",
+      "username": "suhaila",
+      "email": "suhailathalappil1595@gmail.com",
+      "password": "20032003",
+      "confirm_password": "20032003"
+    }
+  ],
+
+  
+    "products": [
+      {
+        "id": 1,
+        "name": "Wooden Chair",
+        "type": "Chair",
+        "price": 50,
+        "image": "https://ii1.pepperfry.com/media/catalog/product/f/i/494x544/finnmark-sheesham-wood-arm-chair-in-provincial-teak-finish-with-upholstery-finnmark-sheesham-wood-ar-vhgdrw.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Modern Sofa",
+        "type": "Sofa",
+        "price": 300,
+        "image": "https://ii1.pepperfry.com/media/catalog/product/b/a/494x544/bali-velvet-3-seater-sofa-in-berry-wine-finish-bali-velvet-3-seater-sofa-in-berry-wine-finish-pzwi1v.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Glass Coffee Table",
+        "type": "Table",
+        "price": 120,
+        "image": "https://ii1.pepperfry.com/media/catalog/product/d/a/494x544/daist-coffee-table-in-exotic-teak-finish-by-a-globia-creations-daist-coffee-table-in-exotic-teak-fin-wspcms.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Recliner Chair",
+        "type": "Chair",
+        "price": 250,
+        "image": "https://ii1.pepperfry.com/media/catalog/product/a/v/1600x1760/avalon-fabric-manual-1-seater-recliner-in-saddle-brown-colour-avalon-fabric-manual-1-seater-recliner-9icxcz.jpg"
+      },
+      {
+        "id": 5,
+        "name": "Wooden Bookshelf",
+        "type": "Shelf",
+        "price": 150,
+        "image": "https://teaklab.com/wp-content/uploads/2019/08/5bf7699dN82a7b320.jpg"
+      },
+      {
+        "id": 6,
+        "name": "Leather Office Chair",
+        "type": "Chair",
+        "price": 200,
+        "image": "https://www.minimalandmodern.com/cdn/shop/products/SD-2235-5_20Walnut-White-5.jpg?v=1571840026"
+      },
+      {
+        "id": 7,
+        "name": "Marble Dining Table",
+        "type": "Table",
+        "price": 450,
+        "image": "https://www.modholic.in/cdn/shop/products/MD-1013-WAL_04.jpg?v=1683681506&width=1445"
+      },
+      {
+        "id": 8,
+        "name": "Fabric Sofa Set",
+        "type": "Sofa",
+        "price": 350,
+        "image": "https://example.com/images/fabric-sofa-set.jpg"
+      },
+      {
+        "id": 9,
+        "name": "Vintage Wardrobe",
+        "type": "Wardrobe",
+        "price": 400,
+        "image": "https://example.com/images/vintage-wardrobe.jpg"
+      },
+      {
+        "id": 10,
+        "name": "Compact Study Desk",
+        "type": "Desk",
+        "price": 80,
+        "image": "https://example.com/images/compact-study-desk.jpg"
+      },
+      {
+        "id": 11,
+        "name": "Antique Console Table",
+        "type": "Table",
+        "price": 275,
+        "image": "https://example.com/images/antique-console-table.jpg"
+      },
+      {
+        "id": 12,
+        "name": "Queen Size Bed",
+        "type": "Bed",
+        "price": 500,
+        "image": "https://example.com/images/queen-size-bed.jpg"
+      },
+      {
+        "id": 13,
+        "name": "Corner Desk",
+        "type": "Desk",
+        "price": 150,
+        "image": "https://example.com/images/corner-desk.jpg"
+      },
+      {
+        "id": 14,
+        "name": "Bar Stool",
+        "type": "Stool",
+        "price": 90,
+        "image": "https://example.com/images/bar-stool.jpg"
+      },
+      {
+        "id": 15,
+        "name": "Luxury Recliner",
+        "type": "Chair",
+        "price": 350,
+        "image": "https://example.com/images/luxury-recliner.jpg"
+      },
+      {
+        "id": 16,
+        "name": "Round Dining Table",
+        "type": "Table",
+        "price": 200,
+        "image": "https://example.com/images/round-dining-table.jpg"
+      },
+      {
+        "id": 17,
+        "name": "Kids' Bunk Bed",
+        "type": "Bed",
+        "price": 400,
+        "image": "https://example.com/images/kids-bunk-bed.jpg"
+      },
+      {
+        "id": 18,
+        "name": "Sofa Bed",
+        "type": "Sofa",
+        "price": 280,
+        "image": "https://example.com/images/sofa-bed.jpg"
+      },
+      {
+        "id": 19,
+        "name": "Modular Storage Unit",
+        "type": "Storage",
+        "price": 320,
+        "image": "https://example.com/images/modular-storage-unit.jpg"
+      },
+      {
+        "id": 20,
+        "name": "Outdoor Lounge Chair",
+        "type": "Chair",
+        "price": 180,
+        "image": "https://example.com/images/outdoor-lounge-chair.jpg"
+      }
+    ],
+    
+    "Sofas":[
+      {
+        "id": 2,
+        "name": "Modern Sofa",
+        "type": "Sofa",
+        "price": 300,
+        "description": "A sleek and comfortable modern sofa, perfect for any living room. It features high-density foam cushions for superior comfort, a durable wooden frame that ensures long-lasting use, and premium fabric upholstery that is both stylish and easy to clean. The minimalist design of the sofa fits well with contemporary decor, and the wide seating area provides ample space for relaxation. The sofa's legs are made from solid wood, adding an elegant touch while providing sturdy support. Available in multiple color options to suit various interior styles.",
+        "image": "https://ii1.pepperfry.com/media/catalog/product/b/a/494x544/bali-velvet-3-seater-sofa-in-berry-wine-finish-bali-velvet-3-seater-sofa-in-berry-wine-finish-pzwi1v.jpg"
+      },
+      {
+        "id": 8,
+        "name": "Fabric Sofa Set",
+        "type": "Sofa",
+        "price": 350,
+        "description": "A cozy fabric sofa set with soft upholstery and ample seating space. This sofa set includes a three-seater and two-seater sofa, both featuring plush cushions and sturdy wooden frames. The fabric is highly durable, resistant to wear and tear, and available in various colors to match your home decor. The sofa set's ergonomic design ensures optimal comfort for extended seating, making it perfect for family gatherings or lounging. The removable cushion covers are machine-washable, making maintenance a breeze.",
+        "image": "https://example.com/images/fabric-sofa-set.jpg"
+      },
+      {
+        "id": 18,
+        "name": "Sofa Bed",
+        "type": "Sofa",
+        "price": 280,
+        "description": "A versatile sofa bed that combines style with functionality. This sofa bed easily converts into a comfortable bed for guests, featuring a simple pull-out mechanism that requires minimal effort. It includes a sturdy metal frame, a high-density foam mattress that provides excellent support, and durable fabric upholstery. The sofa bed's compact design makes it ideal for small spaces or guest rooms, and its modern appearance complements a variety of interior styles. The mattress cover is removable and washable, ensuring cleanliness and hygiene.",
+        "image": "https://example.com/images/sofa-bed.jpg"
+      },
+      {
+        "id": 1,
+        "name": "Wooden Chair",
+        "type": "Chair",
+        "price": 50,
+        "description": "A classic wooden chair with a sturdy build and comfortable seating. Made from high-quality hardwood, this chair features a traditional design with a curved backrest and armrests. The seat is padded with high-density foam and upholstered in durable fabric, providing comfort for extended seating periods. The chair's elegant design makes it suitable for dining rooms, kitchens, or as an accent piece in any room. The wooden finish is available in multiple shades to match various decor styles.",
+        "image": "https://ii1.pepperfry.com/media/catalog/product/f/i/494x544/finnmark-sheesham-wood-arm-chair-in-provincial-teak-finish-with-upholstery-finnmark-sheesham-wood-ar-vhgdrw.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Recliner Chair",
+        "type": "Chair",
+        "price": 250,
+        "description": "A comfortable recliner chair with adjustable footrest and back support. This chair is perfect for relaxing after a long day, featuring a smooth reclining mechanism that allows you to adjust the angle to your preference. It includes thick padding for the seat, back, and armrests, providing ultimate comfort. The durable fabric upholstery is easy to clean and maintain. The recliner also features a supportive headrest and lumbar support to enhance your seating experience. Ideal for living rooms, home theaters, or cozy corners.",
+        "image": "https://ii1.pepperfry.com/media/catalog/product/a/v/1600x1760/avalon-fabric-manual-1-seater-recliner-in-saddle-brown-colour-avalon-fabric-manual-1-seater-recliner-9icxcz.jpg"
+      },
+      {
+        "id": 6,
+        "name": "Leather Office Chair",
+        "type": "Chair",
+        "price": 200,
+        "description": "An ergonomic leather office chair designed for maximum comfort and support. This chair features a high backrest, padded armrests, and a cushioned seat. The high-quality leather upholstery is both stylish and easy to clean. The chair includes adjustable height and tilt functions, allowing you to customize your seating position for optimal comfort. The smooth-rolling casters provide excellent mobility, making it easy to move around your workspace. The chair's design promotes good posture, reducing the risk of back pain during long working hours.",
+        "image": "https://www.minimalandmodern.com/cdn/shop/products/SD-2235-5_20Walnut-White-5.jpg?v=1571840026"
+      },
+      {
+        "id": 15,
+        "name": "Luxury Recliner",
+        "type": "Chair",
+        "price": 350,
+        "description": "A luxurious recliner chair with plush cushioning and a smooth reclining mechanism. This chair offers the ultimate in comfort with its deep seat, thick padding, and supportive backrest. The high-quality leather upholstery adds a touch of elegance and is easy to clean. The recliner features an easy-to-use lever for adjusting the recline angle, and the built-in footrest provides additional comfort. Ideal for creating a cozy and relaxing space in your living room or home theater.",
+        "image": "https://example.com/images/luxury-recliner.jpg"
+      },
+      {
+        "id": 20,
+        "name": "Outdoor Lounge Chair",
+        "type": "Chair",
+        "price": 180,
+        "description": "A stylish outdoor lounge chair made with weather-resistant materials. Perfect for your patio or garden, this chair features a rust-proof metal frame, comfortable cushioning, and durable fabric that can withstand the elements. The chair's lightweight yet sturdy design makes it easy to move around as needed. It also includes adjustable reclining positions, allowing you to find the perfect angle for relaxation. The cushions are removable and washable, making maintenance simple. Enhance your outdoor living space with this comfortable and attractive lounge chair.",
+        "image": "https://example.com/images/outdoor-lounge-chair.jpg"
+      }
+
+    ]
+  }
+ 
+
+ 
+  
