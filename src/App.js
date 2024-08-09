@@ -17,7 +17,9 @@ function App() {
   const shouldHideNavbar = location.pathname === '/login'||location.pathname === '/signup';
 
   return (
+
     <div>
+      
       {!shouldHideNavbar && <Navbar />}
       <Routes>
         <Route path='/' element={<Home />} />
