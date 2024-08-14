@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 export function SignUp() {
     const navigate = useNavigate();
-    const initialValues = { username: "", email: "", password: "", confirm_password: "" };
+    const initialValues = { username: "", email: "", password: "", confirm_password: "",cart:[]
+
+    };
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
 
@@ -17,7 +19,8 @@ export function SignUp() {
         e.preventDefault();
         if (validate()) {
             navigate('/login');
-            axios.post("http://localhost:3000/users", formValues);
+            const{confirm_password,...newformValues}=formValues
+            axios.post("http://localhost:3000/users", newformValues);
         }
     };
 

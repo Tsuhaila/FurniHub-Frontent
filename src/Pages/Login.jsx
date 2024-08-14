@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
-function Login({ setLoged }) {
-  useEffect(() => {
-    if (typeof setLoged === 'function') {
-      setLoged(false);
-    }
-  }, [setLoged]);
-
+function Login() {
   const navigate = useNavigate();
   const [loginValue, setLoginValue] = useState({ email: "", password: "" });
   const [loginErrors, setLoginErrors] = useState({ email: "", password: "" });
@@ -23,8 +18,13 @@ function Login({ setLoged }) {
       if (user) {
         if (user.password === loginValue.password) {
           localStorage.setItem("id", user.id);
-          localStorage.setItem("name", user.name);
+          localStorage.setItem("name", user.username);
+          toast.success("successfully completed")
+          setLoginValue({email:"",password:""})
           navigate('/');
+      
+
+
         } else {
           validation.password = "Incorrect password";
         }

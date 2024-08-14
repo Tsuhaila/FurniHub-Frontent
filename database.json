@@ -1,0 +1,473 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "suhaila",
+      "email": "suhaila@gmail.com",
+      "password": "suhaila123"
+    },
+    {
+      "id": "1",
+      "username": "nasha",
+      "email": "nasha@gmail.com",
+      "password": "nasha123"
+    },
+    {
+      "id": "a47c",
+      "username": "suhaila",
+      "email": "suhailathalappill@gmail.com",
+      "password": "suhaila098",
+      "confirm_password": "suhaila098"
+    },
+    {
+      "id": "eb15",
+      "username": "suhaila",
+      "email": "suhailathalappill@gmail.com",
+      "password": "12345678",
+      "confirm_password": "12345678"
+    },
+    {
+      "id": "853c",
+      "username": "suhaila",
+      "email": "suhaila@gmail.com",
+      "password": "suhaila123",
+      "confirm_password": "suhaila123",
+      "cart": []
+    },
+    {
+      "id": "757b",
+      "username": "suhaila",
+      "email": "suhailathalappil1595@gmail.com",
+      "password": "suhailasuhaila",
+      "confirm_password": "suhailasuhaila",
+      "cart": []
+    },
+    {
+      "id": "8fbf",
+      "username": "suhaila",
+      "email": "suhailaa@gmail.com",
+      "password": "suhaila123",
+      "confirm_password": "suhaila123",
+      "cart": [],
+      "paymentDetails": {
+        "full_Name": "suhaila",
+        "address": "padikkal",
+        "city": "padikkal",
+        "state": "kerala",
+        "postal_Code": "456789",
+        "country": "india",
+        "phone": "9645877112"
+      }
+    },
+    {
+      "id": "ec61",
+      "username": "razi",
+      "email": "razi@gmail.com",
+      "password": "razi12345678",
+      "cart": []
+    },
+    {
+      "id": "bf94",
+      "username": "suhaila",
+      "email": "suhailaa@gmail.com",
+      "password": "12345678",
+      "cart": []
+    },
+    {
+      "id": "3204",
+      "username": "suhaila",
+      "email": "suh@gmail.com",
+      "password": "12345678",
+      "cart": [
+        {
+          "id": "1",
+          "name": "Modern Sofa",
+          "description": "A spacious and comfortable modern sofa with a minimalist design, perfect for any contemporary living room.",
+          "price": 899.99,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/b/i/494x544/bingo-velvet-3-seater-sofa-in-grey-colour-bingo-velvet-3-seater-sofa-in-grey-colour-qhfpri.jpg",
+          "rating": 4.5,
+          "reviews": 120,
+          "dimensions": {
+            "width": "85 inches",
+            "height": "35 inches",
+            "depth": "40 inches"
+          },
+          "material": "Fabric, Wood, Foam",
+          "colors": [
+            "Gray",
+            "Blue",
+            "Black"
+          ],
+          "category": "sofa",
+          "availability": "In Stock",
+          "features": [
+            "Removable cushions",
+            "Stain-resistant fabric",
+            "Solid wood legs"
+          ],
+          "manufacturer": "ModernHome Furnishings",
+          "sku": "SOFA-MODERN-001",
+          "quantity": 1,
+          "totalPrice": 899.99
+        },
+        {
+          "id": "5",
+          "name": "Contemporary Queen Bed Frame",
+          "description": "A sturdy queen bed frame with a modern design, featuring a high upholstered headboard.",
+          "price": 799.99,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/c/a/494x544/cassandra-queen-size-upholstered-bed-in-bella-noce---glossy-white-colour-with-hydraulic-storage-cass-ct4unk.jpg",
+          "rating": 4.8,
+          "reviews": 200,
+          "dimensions": {
+            "width": "64 inches",
+            "height": "52 inches",
+            "depth": "85 inches"
+          },
+          "material": "Wood, Fabric, Metal",
+          "colors": [
+            "White",
+            "Gray",
+            "Black"
+          ],
+          "category": "beds",
+          "availability": "In Stock",
+          "features": [
+            "Upholstered headboard",
+            "Solid wood frame",
+            "Metal support slats"
+          ],
+          "manufacturer": "SleepWell Designs",
+          "sku": "BEDFRAME-QUEEN-005",
+          "quantity": 1,
+          "totalPrice": 799.99
+        }
+      ],
+      "paymentDetails": {
+        "full_Name": "suhaila",
+        "address": "padikkal",
+        "city": "padikkal",
+        "state": "kerala",
+        "postal_Code": "456789",
+        "country": "India",
+        "phone": "09645877112"
+      }
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Modern Sofa",
+      "description": "A spacious and comfortable modern sofa with a minimalist design, perfect for any contemporary living room.",
+      "price": 899.99,
+      "image": "https://ii1.pepperfry.com/media/catalog/product/b/i/494x544/bingo-velvet-1-seater-sofa-in-grey-colour-bingo-velvet-1-seater-sofa-in-grey-colour-nxsump.jpg",
+      "rating": 4.5,
+      "reviews": 120,
+      "dimensions": {
+        "width": "85 inches",
+        "height": "35 inches",
+        "depth": "40 inches"
+      },
+      "material": "Fabric, Wood, Foam",
+      "colors": [
+        "Gray",
+        "Blue",
+        "Black"
+      ],
+      "category": "sofa",
+      "availability": "In Stock",
+      "features": [
+        "Removable cushions",
+        "Stain-resistant fabric",
+        "Solid wood legs"
+      ],
+      "manufacturer": "ModernHome Furnishings",
+      "sku": "SOFA-MODERN-001"
+    },
+    {
+      "id": "2",
+      "name": "Elegant Chesterfield Sofa",
+      "description": "A luxurious chesterfield sofa with deep button tufting, perfect for adding a touch of elegance to any living space.",
+      "price": 1299.99,
+      "image": "https://ii1.pepperfry.com/media/catalog/product/b/a/494x544/baley-fabric-3-seater-sofa-in-lama-black-colour-baley-fabric-3-seater-sofa-in-lama-black-colour-quah6z.jpg",
+      "rating": 4.8,
+      "reviews": 85,
+      "dimensions": {
+        "width": "90 inches",
+        "height": "32 inches",
+        "depth": "38 inches"
+      },
+      "material": "Leather, Wood, Foam",
+      "colors": [
+        "Brown",
+        "Blue",
+        "Maroon"
+      ],
+      "category": "sofa",
+      "availability": "In Stock",
+      "features": [
+        "Deep button tufting",
+        "Rolled arms",
+        "Solid wood frame"
+      ],
+      "manufacturer": "LuxuryFurn Co.",
+      "sku": "SOFA-CHESTER-002"
+    },
+    {
+      "id": "3",
+      "name": "Compact Loveseat",
+      "description": "A cozy loveseat designed for smaller spaces, offering both style and comfort in a compact size.",
+      "price": 599.99,
+      "image": "https://ii1.pepperfry.com/media/catalog/product/b/e/494x544/berry-3-seater-sofa-in-mushroom-brown-colour-by-durian-berry-3-seater-sofa-in-mushroom-brown-colour--ep62xt.jpg",
+      "rating": 4.3,
+      "reviews": 95,
+      "dimensions": {
+        "width": "60 inches",
+        "height": "34 inches",
+        "depth": "36 inches"
+      },
+      "material": "Fabric, Metal, Foam",
+      "colors": ["Red", "Gray", "Beige"],
+      "category": "sofa",
+      "availability": "In Stock",
+      "features": [
+        "Compact design",
+        "Durable metal frame",
+        "Plush seating"
+      ],
+      "manufacturer": "Urban Living",
+      "sku": "SOFA-LOVE-003"
+    },
+    {
+      "id": "4",
+      "name": "Reclining Sofa",
+      "description": "A comfortable reclining sofa with adjustable footrests and built-in cup holders, perfect for movie nights.",
+      "price": 1499.99,
+      "image": "https://ii1.pepperfry.com/media/catalog/product/v/i/494x544/vix-fabric-3-seater-recliner-in-cream-colour-vix-fabric-3-seater-recliner-in-cream-colour-cwxdoa.jpg",
+      "rating": 4.7,
+      "reviews": 70,
+      "dimensions": {
+        "width": "88 inches",
+        "height": "38 inches",
+        "depth": "40 inches"
+      },
+      "material": "Leather, Wood, Metal",
+      "colors": ["Black", "Brown"],
+      "category": "sofa",
+      "availability": "In Stock",
+      "features": [
+        "Reclining seats",
+        "Built-in cup holders",
+        "Adjustable footrests"
+      ],
+      "manufacturer": "Comfort Seating",
+      "sku": "SOFA-RECLINE-004"
+    }
+      ,
+
+    
+      {
+        "id": "5",
+        "name": "Modern Platform Bed",
+        "description": "A sleek and stylish platform bed with a low profile, perfect for contemporary bedrooms.",
+        "price": 499.99,
+        "image": "https://ii1.pepperfry.com/media/catalog/product/d/y/494x544/dynamic-king-size-bed-with-storage-in-wenge-finish-by-crystal-furnitech-dynamic-king-size-bed-with-s-jd79yr.jpg",
+        "rating": 4.6,
+        "reviews": 150,
+        "dimensions": {
+          "width": "80 inches",
+          "height": "10 inches",
+          "depth": "60 inches"
+        },
+        "material": "Wood, Upholstery",
+        "colors": ["Gray", "Black"],
+        "category": "beds",
+        "availability": "In Stock",
+        "features": [
+          "Low profile design",
+          "Sturdy wood frame",
+          "Upholstered headboard"
+        ],
+        "manufacturer": "Contempo Beds",
+        "sku": "BED-MOD-001"
+      },
+    {
+      "id": "6",
+      "name": "Sectional Sofa",
+      "description": "A versatile sectional sofa that can be arranged in multiple configurations, perfect for large living spaces.",
+      "price": 1999.99,
+      "image": "https://ii1.pepperfry.com/media/catalog/product/e/t/494x544/ethos-velvet-fabric-lhs-sectional-sofa-in-beige-finish-ethos-velvet-fabric-lhs-sectional-sofa-in-bei-176ktu.jpg",
+      "rating": 4.6,
+      "reviews": 60,
+      "dimensions": {
+        "width": "120 inches",
+        "height": "36 inches",
+        "depth": "40 inches"
+      },
+      "material": "Fabric, Wood, Foam",
+      "colors": ["Gray", "Blue", "Green"],
+      "category": "sofa",
+      "availability": "In Stock",
+      "features": [
+        "Modular design",
+        "Multiple configurations",
+        "High-density foam cushions"
+      ],
+      "manufacturer": "HomeStyle Co.",
+      "sku": "SOFA-SECT-005"
+    },
+
+    {
+      "id": "7",
+      "name": "Leather Sofa",
+      "description": "A premium leather sofa with a sleek design, and it offering a luxurious seating experience.",
+      "price": 1699.99,
+      "image": "https://ii1.pepperfry.com/media/catalog/product/s/l/494x544/sleek-leather-3-seater-sofa-in-cream-colour-sleek-leather-3-seater-sofa-in-cream-colour-jnmpcs.jpg",
+      "rating": 4.9,
+      "reviews": 50,
+      "dimensions": {
+        "width": "85 inches",
+        "height": "34 inches",
+        "depth": "38 inches"
+      },
+      "material": "Leather, Wood, Foam",
+      "colors": ["Brown", "Black"],
+      "category": "sofa",
+      "availability": "In Stock",
+      "features": [
+        "Premium leather",
+        "Contemporary design",
+        "Solid wood frame"
+      ],
+      "manufacturer": "LuxuryFurn Co.",
+      "sku": "SOFA-LEATHER-006"
+    }
+  
+ ,
+ {
+  "id": "8",
+  "name": "Luxury King Bed",
+  "description": "An elegant king-sized bed with the tufted headboard and a premium fabric upholstery.",
+  "price": 899.99,
+  "image": "https://ii1.pepperfry.com/media/catalog/product/s/e/494x544/seana-upholstery-king-size-bed-in-sage-green-colour-seana-upholstery-king-size-bed-in-sage-green-col-pav6uc.jpg",
+  "rating": 4.8,
+  "reviews": 85,
+  "dimensions": {
+    "width": "80 inches",
+    "height": "40 inches",
+    "depth": "76 inches"
+  },
+  "material": "Fabric, Wood",
+  "colors": ["Beige", "Navy"],
+  "category": "beds",
+  "availability": "In Stock",
+  "features": [
+    "Tufted headboard",
+    "Premium fabric",
+    "Solid wood base"
+  ],
+  "manufacturer": "Elegance Furnishings",
+  "sku": "BED-LUX-002"
+},
+    {
+      "id": "9",
+      "name": "Velvet Sofa",
+      "description": "A luxurious velvet sofa with plush cushions and a rich texture, adding elegance to any room.",
+      "price": 1199.99,
+      "image": "https://ii1.pepperfry.com/media/catalog/product/m/u/494x544/muebles-velvet-rhs-sectional-sofa-with-lounger-in-brown-colour-muebles-velvet-rhs-sectional-sofa-wit-mv1nyj.jpg",
+      "rating": 4.7,
+      "reviews": 90,
+      "dimensions": {
+        "width": "88 inches",
+        "height": "34 inches",
+        "depth": "38 inches"
+      },
+      "material": "Velvet, Wood, Foam",
+      "colors": ["Pink", "Green", "Blue"],
+      "category": "sofa",
+      "availability": "In Stock",
+      "features": [
+        "Plush velvet fabric",
+        "Removable cushions",
+        "Solid wood legs"
+      ],
+      "manufacturer": "Elegance Furnishings",
+      "sku": "SOFA-VELVET-008"
+    },
+    {
+      "id": "10",
+      "name": "Sofa Bed",
+      "description": "A versatile sofa bed that converts into a comfortable bed, ideal for small spaces or guest rooms.",
+      "price": 699.99,
+      "image": "https://ii1.pepperfry.com/media/catalog/product/k/a/494x544/kaiden-sofa-cum-bed-with-mattress-in-cream-colour-by-auspicious-home-kaiden-sofa-cum-bed-with-mattre-ujrohq.jpg",
+      "rating": 4.5,
+      "reviews": 90,
+      "dimensions": {
+        "width": "80 inches",
+        "height": "33 inches",
+        "depth": "40 inches"
+      },
+      "material": "Fabric, Metal",
+      "colors": ["Gray", "Beige"],
+      "category": "beds",
+      "availability": "In Stock",
+      "features": [
+        "Convertible design",
+        "Comfortable seating",
+        "Easy conversion to bed"
+      ],
+      "manufacturer": "Space Savers",
+      "sku": "BED-SOFA-010"
+    },
+    {
+      "id": "11",
+      "name": "Minimalist Bed Frame",
+      "description": "A modern minimalist bed frame with a simple design and clean lines, perfect for a sleek bedroom look.",
+      "price": 399.99,
+      "image": "https://ii1.pepperfry.com/media/catalog/product/s/e/494x544/serene-mango-wood--queen-size-beds-in-green-finish-with-box-storage-serene-mango-wood--queen-size-be-ancn8h.jpg",
+      "rating": 4.4,
+      "reviews": 110,
+      "dimensions": {
+        "width": "80 inches",
+        "height": "12 inches",
+        "depth": "60 inches"
+      },
+      "material": "Metal, Wood",
+      "colors": ["Black", "White"],
+      "category": "beds",
+      "availability": "In Stock",
+      "features": [
+        "Simple design",
+        "Durable materials",
+        "Easy to assemble"
+      ],
+      "manufacturer": "Modern Design",
+      "sku": "BED-MINIMAL-009"
+    },
+    {
+      "id": "12",
+      "name": "Luxury Bunk Bed",
+      "description": "A stylish and sturdy bunk bed with safety rails and built-in storage, perfect for kids' rooms.",
+      "price": 899.99,
+      "image": "https://ii1.pepperfry.com/media/catalog/product/b/u/236x260/bunka-queen-size-bed-with-hydraulic-storage-in-natural-finish-by-orange-tree-bunka-queen-size-bed-wi-uuq0n5.jpg",
+      "rating": 4.5,
+      "reviews": 130,
+      "dimensions": {
+        "width": "42 inches",
+        "height": "72 inches",
+        "depth": "80 inches"
+      },
+      "material": "Wood, Metal",
+      "colors": ["White", "Gray"],
+      "category": "beds",
+      "availability": "In Stock",
+      "features": [
+        "Safety rails",
+        "Built-in storage",
+        "Sturdy construction"
+      ],
+      "manufacturer": "Kids Furniture Inc.",
+      "sku": "BED-BUNK-007"
+    }
+   
+  ]
+}
