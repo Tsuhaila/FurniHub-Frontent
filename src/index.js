@@ -5,13 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import CartProvider from './Context/CartProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <React.StrictMode>
     <ToastContainer/>
+    <CartProvider>
     <App />
+    </CartProvider>
   </React.StrictMode>
   </BrowserRouter>
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css'
 import Home from './Pages/Home';
@@ -13,12 +13,21 @@ import { About } from './Pages/About.jsx';
 import ShopPage from './Pages/ShopPage.jsx';
 import { PlaceOrder } from './Cart/PlaceOrder.jsx';
 import { ProductDetails } from './Pages/ProductDetails.jsx';
+import { Search } from './Pages/Search.jsx';
+import { createContext } from 'react';
+import { cartContext } from './Context/CartProvider.jsx';
+
 
 
 
 function App() {
   const location = useLocation();
   const shouldHideNavbar = location.pathname === '/login' || location.pathname === '/signup';
+  const {FetchCart} = useContext(cartContext)
+
+  useEffect(() => {
+    FetchCart()
+  },[])
 
   return (
     <div>
@@ -34,6 +43,7 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/placeorder' element={<PlaceOrder />} />
         <Route path='/products/:id' element={<ProductDetails />} />
+        <Route path='search' element={<Search/>}/>
 
 
 

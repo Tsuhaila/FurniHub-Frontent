@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
+import { cartContext } from '../Context/CartProvider';
 
 
 export const ProductDetails = () => {
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const { id } = useParams();
     const [data, setData] = useState(null);
     const [quantity, setQuantity] = useState(1)
+    const {AddToCart} = useContext(cartContext)
 
     useEffect(() => {
         axios.get(`http://localhost:3000/products/${id}`)
@@ -26,36 +28,36 @@ export const ProductDetails = () => {
         return <div className="text-center text-gray-700">Loading...</div>;
     }
 
-    const HandleCart = async (item) => {
+    // const HandleCart = async (item) => {
 
-        const user = localStorage.getItem("id");
-        if (user) {
-            try {
-                const res = await axios.get(`http://localhost:3000/users/${user}`);
-                const currentCart = res.data.cart;
-                const itemExists = currentCart.find(cartItem => cartItem.id === item.id);
-                if (itemExists) {
-                    toast.warn("item is already in the cart")
-                    navigate('/cart')
-                } else {
-                    const updatedCart = [...currentCart, { ...item, quantity, totalPrice: (item.price * quantity) }]
-                    await axios.patch(`http://localhost:3000/users/${user}`, { cart: updatedCart });
-                    toast.success("item successfully added to cart");
-                    navigate('/cart')
-                }
+    //     const user = localStorage.getItem("id");
+    //     if (user) {
+    //         try {
+    //             const res = await axios.get(`http://localhost:3000/users/${user}`);
+    //             const currentCart = res.data.cart;
+    //             const itemExists = currentCart.find(cartItem => cartItem.id === item.id);
+    //             if (itemExists) {
+    //                 toast.warn("item is already in the cart")
+    //                 navigate('/cart')
+    //             } else {
+    //                 const updatedCart = [...currentCart, { ...item, quantity, totalPrice: (item.price * quantity) }]
+    //                 await axios.patch(`http://localhost:3000/users/${user}`, { cart: updatedCart });
+    //                 toast.success("item successfully added to cart");
+    //                 navigate('/cart')
+    //             }
 
-            } catch (error) {
-                toast.warn("Something went wrong");
-                console.log(error);
-            }
-        } else {
-            toast.warn("Please Login")
-            navigate('/login')
+    //         } catch (error) {
+    //             toast.warn("Something went wrong");
+    //             console.log(error);
+    //         }
+    //     } else {
+    //         toast.warn("Please Login")
+    //         navigate('/login')
 
 
-        }
+    //     }
 
-    };
+    // };
     function handleIncrement() {
         setQuantity(quantity + 1)
 
@@ -111,7 +113,7 @@ export const ProductDetails = () => {
                     <h1 className="text-lg text-brown-600">${data.price * quantity}</h1>
                     <div className="mt-4 w-full space-y-6 space-x-4">
 
-                        <button onClick={() => HandleCart(data)} className="w-1/3 px-6 py-3 bg-white text-indigo-950 font-semibold rounded-lg border-2 border-indigo-950 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <button onClick={() => AddToCart(data, quantity)} className="w-1/3 px-6 py-3 bg-white text-indigo-950 font-semibold rounded-lg border-2 border-indigo-950 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                             Add to Cart
                         </button>
 

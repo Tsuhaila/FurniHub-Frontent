@@ -26,7 +26,8 @@ export const PlaceOrder = () => {
     try{
         const user=localStorage.getItem("id")
         await axios.patch(`http://localhost:3000/users/${user}`,{
-            paymentDetails:paymentDetails
+            paymentDetails:paymentDetails,
+            orders: [...cartItem, totalAmount]
             
         })
 

@@ -1,21 +1,14 @@
-import React, { useContext } from 'react'
+import axios from 'axios'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { MdDelete } from "react-icons/md";
 import { cartContext } from '../Context/CartProvider';
 
 
-export const Cart = () => {
-  const navigate=useNavigate()
-    const {cartItem, RemoveCart} = useContext(cartContext)
+export const Orders = () => {
+  const [orders, setOders] = useState([])
 
- function calculateTotal(){
-    return cartItem.reduce((total,item)=>total+item.totalPrice,0)
-  }
-function handlePlaceOrder(){
-  const totalAmount=calculateTotal()
-  navigate('/placeorder',{state:{cartItem,totalAmount}})
-
-}
 
   return (
     <div className="bg-gray-100 min-h-screen py-8">

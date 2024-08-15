@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { HandleCart } from '../Cart/HandleCart';
+import { Link, useNavigate } from 'react-router-dom';
+// import { HandleCart } from '../Cart/HandleCart';
 import { FaArrowRight } from "react-icons/fa";
+import { toast } from 'react-toastify';
+import { cartContext } from '../Context/CartProvider';
 
 export const FeaturedProducts = () => {
   const [products, setProducts] = useState([]);
   const [records, setRecords] = useState([]);
+  const {AddToCart} = useContext(cartContext)
+  const navigate = useNavigate()
 
   // Fetch products from the API on component mount
   useEffect(() => {
@@ -22,7 +26,37 @@ export const FeaturedProducts = () => {
     fetchProducts();
   }, []);
 
- 
+  const HandleCart = async (item) => {
+
+    const user = localStorage.getItem("id");
+
+    if (user) {
+        try {
+            const res = await axios.get(`http://localhost:3000/users/${user}`);
+            const currentCart = res.data.cart;
+            const itemExists = currentCart.find(cartItem => cartItem.id === item.id);
+            if (itemExists) {
+                toast.warn("item is already in the cart")
+                navigate('/cart')
+            } else {
+                const updatedCart = [...currentCart, { ...item, quantity:1, totalPrice: (item.price) }]
+                await axios.patch(`http://localhost:3000/users/${user}`, { cart: updatedCart });
+                toast.success("item successfully added to cart");
+                navigate('/cart')
+            }
+
+        } catch (error) {
+            toast.warn("Something went wrong");
+            console.log(error);
+        }
+    } else {
+        toast.warn("Please Login")
+        navigate('/login')
+
+
+    }
+
+};
 
   return (
     <section className="bg-gray-100 py-12">
@@ -42,10 +76,9 @@ export const FeaturedProducts = () => {
               <h3 className="text-lg font-semibold text-gray-700">{product.name}</h3>
               <p className="text-gray-600 mt-2">{product.description}</p>
               <p className="text-gray-800 font-bold mt-4">${product.price}</p>
-             <Link to={'/cart'}>
-             <button onClick={()=>HandleCart(product)} className="mt-6 w-full bg-brown-700 text-black border-black py-2 hover:bg-brown-800 transition-colors duration-300 px-6  bg-white font-semibold rounded-lg border-2  hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+             <button onClick={()=>AddToCart(product, 1)} className="mt-6 w-full bg-brown-700 text-black border-black py-2 hover:bg-brown-800 transition-colors duration-300 px-6  bg-white font-semibold rounded-lg border-2  hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                 Add to Cart
-              </button></Link>
+              </button>
             </div>
           ))}
           <div className='flex justify-center items-center'>
