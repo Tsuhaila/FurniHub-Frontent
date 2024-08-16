@@ -19,10 +19,10 @@ function Login() {
           localStorage.setItem("id", user.id);
           localStorage.setItem("name", user.username);
           toast.success("successfully completed")
-          setLoginValue({email:"",password:""})
+          setLoginValue({ email: "", password: "" })
           navigate('/');
           window.location.reload()
-      
+
 
 
         } else {
@@ -30,6 +30,7 @@ function Login() {
         }
       } else {
         validation.email = "Email not found";
+        validation.password="Incorrect Password"
       }
     } catch (error) {
       console.error("Error logging in: ", error);

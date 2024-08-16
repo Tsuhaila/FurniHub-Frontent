@@ -4,20 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 
-export const cartContext=createContext()
+export const cartContext = createContext()
 
 const CartProvider = ({ children }) => {
     const [cartItem, setCartItem] = useState([])
-const navigate = useNavigate()
+    const navigate = useNavigate()
     const FetchCart = async () => {
         try {
             const userId = localStorage.getItem("id")
-            if(userId) {
+            if (userId) {
                 const res = await axios.get(`http://localhost:3000/users/${userId}`)
                 const cartList = res.data.cart
                 setCartItem(cartList)
             }
-        
+
 
         } catch (error) {
             toast.warn("something went wrong")
@@ -47,7 +47,6 @@ const navigate = useNavigate()
         const user = localStorage.getItem("id");
         if (user) {
             try {
-
                 const itemExists = cartItem.find(CartItem => CartItem.id === item.id);
                 if (itemExists) {
                     toast.warn("item is already in the cart")
@@ -73,19 +72,19 @@ const navigate = useNavigate()
 
     };
 
-    const clearCart = async() => {
+    const clearCart = async () => {
         try {
-        const userId = localStorage.getItem('id')
-           await axios.patch(`http://localhost:3000/users/${userId}`, {
-                cart:[]
-           }) 
-           setCartItem([])
-        } catch(error) {
+            const userId = localStorage.getItem('id')
+            await axios.patch(`http://localhost:3000/users/${userId}`, {
+                cart: []
+            })
+            setCartItem([])
+        } catch (error) {
             console.log(error)
         }
     }
     return (
-        <cartContext.Provider value={{FetchCart,cartItem,AddToCart,RemoveCart, clearCart}}>
+        <cartContext.Provider value={{ FetchCart, cartItem, AddToCart, RemoveCart, clearCart }}>
             {children}
         </cartContext.Provider>
     )

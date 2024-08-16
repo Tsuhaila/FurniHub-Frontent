@@ -9,7 +9,7 @@ export const FeaturedProducts = () => {
   const { AddToCart } = useContext(cartContext)
 
 
-  // Fetch products from the API on component mount
+
   useEffect(() => {
     async function fetchProducts() {
       try {
@@ -40,8 +40,15 @@ export const FeaturedProducts = () => {
                   alt={product.name}
                   className="w-full h-48 object-cover rounded-t-lg mb-4"
                 />
-                <h3 className="text-lg font-semibold text-gray-700">{product.name}</h3>
-                <p className="text-gray-600 mt-2">{product.description}</p>
+                <h3 className="text-lg font-bold text-gray-700">{product.name}</h3>
+                <p>
+                  <span className="font-semibold mr-1">Material:</span>
+                  {product.material}
+                </p>
+                <p>
+                  <span className="font-semibold mr-1">Rating:</span>
+                  {product.rating}
+                </p>
                 <p className="text-gray-800 font-bold mt-4">${product.price}</p></Link>
               <button onClick={() => AddToCart(product, 1)} className="mt-6 w-full bg-brown-700 text-black border-black py-2 hover:bg-brown-800 transition-colors duration-300 px-6  bg-white font-semibold rounded-lg border-2  hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-700">
                 Add to Cart

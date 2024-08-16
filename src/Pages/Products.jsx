@@ -34,13 +34,16 @@ export const Products = () => {
                                     alt={product.name}
                                     className="w-full h-48 object-cover rounded-t-lg mb-4"
                                 />
-                                <h3 className="text-lg font-semibold text-gray-700">{product.name}</h3>
-                                {/* <p className="text-gray-600 mt-2">{product.description}</p> */}
+                                <h3 className="text-lg font-bold text-gray-700">{product.name}</h3>
+
                                 <p>
-                                    <span className="font-bold mr-1">Material:</span>
+                                    <span className="font-semibold mr-1">Material:</span>
                                     {product.material}
                                 </p>
-                                <p className="font-bold mr-1">{product.availability}</p>
+                                <p>
+                                    <span className="font-semibold mr-1">Rating:</span>
+                                    {product.rating}
+                                </p>
                                 <p className="text-gray-800 font-bold mt-4">${product.price}</p>
                             </div>
                         </Link>

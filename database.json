@@ -297,7 +297,67 @@
       "username": "suhaila",
       "email": "suhaila123@gmail.com",
       "password": "Suhaila123",
-      "cart": []
+      "cart": [],
+      "paymentDetails": {
+        "full_Name": "suhaila",
+        "address": "padikkal",
+        "city": "padikkal",
+        "state": "kerala",
+        "postal_Code": "456789",
+        "country": "India",
+        "phone": "09645877112"
+      },
+      "orders": [
+        {
+          "id": "1",
+          "name": "Modern Sofa",
+          "description": "A spacious and comfortable modern sofa with a minimalist design, perfect for any contemporary living room.",
+          "price": 899,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/b/i/494x544/bingo-velvet-1-seater-sofa-in-grey-colour-bingo-velvet-1-seater-sofa-in-grey-colour-nxsump.jpg",
+          "rating": 4.5,
+          "reviews": 120,
+          "dimensions": {
+            "width": "85 inches",
+            "height": "35 inches",
+            "depth": "40 inches"
+          },
+          "material": "Fabric, Wood, Foam",
+          "colors": [
+            "Gray",
+            "Blue",
+            "Black"
+          ],
+          "category": "Sofas",
+          "availability": "In Stock",
+          "manufacturer": "ModernHome Furnishings",
+          "quantity": 1,
+          "totalPrice": 899
+        },
+        {
+          "id": "7",
+          "name": "Leather Sofa",
+          "description": "A premium leather sofa with a sleek design, and it offering a luxurious seating experience.",
+          "price": 1699,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/s/l/494x544/sleek-leather-3-seater-sofa-in-cream-colour-sleek-leather-3-seater-sofa-in-cream-colour-jnmpcs.jpg",
+          "rating": 4.9,
+          "reviews": 50,
+          "dimensions": {
+            "width": "85 inches",
+            "height": "34 inches",
+            "depth": "38 inches"
+          },
+          "material": "Leather, Wood, Foam",
+          "colors": [
+            "Brown",
+            "Black"
+          ],
+          "category": "Sofas",
+          "availability": "In Stock",
+          "manufacturer": "LuxuryFurn Co.",
+          "quantity": 1,
+          "totalPrice": 1699
+        }
+      ]
     },
     {
       "id": "c6ab",
@@ -334,6 +394,79 @@
           "sku": "TABLE-MARBLE-003",
           "quantity": 1,
           "totalPrice": 999
+        },
+        {
+          "id": "17",
+          "name": "Mid-Century Coffee Table",
+          "description": "A stylish mid-century coffee table with a walnut finish and tapered legs.",
+          "price": 399,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/k/i/494x544/kiosk-coffee-table-in-choco-walnut--by-a-globia-creations-kiosk-coffee-table-in-choco-walnut--by-a-g-34ibdb.jpg",
+          "rating": 4.4,
+          "reviews": 200,
+          "dimensions": {
+            "width": "44 inches",
+            "height": "18 inches",
+            "depth": "22 inches"
+          },
+          "material": "Wood",
+          "colors": [
+            "Walnut",
+            "Brown"
+          ],
+          "category": "Tables",
+          "availability": "In Stock",
+          "manufacturer": "Retro Furniture",
+          "quantity": 1,
+          "totalPrice": 399
+        },
+        {
+          "id": "14",
+          "name": "Rustic Wooden Coffee Table",
+          "description": "A solid wood is coffee table with a rustic finish,  and solid wood perfect for any living room.",
+          "price": 299,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/o/r/494x544/orion-solid-wood-coffee-table-in-rustic-teak-finish--by-woodsworth-orion-solid-wood-coffee-table-in--uocomo.jpg",
+          "rating": 4.6,
+          "reviews": 150,
+          "dimensions": {
+            "width": "48 inches",
+            "height": "18 inches",
+            "depth": "24 inches"
+          },
+          "material": "Wood",
+          "colors": [
+            "Brown",
+            "Oak"
+          ],
+          "category": "Tables",
+          "availability": "Out of Stock",
+          "manufacturer": "WoodCraft",
+          "quantity": 1,
+          "totalPrice": 299
+        },
+        {
+          "id": "2",
+          "name": "Elegant Chesterfield Sofa",
+          "description": "A luxurious chesterfield sofa with deep button tufting, perfect for adding a touch of elegance to any living space.",
+          "price": 1299,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/b/a/494x544/baley-fabric-3-seater-sofa-in-lama-black-colour-baley-fabric-3-seater-sofa-in-lama-black-colour-quah6z.jpg",
+          "rating": 4.8,
+          "reviews": 85,
+          "dimensions": {
+            "width": "90 inches",
+            "height": "32 inches",
+            "depth": "38 inches"
+          },
+          "material": "Leather, Wood, Foam",
+          "colors": [
+            "Brown",
+            "Blue",
+            "Maroon"
+          ],
+          "category": "Sofas",
+          "availability": "In Stock",
+          "manufacturer": "LuxuryFurn Co.",
+          "quantity": 1,
+          "totalPrice": 1299
         }
       ],
       "paymentDetails": {
@@ -462,7 +595,6 @@
       "category": "Sofas",
       "availability": "In Stock",
       "manufacturer": "ModernHome Furnishings"
-     
     },
     {
       "id": "2",
@@ -486,7 +618,6 @@
       "category": "Sofas",
       "availability": "In Stock",
       "manufacturer": "LuxuryFurn Co."
-     
     },
     {
       "id": "3",
@@ -510,7 +641,6 @@
       "category": "Sofas",
       "availability": "In Stock",
       "manufacturer": "Urban Living"
-    
     },
     {
       "id": "4",
@@ -533,7 +663,6 @@
       "category": "Sofas",
       "availability": "In Stock",
       "manufacturer": "Comfort Seating"
-   
     },
     {
       "id": "5",
@@ -555,9 +684,7 @@
       ],
       "category": "Beds",
       "availability": "In Stock",
-
       "manufacturer": "Contempo Beds"
-     
     },
     {
       "id": "6",
@@ -580,9 +707,7 @@
       ],
       "category": "Sofas",
       "availability": "In Stock",
-    
       "manufacturer": "HomeStyle Co."
-   
     },
     {
       "id": "7",
@@ -604,9 +729,7 @@
       ],
       "category": "Sofas",
       "availability": "In Stock",
-   
       "manufacturer": "LuxuryFurn Co."
-    
     },
     {
       "id": "8",
@@ -628,9 +751,7 @@
       ],
       "category": "Beds",
       "availability": "In Stock",
-    
       "manufacturer": "Elegance Furnishings"
-    
     },
     {
       "id": "9",
@@ -653,9 +774,7 @@
       ],
       "category": "Sofas",
       "availability": "In Stock",
-    
       "manufacturer": "Elegance Furnishings"
-    
     },
     {
       "id": "10",
@@ -665,7 +784,11 @@
       "image": "https://ii1.pepperfry.com/media/catalog/product/k/a/494x544/kaiden-sofa-cum-bed-with-mattress-in-cream-colour-by-auspicious-home-kaiden-sofa-cum-bed-with-mattre-ujrohq.jpg",
       "rating": 4.5,
       "reviews": 90,
-     
+      "dimensions": {
+        "width": "80 inches",
+        "height": "12 inches",
+        "depth": "60 inches"
+      },
       "material": "Fabric, Metal",
       "colors": [
         "Gray",
@@ -679,7 +802,6 @@
         "Easy conversion to bed"
       ],
       "manufacturer": "Space Savers"
-    
     },
     {
       "id": "11",
@@ -701,9 +823,7 @@
       ],
       "category": "Beds",
       "availability": "In Stock",
-    
       "manufacturer": "Modern Design"
-     
     },
     {
       "id": "12",
@@ -725,9 +845,7 @@
       ],
       "category": "Beds",
       "availability": "In Stock",
-    
       "manufacturer": "Kids Furniture Inc."
-     
     },
     {
       "id": "13",
@@ -749,9 +867,7 @@
       ],
       "category": "Tables",
       "availability": "In Stock",
-   
       "manufacturer": "Elegant Living"
-     
     },
     {
       "id": "14",
@@ -773,9 +889,7 @@
       ],
       "category": "Tables",
       "availability": "Out of Stock",
-     
       "manufacturer": "WoodCraft"
-   
     },
     {
       "id": "15",
@@ -795,9 +909,8 @@
         "White",
         "Walnut"
       ],
-     
+      "category": "Tables",
       "manufacturer": "Luxury Living"
-     
     },
     {
       "id": "16",
@@ -819,9 +932,7 @@
       ],
       "category": "Tables",
       "availability": "In Stock",
-     
       "manufacturer": "ModernHome Furnishings"
-    
     },
     {
       "id": "17",
@@ -843,9 +954,7 @@
       ],
       "category": "Tables",
       "availability": "In Stock",
-      
       "manufacturer": "Retro Furniture"
-    
     }
   ]
 }

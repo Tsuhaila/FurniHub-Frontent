@@ -5,55 +5,55 @@ import { cartContext } from '../Context/CartProvider';
 import { toast } from 'react-toastify';
 
 export const PlaceOrder = () => {
-  const navigate=useNavigate()
-  const {clearCart}=useContext(cartContext)
+  const navigate = useNavigate()
+  const { clearCart } = useContext(cartContext)
   const location = useLocation();
   const { cartItem, totalAmount } = location.state;
-  const[paymentDetails,setPaymentDetails]=useState({
-    full_Name:"",
-    address:"",
-    city:"",
-    state:"",
-    postal_Code:"",
-    country:"",
-    phone:""
+  const [paymentDetails, setPaymentDetails] = useState({
+    full_Name: "",
+    address: "",
+    city: "",
+    state: "",
+    postal_Code: "",
+    country: "",
+    phone: ""
 
   })
 
-  function handleChange(e){
-    const {name,value}=e.target
-    setPaymentDetails({...paymentDetails,[name]:value})
+  function handleChange(e) {
+    const { name, value } = e.target
+    setPaymentDetails({ ...paymentDetails, [name]: value })
 
   }
-  async function handleSubmit(e){
+  async function handleSubmit(e) {
     e.preventDefault()
-    try{
-        const user=localStorage.getItem("id")
-        const existingUser =await axios.get(`http://localhost:3000/users/${user}`)
-       const existingOrder = existingUser.data?.orders
-       let updatedOrders;
-       if(existingOrder) {
+    try {
+      const user = localStorage.getItem("id")
+      const existingUser = await axios.get(`http://localhost:3000/users/${user}`)
+      const existingOrder = existingUser.data?.orders
+      let updatedOrders;
+      if (existingOrder) {
         updatedOrders = existingOrder;
-        // Add new order if it doesn't exist
+        
         updatedOrders.push(...cartItem);
-       } else {
+      } else {
         updatedOrders = cartItem
-       }
+      }
 
-        await axios.patch(`http://localhost:3000/users/${user}`,{
-            paymentDetails:paymentDetails,
-            orders: updatedOrders
-            
-        })
-        clearCart()
-        toast.success("Ordered Successfully")
-        navigate('/orders')
+      await axios.patch(`http://localhost:3000/users/${user}`, {
+        paymentDetails: paymentDetails,
+        orders: updatedOrders
+
+      })
+      clearCart()
+      toast.success("Ordered Successfully")
+      navigate('/orders')
 
 
-    }catch(error){
-        console.log(error)
+    } catch (error) {
+      console.log(error)
     }
-    
+
   }
 
 
@@ -85,7 +85,7 @@ export const PlaceOrder = () => {
                 <label htmlFor="address" className="block text-gray-700 font-medium mb-2">
                   Address
                 </label>
-                <input 
+                <input
                   type="text"
                   id="address"
                   name="address"
@@ -162,7 +162,7 @@ export const PlaceOrder = () => {
                   Phone Number
                 </label>
                 <input
-                  type="tel"
+                  type="number"
                   id="phone"
                   name="phone"
                   placeholder="Phone no"
