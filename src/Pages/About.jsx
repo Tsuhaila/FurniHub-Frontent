@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import about from '../Assets/Furniture.jpg';
 import { Link } from 'react-router-dom';
@@ -30,7 +28,7 @@ export const About = () => {
       </p>
       <div className="mt-6">
         <Link to="/contact">
-          <button className="bg-gray-800 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-300">
+          <button className="bg-gray-700 text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300">
             Contact Us
           </button>
         </Link>

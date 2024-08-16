@@ -37,13 +37,8 @@ export const Navbar = () => {
     e.preventDefault()
   
     try{
-      const endPoints=['http://localhost:3000/products']
-      const fetchPromises=endPoints.map((endPoint)=>
-      axios.get(endPoint)
-      .then((response)=>response.data)
-      )
-      const result=await Promise.all(fetchPromises)
-      const combinedResult=result.flat()
+      const result=await axios.get("http://localhost:3000/products")
+      const combinedResult=result.data
       const filteredResult=combinedResult.filter((item)=>item.name.toLowerCase().includes(searchQuery.toLowerCase()))
       navigate('/search',{state:{results:filteredResult}})
 
@@ -94,9 +89,9 @@ export const Navbar = () => {
             </NavLink>
         }
        
-       <NavLink to='/cart' className={({ isActive }) => `relative text-black font-semibold hover:text-gray-400 transition-colors ${isActive ? 'border-b-2 border-gray-900' : ''}`}>
+       <NavLink to='/cart' className={({ isActive }) => `relative text-black h-5 w-5 font-semibold hover:text-gray-400 transition-colors ${isActive ? 'border-b-2 border-gray-900' : ''}`}>
   <FaShoppingCart />
-  <p className='absolute top-0 right-0 bg-red-500 text-white rounded-full w-2 h-2 flex items-center justify-center text-[8px]'>
+  <p className='absolute top-0 right-0 bg-red-500 text-white rounded-full w-3 h-3 flex items-center justify-center text-[8px]'>
     {cartItem.length}
   </p>
 </NavLink>

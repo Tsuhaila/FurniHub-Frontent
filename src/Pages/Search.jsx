@@ -31,7 +31,7 @@ export const Search = () => {
                             <h2 className="text-xl font-semibold mb-2">${item.price}</h2>
                             <button
                                 onClick={() => handleClick(item)}
-                                className="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-800 transition-colors"
+                                className="bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-gray-800 transition-colors"
                             >
                                 SEE MORE
                             </button>

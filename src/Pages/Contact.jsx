@@ -32,32 +32,32 @@ export const Contact = () => {
             placeholder="Full Name"
             name="user-name"
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
           />
           <input
             type="email"
             placeholder="Email"
             name="user-email"
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
           />
           <input
             type="text"
             placeholder="Subject"
             name="subject"
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
           />
           <textarea
             name="message"
             cols="20"
             rows="5"
             placeholder="Your message"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
           ></textarea>
           <button
             type="submit"
-            className="w-full bg-gray-800 text-white py-2 rounded-md hover:bg-indigo-700 transition duration-300"
+            className="w-full bg-gray-700 text-white py-2 rounded-md hover:bg-gray-800 transition duration-300"
           >
             Send Message
           </button>

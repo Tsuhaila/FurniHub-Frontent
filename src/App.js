@@ -16,6 +16,7 @@ import { ProductDetails } from './Pages/ProductDetails.jsx';
 import { Search } from './Pages/Search.jsx';
 import { createContext } from 'react';
 import { cartContext } from './Context/CartProvider.jsx';
+import { Orders } from './Pages/Orders.jsx';
 
 
 
@@ -44,9 +45,7 @@ function App() {
         <Route path='/placeorder' element={<PlaceOrder />} />
         <Route path='/products/:id' element={<ProductDetails />} />
         <Route path='search' element={<Search/>}/>
-
-
-
+        <Route path='/orders' element={<Orders/>}/>
       </Routes>
 
 

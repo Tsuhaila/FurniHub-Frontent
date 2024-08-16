@@ -7,34 +7,6 @@
       "password": "suhaila123"
     },
     {
-      "id": "1",
-      "username": "nasha",
-      "email": "nasha@gmail.com",
-      "password": "nasha123"
-    },
-    {
-      "id": "a47c",
-      "username": "suhaila",
-      "email": "suhailathalappill@gmail.com",
-      "password": "suhaila098",
-      "confirm_password": "suhaila098"
-    },
-    {
-      "id": "eb15",
-      "username": "suhaila",
-      "email": "suhailathalappill@gmail.com",
-      "password": "12345678",
-      "confirm_password": "12345678"
-    },
-    {
-      "id": "853c",
-      "username": "suhaila",
-      "email": "suhaila@gmail.com",
-      "password": "suhaila123",
-      "confirm_password": "suhaila123",
-      "cart": []
-    },
-    {
       "id": "757b",
       "username": "suhaila",
       "email": "suhailathalappil1595@gmail.com",
@@ -58,20 +30,6 @@
         "country": "india",
         "phone": "9645877112"
       }
-    },
-    {
-      "id": "ec61",
-      "username": "razi",
-      "email": "razi@gmail.com",
-      "password": "razi12345678",
-      "cart": []
-    },
-    {
-      "id": "bf94",
-      "username": "suhaila",
-      "email": "suhailaa@gmail.com",
-      "password": "12345678",
-      "cart": []
     },
     {
       "id": "3204",
@@ -111,35 +69,94 @@
           "totalPrice": 899
         },
         {
-          "id": "3",
-          "name": "Compact Loveseat",
-          "description": "A cozy loveseat designed for smaller spaces, offering both style and comfort in a compact size.",
-          "price": 599,
-          "image": "https://ii1.pepperfry.com/media/catalog/product/b/e/494x544/berry-3-seater-sofa-in-mushroom-brown-colour-by-durian-berry-3-seater-sofa-in-mushroom-brown-colour--ep62xt.jpg",
-          "rating": 4.3,
-          "reviews": 95,
+          "id": "8",
+          "name": "Luxury King Bed",
+          "description": "An elegant king-sized bed with the tufted headboard and a premium fabric upholstery.",
+          "price": 899,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/s/e/494x544/seana-upholstery-king-size-bed-in-sage-green-colour-seana-upholstery-king-size-bed-in-sage-green-col-pav6uc.jpg",
+          "rating": 4.8,
+          "reviews": 85,
           "dimensions": {
-            "width": "60 inches",
-            "height": "34 inches",
-            "depth": "36 inches"
+            "width": "80 inches",
+            "height": "40 inches",
+            "depth": "76 inches"
           },
-          "material": "Fabric, Metal, Foam",
+          "material": "Fabric, Wood",
           "colors": [
-            "Red",
-            "Gray",
-            "Beige"
+            "Beige",
+            "Navy"
           ],
-          "category": "sofa",
+          "category": "beds",
           "availability": "In Stock",
           "features": [
-            "Compact design",
-            "Durable metal frame",
-            "Plush seating"
+            "Tufted headboard",
+            "Premium fabric",
+            "Solid wood base"
           ],
-          "manufacturer": "Urban Living",
-          "sku": "SOFA-LOVE-003",
+          "manufacturer": "Elegance Furnishings",
+          "sku": "BED-LUX-002",
           "quantity": 1,
-          "totalPrice": 599
+          "totalPrice": 899
+        },
+        {
+          "id": "5",
+          "name": "Modern Platform Bed",
+          "description": "A sleek and stylish platform bed with a low profile, perfect for contemporary bedrooms.",
+          "price": 499,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/d/y/494x544/dynamic-king-size-bed-with-storage-in-wenge-finish-by-crystal-furnitech-dynamic-king-size-bed-with-s-jd79yr.jpg",
+          "rating": 4.6,
+          "reviews": 150,
+          "dimensions": {
+            "width": "80 inches",
+            "height": "10 inches",
+            "depth": "60 inches"
+          },
+          "material": "Wood, Upholstery",
+          "colors": [
+            "Gray",
+            "Black"
+          ],
+          "category": "beds",
+          "availability": "In Stock",
+          "features": [
+            "Low profile design",
+            "Sturdy wood frame",
+            "Upholstered headboard"
+          ],
+          "manufacturer": "Contempo Beds",
+          "sku": "BED-MOD-001",
+          "quantity": 1,
+          "totalPrice": 499
+        },
+        {
+          "id": "13",
+          "name": "Contemporary Dining Table",
+          "description": "A sleek dining table with a glass top and stainless steel legs, ideal for modern dining spaces.",
+          "price": 699,
+          "image": "https://example.com/images/contemporary-dining-table.jpg",
+          "rating": 4.7,
+          "reviews": 90,
+          "dimensions": {
+            "width": "72 inches",
+            "height": "30 inches",
+            "depth": "40 inches"
+          },
+          "material": "Glass, Stainless Steel",
+          "colors": [
+            "Black",
+            "Silver"
+          ],
+          "category": "tables",
+          "availability": "In Stock",
+          "features": [
+            "Tempered glass top",
+            "Stainless steel legs",
+            "Modern design"
+          ],
+          "manufacturer": "Elegant Living",
+          "sku": "TABLE-CONTEMP-001",
+          "quantity": 1,
+          "totalPrice": 699
         }
       ],
       "paymentDetails": {
@@ -152,6 +169,96 @@
         "phone": "09645877112"
       },
       "orders": [
+        {
+          "id": "5",
+          "name": "Modern Platform Bed",
+          "description": "A sleek and stylish platform bed with a low profile, perfect for contemporary bedrooms.",
+          "price": 499,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/d/y/494x544/dynamic-king-size-bed-with-storage-in-wenge-finish-by-crystal-furnitech-dynamic-king-size-bed-with-s-jd79yr.jpg",
+          "rating": 4.6,
+          "reviews": 150,
+          "dimensions": {
+            "width": "80 inches",
+            "height": "10 inches",
+            "depth": "60 inches"
+          },
+          "material": "Wood, Upholstery",
+          "colors": [
+            "Gray",
+            "Black"
+          ],
+          "category": "beds",
+          "availability": "In Stock",
+          "features": [
+            "Low profile design",
+            "Sturdy wood frame",
+            "Upholstered headboard"
+          ],
+          "manufacturer": "Contempo Beds",
+          "sku": "BED-MOD-001",
+          "quantity": 3,
+          "totalPrice": 1497
+        },
+        {
+          "id": "5",
+          "name": "Modern Platform Bed",
+          "description": "A sleek and stylish platform bed with a low profile, perfect for contemporary bedrooms.",
+          "price": 499,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/d/y/494x544/dynamic-king-size-bed-with-storage-in-wenge-finish-by-crystal-furnitech-dynamic-king-size-bed-with-s-jd79yr.jpg",
+          "rating": 4.6,
+          "reviews": 150,
+          "dimensions": {
+            "width": "80 inches",
+            "height": "10 inches",
+            "depth": "60 inches"
+          },
+          "material": "Wood, Upholstery",
+          "colors": [
+            "Gray",
+            "Black"
+          ],
+          "category": "beds",
+          "availability": "In Stock",
+          "features": [
+            "Low profile design",
+            "Sturdy wood frame",
+            "Upholstered headboard"
+          ],
+          "manufacturer": "Contempo Beds",
+          "sku": "BED-MOD-001",
+          "quantity": 3,
+          "totalPrice": 1497
+        },
+        {
+          "id": "5",
+          "name": "Modern Platform Bed",
+          "description": "A sleek and stylish platform bed with a low profile, perfect for contemporary bedrooms.",
+          "price": 499,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/d/y/494x544/dynamic-king-size-bed-with-storage-in-wenge-finish-by-crystal-furnitech-dynamic-king-size-bed-with-s-jd79yr.jpg",
+          "rating": 4.6,
+          "reviews": 150,
+          "dimensions": {
+            "width": "80 inches",
+            "height": "10 inches",
+            "depth": "60 inches"
+          },
+          "material": "Wood, Upholstery",
+          "colors": [
+            "Gray",
+            "Black"
+          ],
+          "category": "beds",
+          "availability": "In Stock",
+          "features": [
+            "Low profile design",
+            "Sturdy wood frame",
+            "Upholstered headboard"
+          ],
+          "manufacturer": "Contempo Beds",
+          "sku": "BED-MOD-001",
+          "quantity": 3,
+          "totalPrice": 1497
+        },
         {
           "id": "1",
           "name": "Modern Sofa",
@@ -182,39 +289,153 @@
           "sku": "SOFA-MODERN-001",
           "quantity": 1,
           "totalPrice": 899
-        },
+        }
+      ]
+    },
+    {
+      "id": "7aa3",
+      "username": "suhaila",
+      "email": "suhaila123@gmail.com",
+      "password": "Suhaila123",
+      "cart": []
+    },
+    {
+      "id": "c6ab",
+      "username": "suhaila",
+      "email": "suhaila321@gmail.com",
+      "password": "Suhaila123",
+      "cart": [
         {
-          "id": "3",
-          "name": "Compact Loveseat",
-          "description": "A cozy loveseat designed for smaller spaces, offering both style and comfort in a compact size.",
-          "price": 599,
-          "image": "https://ii1.pepperfry.com/media/catalog/product/b/e/494x544/berry-3-seater-sofa-in-mushroom-brown-colour-by-durian-berry-3-seater-sofa-in-mushroom-brown-colour--ep62xt.jpg",
-          "rating": 4.3,
-          "reviews": 95,
+          "id": "15",
+          "name": "Marble Top Dining Table",
+          "description": "A luxurious dining table with a marble top and wooden legs, adding elegance to your dining space.",
+          "price": 999,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/l/a/494x544/laredo-solid-wood-6-seater-dining-table-in-beige-colour-with-marble-top-laredo-solid-wood-6-seater-d-d31n7d.jpg",
+          "rating": 4.8,
+          "reviews": 65,
           "dimensions": {
-            "width": "60 inches",
-            "height": "34 inches",
-            "depth": "36 inches"
+            "width": "78 inches",
+            "height": "30 inches",
+            "depth": "42 inches"
           },
-          "material": "Fabric, Metal, Foam",
+          "material": "Marble, Wood",
           "colors": [
-            "Red",
-            "Gray",
-            "Beige"
+            "White",
+            "Walnut"
           ],
-          "category": "sofa",
+          "category": "Tables",
           "availability": "In Stock",
           "features": [
-            "Compact design",
-            "Durable metal frame",
-            "Plush seating"
+            "Premium marble top",
+            "Sturdy wooden legs",
+            "Elegant design"
           ],
-          "manufacturer": "Urban Living",
-          "sku": "SOFA-LOVE-003",
+          "manufacturer": "Luxury Living",
+          "sku": "TABLE-MARBLE-003",
           "quantity": 1,
-          "totalPrice": 599
+          "totalPrice": 999
+        }
+      ],
+      "paymentDetails": {
+        "full_Name": "suhaila",
+        "address": "padikkal",
+        "city": "padikkal",
+        "state": "kerala",
+        "postal_Code": "456789",
+        "country": "India",
+        "phone": "09645877112"
+      },
+      "orders": [
+        {
+          "id": "14",
+          "name": "Rustic Wooden Coffee Table",
+          "description": "A solid wood is coffee table with a rustic finish,  and solid wood perfect for any living room.",
+          "price": 299,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/o/r/494x544/orion-solid-wood-coffee-table-in-rustic-teak-finish--by-woodsworth-orion-solid-wood-coffee-table-in--uocomo.jpg",
+          "rating": 4.6,
+          "reviews": 150,
+          "dimensions": {
+            "width": "48 inches",
+            "height": "18 inches",
+            "depth": "24 inches"
+          },
+          "material": "Wood",
+          "colors": [
+            "Brown",
+            "Oak"
+          ],
+          "category": "Tables",
+          "availability": "Out of Stock",
+          "features": [
+            "Rustic design",
+            "Durable wood construction",
+            "Lower storage shelf"
+          ],
+          "manufacturer": "WoodCraft",
+          "sku": "TABLE-RUSTIC-002",
+          "quantity": 1,
+          "totalPrice": 299
         },
-        1498
+        {
+          "id": "14",
+          "name": "Rustic Wooden Coffee Table",
+          "description": "A solid wood is coffee table with a rustic finish,  and solid wood perfect for any living room.",
+          "price": 299,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/o/r/494x544/orion-solid-wood-coffee-table-in-rustic-teak-finish--by-woodsworth-orion-solid-wood-coffee-table-in--uocomo.jpg",
+          "rating": 4.6,
+          "reviews": 150,
+          "dimensions": {
+            "width": "48 inches",
+            "height": "18 inches",
+            "depth": "24 inches"
+          },
+          "material": "Wood",
+          "colors": [
+            "Brown",
+            "Oak"
+          ],
+          "category": "Tables",
+          "availability": "Out of Stock",
+          "features": [
+            "Rustic design",
+            "Durable wood construction",
+            "Lower storage shelf"
+          ],
+          "manufacturer": "WoodCraft",
+          "sku": "TABLE-RUSTIC-002",
+          "quantity": 1,
+          "totalPrice": 299
+        },
+        {
+          "id": "15",
+          "name": "Marble Top Dining Table",
+          "description": "A luxurious dining table with a marble top and wooden legs, adding elegance to your dining space.",
+          "price": 999,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/l/a/494x544/laredo-solid-wood-6-seater-dining-table-in-beige-colour-with-marble-top-laredo-solid-wood-6-seater-d-d31n7d.jpg",
+          "rating": 4.8,
+          "reviews": 65,
+          "dimensions": {
+            "width": "78 inches",
+            "height": "30 inches",
+            "depth": "42 inches"
+          },
+          "material": "Marble, Wood",
+          "colors": [
+            "White",
+            "Walnut"
+          ],
+          "category": "Tables",
+          "availability": "In Stock",
+          "features": [
+            "Premium marble top",
+            "Sturdy wooden legs",
+            "Elegant design"
+          ],
+          "manufacturer": "Luxury Living",
+          "sku": "TABLE-MARBLE-003",
+          "quantity": 1,
+          "totalPrice": 999
+        }
       ]
     }
   ],
@@ -238,15 +459,10 @@
         "Blue",
         "Black"
       ],
-      "category": "sofa",
+      "category": "Sofas",
       "availability": "In Stock",
-      "features": [
-        "Removable cushions",
-        "Stain-resistant fabric",
-        "Solid wood legs"
-      ],
-      "manufacturer": "ModernHome Furnishings",
-      "sku": "SOFA-MODERN-001"
+      "manufacturer": "ModernHome Furnishings"
+     
     },
     {
       "id": "2",
@@ -267,15 +483,10 @@
         "Blue",
         "Maroon"
       ],
-      "category": "sofa",
+      "category": "Sofas",
       "availability": "In Stock",
-      "features": [
-        "Deep button tufting",
-        "Rolled arms",
-        "Solid wood frame"
-      ],
-      "manufacturer": "LuxuryFurn Co.",
-      "sku": "SOFA-CHESTER-002"
+      "manufacturer": "LuxuryFurn Co."
+     
     },
     {
       "id": "3",
@@ -296,15 +507,10 @@
         "Gray",
         "Beige"
       ],
-      "category": "sofa",
+      "category": "Sofas",
       "availability": "In Stock",
-      "features": [
-        "Compact design",
-        "Durable metal frame",
-        "Plush seating"
-      ],
-      "manufacturer": "Urban Living",
-      "sku": "SOFA-LOVE-003"
+      "manufacturer": "Urban Living"
+    
     },
     {
       "id": "4",
@@ -324,15 +530,10 @@
         "Black",
         "Brown"
       ],
-      "category": "sofa",
+      "category": "Sofas",
       "availability": "In Stock",
-      "features": [
-        "Reclining seats",
-        "Built-in cup holders",
-        "Adjustable footrests"
-      ],
-      "manufacturer": "Comfort Seating",
-      "sku": "SOFA-RECLINE-004"
+      "manufacturer": "Comfort Seating"
+   
     },
     {
       "id": "5",
@@ -352,15 +553,11 @@
         "Gray",
         "Black"
       ],
-      "category": "beds",
+      "category": "Beds",
       "availability": "In Stock",
-      "features": [
-        "Low profile design",
-        "Sturdy wood frame",
-        "Upholstered headboard"
-      ],
-      "manufacturer": "Contempo Beds",
-      "sku": "BED-MOD-001"
+
+      "manufacturer": "Contempo Beds"
+     
     },
     {
       "id": "6",
@@ -381,15 +578,11 @@
         "Blue",
         "Green"
       ],
-      "category": "sofa",
+      "category": "Sofas",
       "availability": "In Stock",
-      "features": [
-        "Modular design",
-        "Multiple configurations",
-        "High-density foam cushions"
-      ],
-      "manufacturer": "HomeStyle Co.",
-      "sku": "SOFA-SECT-005"
+    
+      "manufacturer": "HomeStyle Co."
+   
     },
     {
       "id": "7",
@@ -409,15 +602,11 @@
         "Brown",
         "Black"
       ],
-      "category": "sofa",
+      "category": "Sofas",
       "availability": "In Stock",
-      "features": [
-        "Premium leather",
-        "Contemporary design",
-        "Solid wood frame"
-      ],
-      "manufacturer": "LuxuryFurn Co.",
-      "sku": "SOFA-LEATHER-006"
+   
+      "manufacturer": "LuxuryFurn Co."
+    
     },
     {
       "id": "8",
@@ -437,15 +626,11 @@
         "Beige",
         "Navy"
       ],
-      "category": "beds",
+      "category": "Beds",
       "availability": "In Stock",
-      "features": [
-        "Tufted headboard",
-        "Premium fabric",
-        "Solid wood base"
-      ],
-      "manufacturer": "Elegance Furnishings",
-      "sku": "BED-LUX-002"
+    
+      "manufacturer": "Elegance Furnishings"
+    
     },
     {
       "id": "9",
@@ -466,15 +651,11 @@
         "Green",
         "Blue"
       ],
-      "category": "sofa",
+      "category": "Sofas",
       "availability": "In Stock",
-      "features": [
-        "Plush velvet fabric",
-        "Removable cushions",
-        "Solid wood legs"
-      ],
-      "manufacturer": "Elegance Furnishings",
-      "sku": "SOFA-VELVET-008"
+    
+      "manufacturer": "Elegance Furnishings"
+    
     },
     {
       "id": "10",
@@ -484,25 +665,21 @@
       "image": "https://ii1.pepperfry.com/media/catalog/product/k/a/494x544/kaiden-sofa-cum-bed-with-mattress-in-cream-colour-by-auspicious-home-kaiden-sofa-cum-bed-with-mattre-ujrohq.jpg",
       "rating": 4.5,
       "reviews": 90,
-      "dimensions": {
-        "width": "80 inches",
-        "height": "33 inches",
-        "depth": "40 inches"
-      },
+     
       "material": "Fabric, Metal",
       "colors": [
         "Gray",
         "Beige"
       ],
-      "category": "beds",
+      "category": "Beds",
       "availability": "In Stock",
       "features": [
         "Convertible design",
         "Comfortable seating",
         "Easy conversion to bed"
       ],
-      "manufacturer": "Space Savers",
-      "sku": "BED-SOFA-010"
+      "manufacturer": "Space Savers"
+    
     },
     {
       "id": "11",
@@ -522,15 +699,11 @@
         "Black",
         "White"
       ],
-      "category": "beds",
+      "category": "Beds",
       "availability": "In Stock",
-      "features": [
-        "Simple design",
-        "Durable materials",
-        "Easy to assemble"
-      ],
-      "manufacturer": "Modern Design",
-      "sku": "BED-MINIMAL-009"
+    
+      "manufacturer": "Modern Design"
+     
     },
     {
       "id": "12",
@@ -550,15 +723,129 @@
         "White",
         "Gray"
       ],
-      "category": "beds",
+      "category": "Beds",
       "availability": "In Stock",
-      "features": [
-        "Safety rails",
-        "Built-in storage",
-        "Sturdy construction"
+    
+      "manufacturer": "Kids Furniture Inc."
+     
+    },
+    {
+      "id": "13",
+      "name": "Contemporary Dining Table",
+      "description": "A sleek dining table with a glass top and stainless steel legs, ideal for modern dining spaces.",
+      "price": 699,
+      "image": "https://ii1.pepperfry.com/media/catalog/product/t/i/494x544/tides-solid-wood-4-seater-dining-table-in-honey-finish-tides-solid-wood-4-seater-dining-table-in-hon-pidtwc.jpg",
+      "rating": 4.7,
+      "reviews": 90,
+      "dimensions": {
+        "width": "72 inches",
+        "height": "30 inches",
+        "depth": "40 inches"
+      },
+      "material": "Glass, Stainless Steel",
+      "colors": [
+        "Black",
+        "Silver"
       ],
-      "manufacturer": "Kids Furniture Inc.",
-      "sku": "BED-BUNK-007"
+      "category": "Tables",
+      "availability": "In Stock",
+   
+      "manufacturer": "Elegant Living"
+     
+    },
+    {
+      "id": "14",
+      "name": "Rustic Wooden Coffee Table",
+      "description": "A solid wood is coffee table with a rustic finish,  and solid wood perfect for any living room.",
+      "price": 299,
+      "image": "https://ii1.pepperfry.com/media/catalog/product/o/r/494x544/orion-solid-wood-coffee-table-in-rustic-teak-finish--by-woodsworth-orion-solid-wood-coffee-table-in--uocomo.jpg",
+      "rating": 4.6,
+      "reviews": 150,
+      "dimensions": {
+        "width": "48 inches",
+        "height": "18 inches",
+        "depth": "24 inches"
+      },
+      "material": "Wood",
+      "colors": [
+        "Brown",
+        "Oak"
+      ],
+      "category": "Tables",
+      "availability": "Out of Stock",
+     
+      "manufacturer": "WoodCraft"
+   
+    },
+    {
+      "id": "15",
+      "name": "Marble Top Dining Table",
+      "description": "A luxurious dining table with a marble top and wooden legs, adding elegance to your dining space.",
+      "price": 999,
+      "image": "https://ii1.pepperfry.com/media/catalog/product/l/a/494x544/laredo-solid-wood-6-seater-dining-table-in-beige-colour-with-marble-top-laredo-solid-wood-6-seater-d-d31n7d.jpg",
+      "rating": 4.8,
+      "reviews": 65,
+      "dimensions": {
+        "width": "78 inches",
+        "height": "30 inches",
+        "depth": "42 inches"
+      },
+      "material": "Marble, Wood",
+      "colors": [
+        "White",
+        "Walnut"
+      ],
+     
+      "manufacturer": "Luxury Living"
+     
+    },
+    {
+      "id": "16",
+      "name": "Glass Console Table",
+      "description": "A minimalist glass console table with chrome accents, perfect for hallways and entryways.",
+      "price": 499,
+      "image": "https://ii1.pepperfry.com/media/catalog/product/l/e/494x544/leonel-solid-wood-6-seater-dining-table-in-beige-colour-with-marble-top-leonel-solid-wood-6-seater-d-4mw0pi.jpg",
+      "rating": 4.5,
+      "reviews": 120,
+      "dimensions": {
+        "width": "60 inches",
+        "height": "30 inches",
+        "depth": "16 inches"
+      },
+      "material": "Glass, Chrome",
+      "colors": [
+        "Clear",
+        "Chrome"
+      ],
+      "category": "Tables",
+      "availability": "In Stock",
+     
+      "manufacturer": "ModernHome Furnishings"
+    
+    },
+    {
+      "id": "17",
+      "name": "Mid-Century Coffee Table",
+      "description": "A stylish mid-century coffee table with a walnut finish and tapered legs.",
+      "price": 399,
+      "image": "https://ii1.pepperfry.com/media/catalog/product/k/i/494x544/kiosk-coffee-table-in-choco-walnut--by-a-globia-creations-kiosk-coffee-table-in-choco-walnut--by-a-g-34ibdb.jpg",
+      "rating": 4.4,
+      "reviews": 200,
+      "dimensions": {
+        "width": "44 inches",
+        "height": "18 inches",
+        "depth": "22 inches"
+      },
+      "material": "Wood",
+      "colors": [
+        "Walnut",
+        "Brown"
+      ],
+      "category": "Tables",
+      "availability": "In Stock",
+      
+      "manufacturer": "Retro Furniture"
+    
     }
   ]
 }

@@ -1,8 +1,12 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { cartContext } from '../Context/CartProvider';
+import { toast } from 'react-toastify';
 
 export const PlaceOrder = () => {
+  const navigate=useNavigate()
+  const {clearCart}=useContext(cartContext)
   const location = useLocation();
   const { cartItem, totalAmount } = location.state;
   const[paymentDetails,setPaymentDetails]=useState({
@@ -25,11 +29,26 @@ export const PlaceOrder = () => {
     e.preventDefault()
     try{
         const user=localStorage.getItem("id")
+        const existingUser =await axios.get(`http://localhost:3000/users/${user}`)
+       const existingOrder = existingUser.data?.orders
+       let updatedOrders;
+       if(existingOrder) {
+        updatedOrders = existingOrder;
+        // Add new order if it doesn't exist
+        updatedOrders.push(...cartItem);
+       } else {
+        updatedOrders = cartItem
+       }
+
         await axios.patch(`http://localhost:3000/users/${user}`,{
             paymentDetails:paymentDetails,
-            orders: [...cartItem, totalAmount]
+            orders: updatedOrders
             
         })
+        clearCart()
+        toast.success("Ordered Successfully")
+        navigate('/orders')
+
 
     }catch(error){
         console.log(error)
@@ -56,7 +75,7 @@ export const PlaceOrder = () => {
                   id="fullName"
                   name="full_Name"
                   placeholder="Your name"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
                   required
                   onChange={handleChange}
                 />
@@ -71,7 +90,7 @@ export const PlaceOrder = () => {
                   id="address"
                   name="address"
                   placeholder="Your address"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
                   required
                   onChange={handleChange}
                 />
@@ -86,7 +105,7 @@ export const PlaceOrder = () => {
                   id="city"
                   name="city"
                   placeholder="City"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
                   required
                   onChange={handleChange}
                 />
@@ -102,7 +121,7 @@ export const PlaceOrder = () => {
                     id="state"
                     name="state"
                     placeholder="State"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
                     required
                     onChange={handleChange}
                   />
@@ -116,7 +135,7 @@ export const PlaceOrder = () => {
                     id="postalCode"
                     name="postal_Code"
                     placeholder="Postal Code"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
                     required
                     onChange={handleChange}
                   />
@@ -132,7 +151,7 @@ export const PlaceOrder = () => {
                   id="country"
                   name="country"
                   placeholder="Country"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
                   required
                   onChange={handleChange}
                 />
@@ -147,7 +166,7 @@ export const PlaceOrder = () => {
                   id="phone"
                   name="phone"
                   placeholder="Phone no"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
                   required
                   onChange={handleChange}
                 />

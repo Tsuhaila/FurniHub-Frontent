@@ -12,9 +12,12 @@ const navigate = useNavigate()
     const FetchCart = async () => {
         try {
             const userId = localStorage.getItem("id")
-            const res = await axios.get(`http://localhost:3000/users/${userId}`)
-            const cartList = res.data.cart
-            setCartItem(cartList)
+            if(userId) {
+                const res = await axios.get(`http://localhost:3000/users/${userId}`)
+                const cartList = res.data.cart
+                setCartItem(cartList)
+            }
+        
 
         } catch (error) {
             toast.warn("something went wrong")
@@ -69,8 +72,20 @@ const navigate = useNavigate()
         }
 
     };
+
+    const clearCart = async() => {
+        try {
+        const userId = localStorage.getItem('id')
+           await axios.patch(`http://localhost:3000/users/${userId}`, {
+                cart:[]
+           }) 
+           setCartItem([])
+        } catch(error) {
+            console.log(error)
+        }
+    }
     return (
-        <cartContext.Provider value={{FetchCart,cartItem,AddToCart,RemoveCart}}>
+        <cartContext.Provider value={{FetchCart,cartItem,AddToCart,RemoveCart, clearCart}}>
             {children}
         </cartContext.Provider>
     )

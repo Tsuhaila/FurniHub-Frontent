@@ -26,6 +26,8 @@ export function SignUp() {
 
     const validate = () => {
         const errors = {};
+        const passwordRegex = /^(?=.*[A-Z]).{8,}$/
+        console.log(passwordRegex.test(formValues.password))
         if (!formValues.username) {
             errors.username = "Username is required";
         }
@@ -36,8 +38,8 @@ export function SignUp() {
         }
         if (!formValues.password) {
             errors.password = "Password is required";
-        } else if (formValues.password.length < 8) {
-            errors.password = "Password should contain at least 8 characters";
+        } else if (!passwordRegex.test(formValues.password)) {
+            errors.password = "Password should contain at least 8 characters, it should contains one Capital letter";
         }
         if (formValues.password !== formValues.confirm_password) {
             errors.confirm_password = "Passwords do not match";
@@ -57,7 +59,7 @@ export function SignUp() {
                             type="text"
                             id="username"
                             name="username"
-                            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600 text-lg"
+                            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700 text-lg"
                             placeholder="username"
                             value={formValues.username}
                             onChange={handleChange}
@@ -70,7 +72,7 @@ export function SignUp() {
                             type="email"
                             id="email"
                             name="email"
-                            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600 text-lg"
+                            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700 text-lg"
                             placeholder="you@example.com"
                             value={formValues.email}
                             onChange={handleChange}
@@ -83,7 +85,7 @@ export function SignUp() {
                             type="password"
                             id="password"
                             name="password"
-                            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600 text-lg"
+                            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700 text-lg"
                             placeholder="********"
                             value={formValues.password}
                             onChange={handleChange}
@@ -96,7 +98,7 @@ export function SignUp() {
                             type="password"
                             id="confirm_password"
                             name="confirm_password"
-                            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600 text-lg"
+                            className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700 text-lg"
                             placeholder="********"
                             value={formValues.confirm_password}
                             onChange={handleChange}
@@ -105,7 +107,7 @@ export function SignUp() {
                     </div>
                     <button
                         type="submit"
-                        className="w-full bg-indigo-950 text-white py-3 rounded-md hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-900 text-lg"
+                        className="w-full bg-gray-700 text-white py-3 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-700 text-lg"
                     >
                         SignUp
                     </button>

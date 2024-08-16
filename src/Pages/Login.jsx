@@ -14,7 +14,6 @@ function Login() {
     try {
       const response = await axios.get("http://localhost:3000/users");
       const user = response.data.find((user) => user.email === loginValue.email);
-
       if (user) {
         if (user.password === loginValue.password) {
           localStorage.setItem("id", user.id);
@@ -22,6 +21,7 @@ function Login() {
           toast.success("successfully completed")
           setLoginValue({email:"",password:""})
           navigate('/');
+          window.location.reload()
       
 
 
@@ -76,13 +76,13 @@ function Login() {
           </div>
           <button
             type="submit"
-            className="w-full bg-indigo-950 text-white py-3 rounded-md hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-900 text-lg"
+            className="w-full bg-gray-700 text-white py-3 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 text-lg"
           >
             Login
           </button>
         </form>
         <p className="mt-6 text-center text-sm text-gray-600">
-          Don't have an Account? <Link to={'/signup'} className="text-blue-600 hover:underline">SignUp</Link>
+          Don't have an Account? <Link to={'/signup'} className="text-gray-700 hover:underline">SignUp</Link>
         </p>
       </div>
     </div>
