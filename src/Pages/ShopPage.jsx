@@ -23,7 +23,7 @@ const products = [
     image: 'https://ii1.pepperfry.com/media/catalog/product/e/l/494x544/electra-end-table-in-choco-walnut-finish-electra-end-table-in-choco-walnut-finish-xkaehz.jpg',
     link: '/products?category=Tables'
   }
- 
+
 ];
 
 const ShopPage = () => {

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export function SignUp() {
     const navigate = useNavigate();
@@ -74,7 +75,7 @@ export function SignUp() {
                             id="email"
                             name="email"
                             className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700 text-lg"
-                            placeholder="you@example.com"
+                            placeholder="you@gmail.com"
                             value={formValues.email}
                             onChange={handleChange}
                         />
@@ -113,6 +114,9 @@ export function SignUp() {
                         SignUp
                     </button>
                 </form>
+                <p className="mt-6 text-center text-sm text-gray-600">
+          Already have an Account? <Link to={'/login'} className="text-gray-700 hover:underline">Login</Link>
+        </p>
             </div>
         </div>
     );

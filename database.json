@@ -297,7 +297,31 @@
       "username": "suhaila",
       "email": "suhaila123@gmail.com",
       "password": "Suhaila123",
-      "cart": [],
+      "cart": [
+        {
+          "id": "15",
+          "name": "Marble Top Dining Table",
+          "description": "A luxurious dining table with a marble top and wooden legs, adding elegance to your dining space.",
+          "price": 999,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/l/a/494x544/laredo-solid-wood-6-seater-dining-table-in-beige-colour-with-marble-top-laredo-solid-wood-6-seater-d-d31n7d.jpg",
+          "rating": 4.8,
+          "reviews": 65,
+          "dimensions": {
+            "width": "78 inches",
+            "height": "30 inches",
+            "depth": "42 inches"
+          },
+          "material": "Marble, Wood",
+          "colors": [
+            "White",
+            "Walnut"
+          ],
+          "category": "Tables",
+          "manufacturer": "Luxury Living",
+          "quantity": 1,
+          "totalPrice": 999
+        }
+      ],
       "paymentDetails": {
         "full_Name": "suhaila",
         "address": "padikkal",

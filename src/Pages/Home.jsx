@@ -3,8 +3,6 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import home from '../Assets/homeimage.png';
 import { FeaturedProducts } from './FeaturedProducts';
-import ShopPage from './ShopPage';
-
 
 const Home = () => {
   return (
@@ -13,7 +11,7 @@ const Home = () => {
         <div className="flex flex-col md:flex-row items-center">
           <div className="relative z-10 p-8 mt-0 ml-16">
             <h1 className="text-7xl font-bold text-black mb-4">LUXURY <br></br>FURNITURE</h1>
-            <p className="text-lg text-black mb-8">        Discover our range of high-end furniture for your home.
+            <p className="text-lg text-black mb-8"> Discover our range of high-end furniture for your home.
             </p>
 
             <div>
@@ -34,20 +32,7 @@ const Home = () => {
 
       <section>
         <FeaturedProducts />
-    
-
       </section>
-      {/* <About/> */}
-
-
-
-
-
-
-      {/* <About/> */}
-
-      {/* About Section */}
-
 
     </div>
   );

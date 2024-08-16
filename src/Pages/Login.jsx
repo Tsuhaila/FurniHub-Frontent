@@ -54,7 +54,7 @@ function Login() {
               id="email"
               name="email"
               className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-customBlue text-lg"
-              placeholder="you@example.com"
+              placeholder="you@gmail.com"
               value={loginValue.email}
               onChange={handleChange}
               required
