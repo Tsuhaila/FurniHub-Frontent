@@ -32,7 +32,7 @@ export const Navbar = () => {
     setSearchQuery(query);
     if (!query) {
       navigate('/');
-      return;
+     return;
     }
     e.preventDefault();
 

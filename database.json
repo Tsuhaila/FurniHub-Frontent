@@ -157,6 +157,54 @@
           "sku": "TABLE-CONTEMP-001",
           "quantity": 1,
           "totalPrice": 699
+        },
+        {
+          "id": "12",
+          "name": "Luxury Bunk Bed",
+          "description": "A stylish and sturdy bunk bed with safety rails and built-in storage, perfect for kids' rooms.",
+          "price": 899,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/b/u/236x260/bunka-queen-size-bed-with-hydraulic-storage-in-natural-finish-by-orange-tree-bunka-queen-size-bed-wi-uuq0n5.jpg",
+          "rating": 4.5,
+          "reviews": 130,
+          "dimensions": {
+            "width": "42 inches",
+            "height": "72 inches",
+            "depth": "80 inches"
+          },
+          "material": "Wood, Metal",
+          "colors": [
+            "White",
+            "Gray"
+          ],
+          "category": "Beds",
+          "availability": "In Stock",
+          "manufacturer": "Kids Furniture Inc.",
+          "quantity": 1,
+          "totalPrice": 899
+        },
+        {
+          "id": "17",
+          "name": "Mid-Century Coffee Table",
+          "description": "A stylish mid-century coffee table with a walnut finish and tapered legs.",
+          "price": 399,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/k/i/494x544/kiosk-coffee-table-in-choco-walnut--by-a-globia-creations-kiosk-coffee-table-in-choco-walnut--by-a-g-34ibdb.jpg",
+          "rating": 4.4,
+          "reviews": 200,
+          "dimensions": {
+            "width": "44 inches",
+            "height": "18 inches",
+            "depth": "22 inches"
+          },
+          "material": "Wood",
+          "colors": [
+            "Walnut",
+            "Brown"
+          ],
+          "category": "Tables",
+          "availability": "In Stock",
+          "manufacturer": "Retro Furniture",
+          "quantity": 1,
+          "totalPrice": 399
         }
       ],
       "paymentDetails": {
@@ -299,27 +347,28 @@
       "password": "Suhaila123",
       "cart": [
         {
-          "id": "15",
-          "name": "Marble Top Dining Table",
-          "description": "A luxurious dining table with a marble top and wooden legs, adding elegance to your dining space.",
-          "price": 999,
-          "image": "https://ii1.pepperfry.com/media/catalog/product/l/a/494x544/laredo-solid-wood-6-seater-dining-table-in-beige-colour-with-marble-top-laredo-solid-wood-6-seater-d-d31n7d.jpg",
-          "rating": 4.8,
-          "reviews": 65,
+          "id": "13",
+          "name": "Contemporary Dining Table",
+          "description": "A sleek dining table with a glass top and stainless steel legs, ideal for modern dining spaces.",
+          "price": 699,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/t/i/494x544/tides-solid-wood-4-seater-dining-table-in-honey-finish-tides-solid-wood-4-seater-dining-table-in-hon-pidtwc.jpg",
+          "rating": 4.7,
+          "reviews": 90,
           "dimensions": {
-            "width": "78 inches",
+            "width": "72 inches",
             "height": "30 inches",
-            "depth": "42 inches"
+            "depth": "40 inches"
           },
-          "material": "Marble, Wood",
+          "material": "Glass, Stainless Steel",
           "colors": [
-            "White",
-            "Walnut"
+            "Black",
+            "Silver"
           ],
           "category": "Tables",
-          "manufacturer": "Luxury Living",
+          "availability": "In Stock",
+          "manufacturer": "Elegant Living",
           "quantity": 1,
-          "totalPrice": 999
+          "totalPrice": 699
         }
       ],
       "paymentDetails": {

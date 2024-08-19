@@ -36,7 +36,7 @@ export const ProductDetails = () => {
             setQuantity(quantity - 1)
 
     }
-console.log(data.dimensions);
+
 
     return (
         <div className="max-w-5/6 mx-auto p-4 bg-white shadow-lg rounded-lg mt-10">

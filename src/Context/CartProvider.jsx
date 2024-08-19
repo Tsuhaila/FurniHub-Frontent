@@ -56,7 +56,7 @@ const CartProvider = ({ children }) => {
                     setCartItem(updatedCart)
                     await axios.patch(`http://localhost:3000/users/${user}`, { cart: updatedCart });
                     toast.success("item successfully added to cart");
-                    navigate('/cart')
+                    // navigate('/cart')
                 }
 
             } catch (error) {

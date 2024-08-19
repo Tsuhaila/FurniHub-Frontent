@@ -61,7 +61,7 @@ export const PlaceOrder = () => {
     <div className="bg-gray-100 min-h-screen py-8">
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Shipping Address Form */}
+         
           <div className="bg-white p-8 shadow-md rounded-lg">
             <h2 className="text-3xl font-semibold mb-6 text-center">Shipping Address</h2>
 

@@ -2,21 +2,20 @@ import React, { useContext, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css'
 import Home from './Pages/Home';
-import { Contact } from './Pages/Contact'
+import { Contact } from './Components/Contact.jsx';
 import Login from './Pages/Login';
 import { SignUp } from './Pages/SignUp';
-import { Navbar } from './Pages/Navbar';
-import { Products } from './Pages/Products';
-import { Cart } from './Cart/Cart';
+import { Navbar } from './Components/Navbar.jsx';
+import { Products } from './Components/Products.jsx';
+import { Cart } from './Cart/Cart.jsx';
 import { Footer } from './Components/Footer.jsx';
-import { About } from './Pages/About.jsx';
-import ShopPage from './Pages/ShopPage.jsx';
+import { About } from './Components/About.jsx';
+import ShopPage from './Components/ShopPage.jsx';
 import { PlaceOrder } from './Cart/PlaceOrder.jsx';
-import { ProductDetails } from './Pages/ProductDetails.jsx';
-import { Search } from './Pages/Search.jsx';
-import { createContext } from 'react';
+import { ProductDetails } from './Components/ProductDetails.jsx';
+import { Search } from './Components/Search.jsx';
 import { cartContext } from './Context/CartProvider.jsx';
-import { Orders } from './Pages/Orders.jsx';
+import { Orders } from './Components/Orders.jsx';
 
 
 
