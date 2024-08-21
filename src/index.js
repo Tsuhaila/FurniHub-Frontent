@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import CartProvider from './Context/CartProvider';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -14,6 +15,7 @@ root.render(
     <ToastContainer/>
     <CartProvider>
     <App />
+  
     </CartProvider>
   </React.StrictMode>
   </BrowserRouter>

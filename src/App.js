@@ -17,17 +17,26 @@ import { Search } from './Components/Search.jsx';
 import { cartContext } from './Context/CartProvider.jsx';
 import { Orders } from './Components/Orders.jsx';
 
+import AdminHome from './Pages/Admin/AdminHome.jsx';
+import { Dashboard } from './Components/Admin/Dashboard.jsx';
+import { AllUsers } from './Components/Admin/AllUsers.jsx';
+import { AddProducts } from './Components/Admin/AddProducts.jsx';
+import { AllProducts } from './Components/Admin/AllProducts.jsx';
+import { AdminOrders } from './Components/Admin/AdminOrders.jsx';
+import { EditProducts } from './Components/Admin/EditProducts.jsx';
+import { UserDetails } from './Components/Admin/UserDetails.jsx';
+
 
 
 
 function App() {
   const location = useLocation();
-  const shouldHideNavbar = location.pathname === '/login' || location.pathname === '/signup';
-  const {FetchCart} = useContext(cartContext)
+  const shouldHideNavbar = location.pathname === '/login' || location.pathname === '/signup' || location.pathname.startsWith('/admin');
+  const { FetchCart } = useContext(cartContext)
 
   useEffect(() => {
     FetchCart()
-  },[])
+  }, [])
 
   return (
     <div>
@@ -43,8 +52,20 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/placeorder' element={<PlaceOrder />} />
         <Route path='/products/:id' element={<ProductDetails />} />
-        <Route path='search' element={<Search/>}/>
-        <Route path='/orders' element={<Orders/>}/>
+        <Route path='search' element={<Search />} />
+        <Route path='/orders' element={<Orders />} />
+
+        <Route path='/admin' element={<AdminHome />}>
+        <Route index element={<Dashboard/>}/>
+          <Route path='dashboard' element={<Dashboard />} />
+          <Route path='allusers'  element={<AllUsers />} />
+          <Route path='allusers/:id' element={<UserDetails />} />
+
+          <Route path='addproducts' element={<AddProducts />} />
+          <Route path='allproducts' element={<AllProducts />} />
+          <Route path='allproducts/:id' element={<EditProducts />} />
+          <Route path='Orders' element={<AdminOrders />} />
+        </Route>
       </Routes>
 
 

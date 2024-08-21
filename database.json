@@ -1,18 +1,13 @@
 {
   "users": [
     {
-      "id": "1",
-      "username": "suhaila",
-      "email": "suhaila@gmail.com",
-      "password": "suhaila123"
-    },
-    {
       "id": "757b",
       "username": "suhaila",
       "email": "suhailathalappil1595@gmail.com",
       "password": "suhailasuhaila",
       "confirm_password": "suhailasuhaila",
-      "cart": []
+      "cart": [],
+      "is_blocked": false
     },
     {
       "id": "8fbf",
@@ -29,7 +24,8 @@
         "postal_Code": "456789",
         "country": "india",
         "phone": "9645877112"
-      }
+      },
+      "is_blocked": false
     },
     {
       "id": "3204",
@@ -338,7 +334,8 @@
           "quantity": 1,
           "totalPrice": 899
         }
-      ]
+      ],
+      "is_blocked": false
     },
     {
       "id": "7aa3",
@@ -369,6 +366,30 @@
           "manufacturer": "Elegant Living",
           "quantity": 1,
           "totalPrice": 699
+        },
+        {
+          "id": "14",
+          "name": "Rustic Wooden Coffee Table",
+          "description": "A solid wood is coffee table with a rustic finish,  and solid wood perfect for any living room.",
+          "price": 299,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/o/r/494x544/orion-solid-wood-coffee-table-in-rustic-teak-finish--by-woodsworth-orion-solid-wood-coffee-table-in--uocomo.jpg",
+          "rating": 4.6,
+          "reviews": 150,
+          "dimensions": {
+            "width": "48 inches",
+            "height": "18 inches",
+            "depth": "24 inches"
+          },
+          "material": "Wood",
+          "colors": [
+            "Brown",
+            "Oak"
+          ],
+          "category": "Tables",
+          "availability": "Out of Stock",
+          "manufacturer": "WoodCraft",
+          "quantity": 1,
+          "totalPrice": 299
         }
       ],
       "paymentDetails": {
@@ -430,7 +451,8 @@
           "quantity": 1,
           "totalPrice": 1699
         }
-      ]
+      ],
+      "is_blocked": false
     },
     {
       "id": "c6ab",
@@ -642,7 +664,17 @@
           "quantity": 1,
           "totalPrice": 999
         }
-      ]
+      ],
+      "is_blocked": true
+    },
+    {
+      "id": "6f5b",
+      "username": "admin",
+      "email": "admin@gmail.com",
+      "password": "Adminadmin",
+      "admin": true,
+      "cart": [],
+      "is_blocked": false
     }
   ],
   "products": [
@@ -651,7 +683,7 @@
       "name": "Modern Sofa",
       "description": "A spacious and comfortable modern sofa with a minimalist design, perfect for any contemporary living room.",
       "price": 899,
-      "image": "https://ii1.pepperfry.com/media/catalog/product/b/i/494x544/bingo-velvet-1-seater-sofa-in-grey-colour-bingo-velvet-1-seater-sofa-in-grey-colour-nxsump.jpg",
+      "image": "https://ii1.pepperfry.com/media/catalog/product/b/i/494x544/bingo-velvet-3-seater-sofa-in-grey-colour-bingo-velvet-3-seater-sofa-in-grey-colour-qhfpri.jpg",
       "rating": 4.5,
       "reviews": 120,
       "dimensions": {
@@ -665,9 +697,15 @@
         "Blue",
         "Black"
       ],
-      "category": "Sofas",
+      "category": "Living Room",
       "availability": "In Stock",
-      "manufacturer": "ModernHome Furnishings"
+      "features": [
+        "Removable cushions",
+        "Stain-resistant fabric",
+        "Solid wood legs"
+      ],
+      "manufacturer": "ModernHome Furnishings",
+      "sku": "SOFA-MODERN-001"
     },
     {
       "id": "2",
@@ -691,29 +729,6 @@
       "category": "Sofas",
       "availability": "In Stock",
       "manufacturer": "LuxuryFurn Co."
-    },
-    {
-      "id": "3",
-      "name": "Compact Loveseat",
-      "description": "A cozy loveseat designed for smaller spaces, offering both style and comfort in a compact size.",
-      "price": 599,
-      "image": "https://ii1.pepperfry.com/media/catalog/product/b/e/494x544/berry-3-seater-sofa-in-mushroom-brown-colour-by-durian-berry-3-seater-sofa-in-mushroom-brown-colour--ep62xt.jpg",
-      "rating": 4.3,
-      "reviews": 95,
-      "dimensions": {
-        "width": "60 inches",
-        "height": "34 inches",
-        "depth": "36 inches"
-      },
-      "material": "Fabric, Metal, Foam",
-      "colors": [
-        "Red",
-        "Gray",
-        "Beige"
-      ],
-      "category": "Sofas",
-      "availability": "In Stock",
-      "manufacturer": "Urban Living"
     },
     {
       "id": "4",
@@ -1028,6 +1043,26 @@
       "category": "Tables",
       "availability": "In Stock",
       "manufacturer": "Retro Furniture"
+    },
+    {
+      "id": "18",
+      "name": "Modern sofa",
+      "description": "A spacious and comfortable modern sofa with a minimalist design, perfect for any contemporary living room.",
+      "price": "899",
+      "image": "https://ii1.pepperfry.com/media/catalog/product/b/i/494x544/bingo-velvet-1-seater-sofa-in-grey-colour-bingo-velvet-1-seater-sofa-in-grey-colour-nxsump.jpg",
+      "rating": "4.5",
+      "material": "Fabric, Wood, Foam",
+      "category": "Sofas"
+    },
+    {
+      "id": "d165",
+      "name": "Suhaila",
+      "description": "A spacious and comfortable modern sofa with a minimalist design, perfect for any contemporary living room.",
+      "price": "345",
+      "image": "https://ii1.pepperfry.com/media/catalog/product/b/i/494x544/bingo-velvet-1-seater-sofa-in-grey-colour-bingo-velvet-1-seater-sofa-in-grey-colour-nxsump.jpg",
+      "rating": "4.5",
+      "material": "wood",
+      "category": ""
     }
   ]
 }

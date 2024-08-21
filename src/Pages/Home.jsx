@@ -16,7 +16,7 @@ const Home = () => {
 
             <div>
 
-              <Link to={'/shoppage'}> <button className=" text-black py-2 px-4 rounded-lg border-2 border-black hover:bg-black hover:text-white transition duration-300">
+              <Link to={'/products'}> <button className=" text-black py-2 px-4 rounded-lg border-2 border-black hover:bg-black hover:text-white transition duration-300">
                 GO TO SHOP
               </button></Link>
             </div>

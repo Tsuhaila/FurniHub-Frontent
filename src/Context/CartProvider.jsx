@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -56,7 +56,7 @@ const CartProvider = ({ children }) => {
                     setCartItem(updatedCart)
                     await axios.patch(`http://localhost:3000/users/${user}`, { cart: updatedCart });
                     toast.success("item successfully added to cart");
-                    // navigate('/cart')
+                    navigate('/cart')
                 }
 
             } catch (error) {

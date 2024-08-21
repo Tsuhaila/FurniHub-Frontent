@@ -16,14 +16,24 @@ function Login() {
       const user = response.data.find((user) => user.email === loginValue.email);
       if (user) {
         if (user.password === loginValue.password) {
-          localStorage.setItem("id", user.id);
-          localStorage.setItem("name", user.username);
-          toast.success("successfully completed")
-          setLoginValue({ email: "", password: "" })
-          navigate('/');
-          window.location.reload()
-
-
+          if(user.is_blocked == false) {
+            localStorage.setItem("id", user.id);
+            localStorage.setItem("name", user.username);
+            toast.success("successfully completed")
+            setLoginValue({ email: "", password: "" })
+            if(user.admin){
+              navigate('/admin')
+            }else{
+              navigate('/');
+            }
+           
+            window.location.reload()
+  
+  
+          } else {
+            toast.error('You are blocked')
+          }
+          
 
         } else {
           validation.password = "Incorrect password";
