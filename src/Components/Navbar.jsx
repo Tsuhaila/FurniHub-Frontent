@@ -90,11 +90,9 @@ export const Navbar = () => {
   };
 
   useEffect(() => {
-    // Add event listener to close dropdown when clicking outside
     document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
-      // Cleanup the event listener on component unmount
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);

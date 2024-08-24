@@ -24,8 +24,6 @@ export const Dashboard = () => {
     fetch()
   }, [])
 
-
-
   return (
     <div className='grid gap-5 grid-cols-2 md:grid-cols-3 '>
 
@@ -51,8 +49,6 @@ export const Dashboard = () => {
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{orders.length}</h5>
 
       </div>
-
-
     </div>
   )
 }

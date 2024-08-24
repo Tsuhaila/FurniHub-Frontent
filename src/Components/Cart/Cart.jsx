@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { MdDelete } from "react-icons/md";
 import { cartContext } from '../../Context/CartProvider';
 
-
-
 export const Cart = () => {
   const navigate = useNavigate()
   const { cartItem, RemoveCart } = useContext(cartContext)
@@ -17,8 +15,6 @@ export const Cart = () => {
     navigate('/placeorder', { state: { cartItem, totalAmount } })
 
   }
-
-
 
   return (
     <div className="bg-gray-100 min-h-screen py-8">
@@ -64,9 +60,6 @@ export const Cart = () => {
           </div>
         )}
         {cartItem.length > 0 && (
-
-
-
           <div className="mt-8 p-4 bg-white shadow-md rounded-lg">
             <div className="flex justify-between items-center">
               <p className="text-xl font-semibold">Total:</p>
@@ -81,9 +74,5 @@ export const Cart = () => {
         )}
       </div>
     </div>
-
-
-
-
   )
 }

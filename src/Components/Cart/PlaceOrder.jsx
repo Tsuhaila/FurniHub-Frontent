@@ -56,7 +56,6 @@ export const PlaceOrder = () => {
 
   }
 
-
   return (
     <div className="bg-gray-100 min-h-screen py-8">
       <div className="max-w-5xl mx-auto">

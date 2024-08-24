@@ -63,15 +63,15 @@ const CartProvider = ({ children }) => {
                     setCartItem(updatedCart)
                     await axios.patch(`http://localhost:3000/users/${user}`, { cart: updatedCart });
                    
-                    toast.warn("item is already in the cart")
-                    toast.success("quantity updated")
+                   
+                    toast.success("item quantity updated")
                    
                 } else {
                     const updatedCart = [...cartItem, { ...item, quantity, totalPrice: (item.price * quantity) }]
                     setCartItem(updatedCart)
                     await axios.patch(`http://localhost:3000/users/${user}`, { cart: updatedCart });
                     toast.success("item successfully added to cart");
-                    navigate('/cart')
+                  
                 }
 
             } catch (error) {

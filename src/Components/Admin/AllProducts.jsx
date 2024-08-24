@@ -23,7 +23,6 @@ export const AllProducts = () => {
             } catch (error) {
                 console.log(error)
             }
-
         }
         fetchProducts()
 
@@ -45,7 +44,6 @@ export const AllProducts = () => {
         const query = e.target.value;
         setSearchQuery(query);
         if (!query) {
-
             return;
         }
         e.preventDefault();
@@ -72,8 +70,6 @@ export const AllProducts = () => {
 
     return (
         <div>
-
-
             <div className="relative overflow-x-auto">
                 <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">{category ? category : "All Products"}</h2>
 
@@ -123,7 +119,6 @@ export const AllProducts = () => {
                             <th scope="col" class="px-6 py-3">
                                 price
                             </th>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -157,10 +152,7 @@ export const AllProducts = () => {
                                         Delete
                                     </button>
                                 </td>
-
-
                             </tr>
-
                         ))}
 
                     </tbody>
@@ -168,28 +160,28 @@ export const AllProducts = () => {
                 {selectedProduct && (
                     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
                         <div className="flex flex-col md:flex-row bg-white border border-gray-200 rounded-lg shadow-lg max-w-2xl">
-                        {selectedProduct.image && (
-                            <img
-                                className="object-cover w-full h-64 md:w-1/2 md:h-auto rounded-t-lg md:rounded-l-lg"
-                                src={selectedProduct.image}
-                                alt={selectedProduct.name}
-                            />
-                        )}
-                            <div className="flex flex-col flex-grow p-4">
-                            {selectedProduct.name && (
-                                <h5 className="mb-2 text-2xl font-bold text-gray-900">
-                                    {selectedProduct.name}
-                                </h5>
+                            {selectedProduct.image && (
+                                <img
+                                    className="object-cover w-full h-64 md:w-1/2 md:h-auto rounded-t-lg md:rounded-l-lg"
+                                    src={selectedProduct.image}
+                                    alt={selectedProduct.name}
+                                />
                             )}
+                            <div className="flex flex-col flex-grow p-4">
+                                {selectedProduct.name && (
+                                    <h5 className="mb-2 text-2xl font-bold text-gray-900">
+                                        {selectedProduct.name}
+                                    </h5>
+                                )}
                                 {selectedProduct.description && (
-                                <p className="mb-3 text-gray-700">
-                                    {selectedProduct.description}
-                                </p>
+                                    <p className="mb-3 text-gray-700">
+                                        {selectedProduct.description}
+                                    </p>
                                 )}
                                 {selectedProduct.material && (
-                                <p>
-                                    <span className="font-bold">Material:</span> {selectedProduct.material}
-                                </p>
+                                    <p>
+                                        <span className="font-bold">Material:</span> {selectedProduct.material}
+                                    </p>
                                 )}
                                 {selectedProduct.manufacturer && (
                                     <p>
@@ -218,22 +210,22 @@ export const AllProducts = () => {
                                         <span>No features available.</span>
                                     )}
                                 </p>
-                                {selectedProduct.rating &&(
-                                <p>
-                                    <span className="font-bold">Rating:</span> {selectedProduct.rating}
-                                </p>
-                )}
+                                {selectedProduct.rating && (
+                                    <p>
+                                        <span className="font-bold">Rating:</span> {selectedProduct.rating}
+                                    </p>
+                                )}
                                 {selectedProduct.reviews && (
                                     <p>
                                         <span className="font-bold">Reviews:</span> {selectedProduct.reviews}
                                     </p>
                                 )}
-                              
+
                                 <br></br>
-                                {selectedProduct.price &&(
-                                <p>
-                                    <span className="font-bold">${selectedProduct.price}</span>
-                                </p>
+                                {selectedProduct.price && (
+                                    <p>
+                                        <span className="font-bold">${selectedProduct.price}</span>
+                                    </p>
                                 )}
                                 <div className="mt-auto flex justify-end">
                                     <button
@@ -246,16 +238,9 @@ export const AllProducts = () => {
                             </div>
                         </div>
                     </div>
-
                 )}
-
-
-
             </div>
-
         </div>
     )
-
-
 }
 

@@ -13,7 +13,6 @@ export const AddProducts = () => {
     rating: "",
     material: "",
     category: "",
-    reviews: "",
     manufacturer: "",
     colors: [],
     features: []
@@ -70,6 +69,7 @@ export const AddProducts = () => {
             id="name"
             name="name"
             type="text"
+            placeholder='Enter product name'
             value={product.name}
             onChange={handleChange}
             required
@@ -83,6 +83,7 @@ export const AddProducts = () => {
             id="description"
             name="description"
             type="text"
+            placeholder='Enter description'
             value={product.description}
             onChange={handleChange}
             required
@@ -96,6 +97,7 @@ export const AddProducts = () => {
             id="price"
             name="price"
             type="number"
+            placeholder='Enter price'
             min="0"
             value={product.price}
             onChange={handleChange}
@@ -110,6 +112,7 @@ export const AddProducts = () => {
             id="image"
             name="image"
             type="text"
+            placeholder='Enter image url'
             value={product.image}
             onChange={handleChange}
             required
@@ -123,6 +126,7 @@ export const AddProducts = () => {
             id="rating"
             name="rating"
             type="number"
+            placeholder='Enter rating'
             min="1"
             max="5"
             value={product.rating}
@@ -132,26 +136,13 @@ export const AddProducts = () => {
           />
         </div>
 
-        {/* <div className="mb-4">
-          <label htmlFor="reviews" className="block mb-1 text-sm font-medium text-gray-700">Reviews</label>
-          <input
-            id="reviews"
-            name="reviews"
-            type="number"
-            min='1'
-            value={product.reviews}
-            onChange={handleChange}
-            required
-            className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-          />
-        </div> */}
-
         <div className="mb-4">
           <label htmlFor="material" className="block mb-1 text-sm font-medium text-gray-700">Material</label>
           <input
             id="material"
             name="material"
             type="text"
+            placeholder='Enter material'
             value={product.material}
             onChange={handleChange}
             required
@@ -182,7 +173,7 @@ export const AddProducts = () => {
             id="manufacturer"
             name="manufacturer"
             type="text"
-             placeholder="Enter color"
+            placeholder="Enter manufacturer"
             value={product.manufacturer}
             onChange={handleChange}
             required
@@ -197,7 +188,7 @@ export const AddProducts = () => {
               type="text"
               value={featureInput}
               onChange={(e) => setFeatureInput(e.target.value)}
-           
+
               className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
               placeholder="Enter feature"
             />
@@ -225,7 +216,7 @@ export const AddProducts = () => {
               type="text"
               value={colorInput}
               onChange={(e) => setColorInput(e.target.value)}
-           
+
               className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
               placeholder="Enter color"
             />

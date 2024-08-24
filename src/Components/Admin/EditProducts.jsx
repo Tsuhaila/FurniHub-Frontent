@@ -12,7 +12,6 @@ export const EditProducts = () => {
     description: '',
     price: '',
     image: '',
-    rating: '',
     material: '',
     category: '',
     manufacturer: '',
@@ -148,21 +147,7 @@ export const EditProducts = () => {
             className="block w-full p-3 border border-gray-300 rounded-lg bg-gray-50"
           />
         </div>
-        
-        {/* <div className="mb-5">
-          <label htmlFor="reviews" className="block mb-2 text-sm font-medium text-gray-900">
-            Reviews
-          </label>
-          <input
-            required
-            onChange={handleChange}
-            value={editproduct.reviews}
-            type="text"
-            id="reviews"
-            name="reviews"
-            className="block w-full p-3 border border-gray-300 rounded-lg bg-gray-50"
-          />
-        </div> */}
+      
         
         <div className="mb-5">
           <label htmlFor="material" className="block mb-2 text-sm font-medium text-gray-900">
