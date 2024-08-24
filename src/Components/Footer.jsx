@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (
-    <div className="bg-gray-100  flex flex-col justify-around">
+    <div className="bg-gray-100  flex flex-col justify-around w-100" style={{boxSizing:'border-boxs'}}>
       <footer className="bg-gray-800 text-white mt-12">
-        <div className="container mx-auto ml-6 py-8 flex flex-col md:flex-row justify-between">
+        <div className="container mx-auto py-8 flex flex-col md:flex-row justify-between ml-5 md:ml-0 w-[15rem] md:w-[100%]">
 
-          <div className="mb-6 md:mb-0 ml-6">
+          <div className="mb-6 md:mb-0 md:ml-6">
             <h4 className="text-2xl font-bold">Furniture Store</h4>
             <p className="text-gray-400 mt-2">Your go-to destination for stylish <br></br>and modern furniture.</p>
           </div>
@@ -36,7 +36,7 @@ export const Footer = () => {
           </div>
 
 
-          <div className='mr-14'>
+          <div className='md:mr-14 mr-0'>
             <h5 className="text-lg font-bold mb-2">Follow Us</h5>
             <div className="flex space-x-4">
               <Link to="https://www.linkedin.com/in/fathimathu-suhaila-461671318/" className="text-gray-400 hover:text-white">

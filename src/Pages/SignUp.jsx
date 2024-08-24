@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export function SignUp() {
     const navigate = useNavigate();
     const initialValues = {
-        username: "", email: "", password: "", confirm_password: "", cart: []
+        username: "", email: "", password: "", confirm_password: "", cart: [],is_blocked:false
 
     };
     const [formValues, setFormValues] = useState(initialValues);

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { cartContext } from '../Context/CartProvider';
+import { cartContext } from '../../Context/CartProvider';
 import { toast } from 'react-toastify';
 
 export const PlaceOrder = () => {

@@ -38,7 +38,7 @@ export const Orders = () => {
             </p>
             <button
               className="px-6 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition duration-300"
-              onClick={() => navigate("/shoppage")}
+              onClick={() => navigate("/products")}
             >
               Continue Shopping
             </button>

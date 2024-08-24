@@ -7,6 +7,7 @@ import { cartContext } from '../Context/CartProvider';
 export const FeaturedProducts = () => {
   const [products, setProducts] = useState([]);
   const { AddToCart } = useContext(cartContext)
+  const admin=localStorage.getItem("admin")
 
 
 
@@ -50,14 +51,16 @@ export const FeaturedProducts = () => {
                   {product.rating}
                 </p>
                 <p className="text-gray-800 font-bold mt-4">${product.price}</p></Link>
-              <button onClick={() => AddToCart(product, 1)} className="mt-6 w-full bg-brown-700 text-black border-black py-2 hover:bg-brown-800 transition-colors duration-300 px-6  bg-white font-semibold rounded-lg border-2  hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-700">
+              <button 
+               disabled={admin ? true : false }
+              onClick={() => AddToCart(product, 1)} className="mt-6 w-full  text-black py-2 px-4 rounded-lg border-2 border-black hover:bg-black hover:text-white transition duration-300">
                 Add to Cart
               </button>
             </div>
           ))}
           <div className='flex justify-center items-center'>
             <div className='p-4 rounded-full bg-white shadow-lg'>
-              <Link to={'/shoppage'}><FaArrowRight className='text-brown-700' /></Link>
+              <Link to={'/products'}><FaArrowRight className='text-brown-700' /></Link>
             </div>
           </div>
         </div>

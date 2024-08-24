@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MdDelete } from "react-icons/md";
-import { cartContext } from '../Context/CartProvider';
+import { cartContext } from '../../Context/CartProvider';
 
 
 
@@ -32,7 +32,7 @@ export const Cart = () => {
             </p>
             <button
               className="px-6 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition duration-300"
-              onClick={() => navigate("/shoppage")}
+              onClick={() => navigate("/products")}
             >
               Continue Shopping
             </button>

@@ -1,97 +1,257 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 export const AddProducts = () => {
+  const navigate = useNavigate()
   const initialValues = {
-
     name: "",
     description: "",
     price: "",
     image: "",
     rating: "",
     material: "",
-    category: ""
+    category: "",
+    reviews: "",
+    manufacturer: "",
+    colors: [],
+    features: []
   }
   const [product, setProduct] = useState(initialValues)
-
+  const [featureInput, setFeatureInput] = useState('')
+  const [colorInput, setColorInput] = useState('')
 
   function handleChange(e) {
     setProduct({ ...product, [e.target.name]: e.target.value })
   }
 
+  const handleFeatureAdd = () => {
+    if (featureInput && !product.features.includes(featureInput)) {
+      setProduct(prevProduct => ({
+        ...prevProduct,
+        features: [...prevProduct.features, featureInput],
+      }))
+      setFeatureInput('')
+    }
+  }
+
+  const handleColorAdd = () => {
+    if (colorInput && !product.colors.includes(colorInput)) {
+      setProduct(prevProduct => ({
+        ...prevProduct,
+        colors: [...prevProduct.colors, colorInput],
+      }))
+      setColorInput('')
+    }
+  }
+
   async function handleSubmit(e) {
     try {
       e.preventDefault()
-
       await axios.post('http://localhost:3000/products', product)
-      toast.success('product added successfully')
-
-
+      toast.success('Product added successfully')
+      navigate('/admin/allproducts')
       setProduct(initialValues)
-
     } catch (error) {
       console.log(error)
-      toast.warn("can't add product. please try again")
-
+      toast.warn("Can't add product. Please try again")
     }
-
-
-
   }
 
-
   return (
-    <div>
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Add Products</h2>
+    <div className="max-w-2xl mx-auto p-6">
+      <h2 className="text-3xl font-bold text-center mb-6">Add Products</h2>
 
-
-      <form class=" max-w-2xl mx-auto" onSubmit={handleSubmit}>
-
-        <div className="mb-5">
-          <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-          <input required onChange={handleChange} type="text" id="base-input" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></input>
-        </div>
-        <div className="mb-5">
-          <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-          <input required onChange={handleChange} type="text" id="large-input" name="description" class="block w-full p-5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></input>
-        </div>
-        <div className="mb-5">
-          <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-          <input required onChange={handleChange} type="number" id="small-input" name="price" class="block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></input>
-        </div>
-        <div className="mb-5">
-          <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">image</label>
-          <input required onChange={handleChange} type="text" id="small-input" name="image" class="block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></input>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="mb-4">
+          <label htmlFor="name" className="block mb-1 text-sm font-medium text-gray-700">Name</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            value={product.name}
+            onChange={handleChange}
+            required
+            className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+          />
         </div>
 
-        <div className="mb-5">
-          <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rating</label>
-          <input required onChange={handleChange} type="number"   min="1" max="5" id="small-input" name="rating" class="block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></input>
+        <div className="mb-4">
+          <label htmlFor="description" className="block mb-1 text-sm font-medium text-gray-700">Description</label>
+          <input
+            id="description"
+            name="description"
+            type="text"
+            value={product.description}
+            onChange={handleChange}
+            required
+            className="block w-full px-3 py-4 border border-gray-300 rounded-md shadow-sm"
+          />
         </div>
-        <div className="mb-5">
-          <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Material</label>
-          <input required onChange={handleChange} type="text" id="base-input" name="material" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></input>
+
+        <div className="mb-4">
+          <label htmlFor="price" className="block mb-1 text-sm font-medium text-gray-700">Price</label>
+          <input
+            id="price"
+            name="price"
+            type="number"
+            min="0"
+            value={product.price}
+            onChange={handleChange}
+            required
+            className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+          />
         </div>
-        <div className="mb-5">
-          <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">category</label>
-          <select required onChange={handleChange} type="text" id="small-input" name="category" class="block w-full p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+        <div className="mb-4">
+          <label htmlFor="image" className="block mb-1 text-sm font-medium text-gray-700">Image URL</label>
+          <input
+            id="image"
+            name="image"
+            type="text"
+            value={product.image}
+            onChange={handleChange}
+            required
+            className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="rating" className="block mb-1 text-sm font-medium text-gray-700">Rating</label>
+          <input
+            id="rating"
+            name="rating"
+            type="number"
+            min="1"
+            max="5"
+            value={product.rating}
+            onChange={handleChange}
+            required
+            className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+          />
+        </div>
+
+        {/* <div className="mb-4">
+          <label htmlFor="reviews" className="block mb-1 text-sm font-medium text-gray-700">Reviews</label>
+          <input
+            id="reviews"
+            name="reviews"
+            type="number"
+            min='1'
+            value={product.reviews}
+            onChange={handleChange}
+            required
+            className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+          />
+        </div> */}
+
+        <div className="mb-4">
+          <label htmlFor="material" className="block mb-1 text-sm font-medium text-gray-700">Material</label>
+          <input
+            id="material"
+            name="material"
+            type="text"
+            value={product.material}
+            onChange={handleChange}
+            required
+            className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="category" className="block mb-1 text-sm font-medium text-gray-700">Category</label>
+          <select
+            id="category"
+            name="category"
+            value={product.category}
+            onChange={handleChange}
+            required
+            className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+          >
             <option value="">Select a category</option>
-            <option>Sofas</option>
-            <option>Beds</option>
-            <option>Tables</option>
+            <option value="Sofas">Sofas</option>
+            <option value="Beds">Beds</option>
+            <option value="Tables">Tables</option>
           </select>
         </div>
-        <div className='text-center py-2'>
-          <button type='submit' class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-            Add
-          </button>
 
+        <div className="mb-4">
+          <label htmlFor="manufacturer" className="block mb-1 text-sm font-medium text-gray-700">Manufacturer</label>
+          <input
+            id="manufacturer"
+            name="manufacturer"
+            type="text"
+             placeholder="Enter color"
+            value={product.manufacturer}
+            onChange={handleChange}
+            required
+            className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+          />
         </div>
 
+        <div className="mb-4">
+          <label className="block mb-1 text-sm font-medium text-gray-700">Features</label>
+          <div className="flex items-center space-x-2 mb-2">
+            <input
+              type="text"
+              value={featureInput}
+              onChange={(e) => setFeatureInput(e.target.value)}
+           
+              className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+              placeholder="Enter feature"
+            />
+            <button
+              type="button"
+              onClick={handleFeatureAdd}
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              Add
+            </button>
+          </div>
+          <div>
+            {product.features.length > 0 && product.features.map((feature, index) => (
+              <span key={index} className="inline-block bg-gray-200 rounded px-2 py-1 mr-2 mb-2 text-sm">
+                {feature}
+              </span>
+            ))}
+          </div>
+        </div>
 
+        <div className="mb-4">
+          <label className="block mb-1 text-sm font-medium text-gray-700">Colors</label>
+          <div className="flex items-center space-x-2 mb-2">
+            <input
+              type="text"
+              value={colorInput}
+              onChange={(e) => setColorInput(e.target.value)}
+           
+              className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+              placeholder="Enter color"
+            />
+            <button
+              type="button"
+              onClick={handleColorAdd}
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              Add
+            </button>
+          </div>
+          <div>
+            {product.colors.length > 0 && product.colors.map((color, index) => (
+              <span key={index} className="inline-block bg-gray-200 rounded px-2 py-1 mr-2 mb-2 text-sm">
+                {color}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="text-center">
+          <button type="submit" className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">
+            Add Product
+          </button>
+        </div>
       </form>
     </div>
-
   )
 }

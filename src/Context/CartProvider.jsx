@@ -47,10 +47,25 @@ const CartProvider = ({ children }) => {
         const user = localStorage.getItem("id");
         if (user) {
             try {
-                const itemExists = cartItem.find(CartItem => CartItem.id === item.id);
-                if (itemExists) {
+                const itemExists = cartItem.findIndex(CartItem => CartItem.id === item.id);
+                if (itemExists >= 0) {
+                    const updatedCart= cartItem.map((data, index) => {
+                       if(index === itemExists) {
+                        return {
+                            ...data,
+                            quantity: quantity,
+                            totalPrice: (item.price * quantity)
+                        }
+                       } else {
+                        return data
+                       }
+                    })
+                    setCartItem(updatedCart)
+                    await axios.patch(`http://localhost:3000/users/${user}`, { cart: updatedCart });
+                   
                     toast.warn("item is already in the cart")
-                    navigate('/cart')
+                    toast.success("quantity updated")
+                   
                 } else {
                     const updatedCart = [...cartItem, { ...item, quantity, totalPrice: (item.price * quantity) }]
                     setCartItem(updatedCart)
