@@ -31,9 +31,6 @@ function App() {
   const shouldHideNavbar = location.pathname === '/login' || location.pathname === '/signup' || location.pathname.startsWith('/admin');
   const { FetchCart } = useContext(cartContext)
 
-  useEffect(() => {
-    FetchCart()
-  }, [location])
 
   return (
     <div>

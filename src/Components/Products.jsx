@@ -1,19 +1,25 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 export const Products = () => {
   
     const [products, setProducts] = useState([]);
     const [category, setCategory] =useState()
+    const baseUrl=process.env.REACT_APP_BASE_URL
+   
 
     useEffect(() => {
         async function fetchProducts() {
             try {
-                const res = await axios.get("http://localhost:3000/products");
-                const filteredProducts = res.data.filter(data => data.category === category);
-                console.log(res.data)
-                setProducts(filteredProducts.length > 0 ? filteredProducts : res.data);
+                const res = await axios.get(baseUrl+"/products");
+                
+                
+                const filteredProducts = await axios.get(baseUrl+`/products/category-name/${category}`);
+                
+                setProducts(filteredProducts.data.length > 0 ? filteredProducts.data : res.data);
+                console.log(products)
             } catch (error) {
                 console.log('Error fetching products:', error);
             }

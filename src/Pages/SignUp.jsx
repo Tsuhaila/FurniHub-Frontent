@@ -1,10 +1,15 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { signupUser } from '../Redux/Slices/AuthSlice';
+import { toast } from 'react-toastify';
 
 export function SignUp() {
+    const dispatch=useDispatch();
     const navigate = useNavigate();
+    const{loading,error}=useSelector((state)=>state.auth);
     const initialValues = {
         username: "", email: "", password: "", confirm_password: "", cart: [],is_blocked:false
 
@@ -22,7 +27,10 @@ export function SignUp() {
         if (validate()) {
             navigate('/login');
             const { confirm_password, ...newformValues } = formValues
-            axios.post("http://localhost:3000/users", newformValues);
+            dispatch(signupUser(newformValues))
+            if(error){
+                toast.error(error)
+            }
         }
     };
 
@@ -34,6 +42,7 @@ export function SignUp() {
             errors.username = "Username is required";
         }
         if (!formValues.email) {
+            
             errors.email = "Email is required";
         } else if (!/\S+@\S+\.\S+/.test(formValues.email)) {
             errors.email = "Email is invalid";
@@ -49,6 +58,7 @@ export function SignUp() {
         setFormErrors(errors);
         return Object.keys(errors).length === 0;
     };
+
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300">
@@ -110,10 +120,12 @@ export function SignUp() {
                     <button
                         type="submit"
                         className="w-full bg-gray-700 text-white py-3 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-700 text-lg"
+                        disabled={loading}
                     >
-                        SignUp
+                       {loading?'Signing Up...':'Sign Up'}
                     </button>
                 </form>
+               
                 <p className="mt-6 text-center text-sm text-gray-600">
           Already have an Account? <Link to={'/login'} className="text-gray-700 hover:underline">Login</Link>
         </p>

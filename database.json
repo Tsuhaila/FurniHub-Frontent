@@ -23,66 +23,7 @@
       "username": "suhaila",
       "email": "suhaila123@gmail.com",
       "password": "Suhaila123",
-      "cart": [
-        {
-          "id": "4",
-          "name": "Reclining Sofa",
-          "description": "A comfortable reclining sofa with adjustable footrests and built-in cup holders, perfect for movie nights.",
-          "price": 1499,
-          "image": "https://ii1.pepperfry.com/media/catalog/product/v/i/494x544/vix-fabric-3-seater-recliner-in-cream-colour-vix-fabric-3-seater-recliner-in-cream-colour-cwxdoa.jpg",
-          "rating": 4.7,
-          "reviews": 70,
-          "dimensions": {
-            "width": "88 inches",
-            "height": "38 inches",
-            "depth": "40 inches"
-          },
-          "material": "Leather, Wood, Metal",
-          "colors": [
-            "Black",
-            "Brown"
-          ],
-          "category": "Sofas",
-          "availability": "In Stock",
-          "features": [
-            "Adjustable footrests",
-            "Built-in cup holders",
-            "Reclining function"
-          ],
-          "manufacturer": "Comfort Seating",
-          "quantity": 1,
-          "totalPrice": 1499
-        },
-        {
-          "id": "7",
-          "name": "Leather Sofa",
-          "description": "A premium leather sofa with a sleek design, offering a luxurious seating experience.",
-          "price": 1699,
-          "image": "https://ii1.pepperfry.com/media/catalog/product/s/l/494x544/sleek-leather-3-seater-sofa-in-cream-colour-sleek-leather-3-seater-sofa-in-cream-colour-jnmpcs.jpg",
-          "rating": 4.9,
-          "reviews": 50,
-          "dimensions": {
-            "width": "85 inches",
-            "height": "34 inches",
-            "depth": "38 inches"
-          },
-          "material": "Leather, Wood, Foam",
-          "colors": [
-            "Brown",
-            "Black"
-          ],
-          "category": "Sofas",
-          "availability": "In Stock",
-          "features": [
-            "Premium leather",
-            "Sleek design",
-            "Comfortable seating"
-          ],
-          "manufacturer": "LuxuryFurn Co.",
-          "quantity": 1,
-          "totalPrice": 1699
-        }
-      ],
+      "cart": [],
       "paymentDetails": {
         "full_Name": "suhaila",
         "address": "padikkal",
@@ -245,6 +186,65 @@
           "manufacturer": "Elegance Furnishings",
           "quantity": 1,
           "totalPrice": 899
+        },
+        {
+          "id": "7",
+          "name": "Leather Sofa",
+          "description": "A premium leather sofa with a sleek design, offering a luxurious seating experience.",
+          "price": 1699,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/s/l/494x544/sleek-leather-3-seater-sofa-in-cream-colour-sleek-leather-3-seater-sofa-in-cream-colour-jnmpcs.jpg",
+          "rating": 4.9,
+          "reviews": 50,
+          "dimensions": {
+            "width": "85 inches",
+            "height": "34 inches",
+            "depth": "38 inches"
+          },
+          "material": "Leather, Wood, Foam",
+          "colors": [
+            "Brown",
+            "Black"
+          ],
+          "category": "Sofas",
+          "availability": "In Stock",
+          "features": [
+            "Premium leather",
+            "Sleek design",
+            "Comfortable seating"
+          ],
+          "manufacturer": "LuxuryFurn Co.",
+          "quantity": 1,
+          "totalPrice": 1699
+        },
+        {
+          "id": "6",
+          "name": "Sectional Sofa",
+          "description": "A versatile sectional sofa that can be arranged in multiple configurations, perfect for large living spaces.",
+          "price": 1999,
+          "image": "https://ii1.pepperfry.com/media/catalog/product/e/t/494x544/ethos-velvet-fabric-lhs-sectional-sofa-in-beige-finish-ethos-velvet-fabric-lhs-sectional-sofa-in-bei-176ktu.jpg",
+          "rating": 4.6,
+          "reviews": 60,
+          "dimensions": {
+            "width": "120 inches",
+            "height": "36 inches",
+            "depth": "40 inches"
+          },
+          "material": "Fabric, Wood, Foam",
+          "colors": [
+            "Gray",
+            "Blue",
+            "Green"
+          ],
+          "category": "Sofas",
+          "availability": "In Stock",
+          "features": [
+            "Modular design",
+            "Multiple configurations",
+            "Durable fabric"
+          ],
+          "manufacturer": "HomeStyle Co.",
+          "quantity": 1,
+          "totalPrice": 1999
         }
       ],
       "is_blocked": false
@@ -306,6 +306,14 @@
           "totalPrice": 1999
         }
       ]
+    },
+    {
+      "id": "c1ef",
+      "username": "user user",
+      "email": "userr@gmail.com",
+      "password": "User12345678",
+      "cart": [],
+      "is_blocked": false
     }
   ],
   "products": [

@@ -6,6 +6,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { cartContext } from '../Context/CartProvider';
 import Swal from 'sweetalert2';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCart } from '../Redux/Slices/CartSlice';
 
 
 export const Navbar = () => {
@@ -19,12 +21,18 @@ export const Navbar = () => {
   const { cartItem } = useContext(cartContext);
   const dropdownRef = useRef(null);
   const sidebarREf = useRef(null)
+  const {cart}=useSelector(state=>state.cart)
+  const dispatch=useDispatch()
 
   useEffect(() => {
     if (localStorage.getItem("id")) {
       setIsLoggin(true);
     }
   }, [isLoggin]);
+  
+  useEffect(()=>{
+    dispatch(fetchCart())
+  },[dispatch])
 
   const handleLogout = () => {
     Swal.fire({
@@ -97,7 +105,7 @@ export const Navbar = () => {
     };
   }, []);
 
-  const admin = localStorage.getItem("admin");
+  const role = localStorage.getItem("role");
 
 
   return (
@@ -143,7 +151,7 @@ export const Navbar = () => {
         <NavLink to='/cart' className={({ isActive }) => `relative text-black h-5 w-5 font-semibold hover:text-gray-400 transition-colors ${isActive ? 'border-b-2 border-gray-900' : ''}`}>
           <FaShoppingCart />
           <p className='absolute top-0 right-0 bg-red-500 text-white rounded-full w-3 h-3 flex items-center justify-center text-[8px]'>
-            {cartItem?.length}
+            {cart?.length}
           </p>
         </NavLink>
 
@@ -160,7 +168,7 @@ export const Navbar = () => {
                 <button onClick={handleLogout} className='block w-full text-left px-4 py-2 text-black hover:bg-gray-100'>Logout</button>
               
               )}
-              {admin && (
+              {role=='admin' && (
                 <NavLink to={'/admin'} className='block px-4 py-2 text-black hover:bg-gray-100'>Go to admin</NavLink>
           
         )}

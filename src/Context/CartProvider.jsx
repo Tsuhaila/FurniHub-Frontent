@@ -10,20 +10,18 @@ const CartProvider = ({ children }) => {
     const [cartItem, setCartItem] = useState([])
     const navigate = useNavigate()
     const FetchCart = async () => {
-        try {
-            const userId = localStorage.getItem("id")
-            if (userId) {
-                const res = await axios.get(`http://localhost:3000/users/${userId}`)
-                const cartList = res.data.cart
-                setCartItem(cartList)
-            }
+        // try {
+        //     const userId = localStorage.getItem("id")
+        //     if (userId) {
+        //         const res = await axios.get(`http://localhost:3000/users/${userId}`)
+        //         const cartList = res.data.cart
+        //         setCartItem(cartList)
+        //     }
+        // } catch (error) {
+        //     toast.warn("something went wrong")
+        //     console.log(error)
 
-
-        } catch (error) {
-            toast.warn("something went wrong")
-            console.log(error)
-
-        }
+        // }
 
     }
     const RemoveCart = async (item) => {

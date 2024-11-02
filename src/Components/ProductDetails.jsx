@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { cartContext } from '../Context/CartProvider';
+import { addToCart } from '../Redux/Slices/CartSlice';
+import { useDispatch } from 'react-redux';
 
 
 export const ProductDetails = () => {
@@ -9,12 +10,14 @@ export const ProductDetails = () => {
     const { id } = useParams();
     const [data, setData] = useState(null);
     const [quantity, setQuantity] = useState(1)
-    const { AddToCart } = useContext(cartContext)
+    const dispatch=useDispatch()
+   
 
     const admin=localStorage.getItem("admin")
+    const baseUrl=process.env.REACT_APP_BASE_URL
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/products/${id}`)
+        axios.get(baseUrl+`/products/${id}`)
             .then(res => {
                 const product = res.data;
                 if (product) {
@@ -126,7 +129,7 @@ export const ProductDetails = () => {
                 <div className="mt-4 w-full">
                     <button
                     disabled={admin ? true : false }
-                        onClick={() => AddToCart(data, quantity)}
+                        onClick={() => dispatch(addToCart(data.id))}
                         className="w-full md:w-2/3 text-black py-2 px-6 rounded-lg border-2 border-black hover:bg-black hover:text-white transition duration-300"
                     >
                         Add to Cart

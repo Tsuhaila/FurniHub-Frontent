@@ -1,49 +1,48 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../Redux/Slices/AuthSlice';
 
 function Login() {
   const navigate = useNavigate();
-  const [loginValue, setLoginValue] = useState({ email: "", password: "" });
-  const [loginErrors, setLoginErrors] = useState({ email: "", password: "" });
+  const dispatch=useDispatch();
+  const {user,loading,error}=useSelector(state=>state.auth)
+  
+  console.log(error)
+  const [loginValue, setLoginValue] = useState({ Email: "", Password: "" });
+  const [loginErrors, setLoginErrors] = useState({ Email: "", Password: "" });
+
+
+  useEffect(() => {
+    if(user && user.result) {
+    navigate(user.result.role ==='admin' ? '/admin' : '/')
+      
+    }
+  },[user])
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const validation = { email: "", password: "" };
+    setLoginErrors({Email:"",Password:""});
     try {
-      const response = await axios.get("http://localhost:3000/users");
-      const user = response.data.find((user) => user.email === loginValue.email);
-      if (user) {
-        if (user.is_blocked){
-          toast.error('You are blocked');
-        } 
-        else if (user.password === loginValue.password) {
-          toast.success("Successfully logged in");
-            localStorage.setItem("id", user.id);
-            localStorage.setItem("name", user.username);
-           
-            setLoginValue({ email: "", password: "" });
-            if (user.admin) {
-              navigate('/admin');
-              localStorage.setItem("admin", user.admin);
-            } else {
-              navigate('/');
-            }
-          } 
-        else {
-          validation.password = "Incorrect password";
-          toast.warning("incorrect password")
-        }
-      } else {
-        validation.email = "Email not found";
-        validation.password = "Incorrect Password";
-      }
+      dispatch(loginUser(loginValue))
+          setLoginValue({Email: "", Password: "" });
+         
     } catch (error) {
-      console.error("Error logging in: ", error);
+      console.log(error)
+      if(error.statusCode===409){
+        toast.warn(error.error)
+      }else{
+        toast.error(error.error||"error logging in")
+      }
+        
+    
+      
     }
-    setLoginErrors(validation);
-  }
+   
+  };
 
   const handleChange = (e) => {
     setLoginValue({ ...loginValue, [e.target.name]: e.target.value });
@@ -55,38 +54,38 @@ function Login() {
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 text-sm md:text-lg">Email</label>
+            <label htmlFor="Email" className="block text-gray-700 text-sm md:text-lg">Email</label>
             <input
-              type="email"
-              id="email"
-              name="email"
+              type="Email"
+              id="Email"
+              name="Email"
               className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-customBlue text-sm md:text-lg"
               placeholder="you@gmail.com"
-              value={loginValue.email}
+              value={loginValue.Email}
               onChange={handleChange}
               required
             />
-            {loginErrors.email && <p className="text-red-600 text-xs md:text-sm mt-1">{loginErrors.email}</p>}
+            {loginErrors.Email && <p className="text-red-600 text-xs md:text-sm mt-1">{loginErrors.Email}</p>}
           </div>
           <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-700 text-sm md:text-lg">Password</label>
+            <label htmlFor="Password" className="block text-gray-700 text-sm md:text-lg">Password</label>
             <input
-              type="password"
-              id="password"
-              name="password"
+              type="Password"
+              id="Password"
+              name="Password"
               className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-customBlue text-sm md:text-lg"
               placeholder="********"
-              value={loginValue.password}
+              value={loginValue.Password}
               onChange={handleChange}
               required
             />
-            {loginErrors.password && <p className="text-red-600 text-xs md:text-sm mt-1">{loginErrors.password}</p>}
+            {loginErrors.Password && <p className="text-red-600 text-xs md:text-sm mt-1">{loginErrors.Password}</p>}
           </div>
           <button
             type="submit"
             className="w-full bg-gray-700 text-white py-3 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 text-sm md:text-lg"
           >
-            Login
+            {loading ? 'Logging in...' : 'Login'}
           </button>
         </form>
         <p className="mt-4 text-center text-xs md:text-sm text-gray-600">

@@ -8,13 +8,14 @@ export const FeaturedProducts = () => {
   const [products, setProducts] = useState([]);
   const { AddToCart } = useContext(cartContext)
   const admin=localStorage.getItem("admin")
-
+  const baseUrl = process.env.REACT_APP_BASE_URL
 
 
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const res = await axios.get('http://localhost:3000/products?_limit=5');
+        const res = await axios.get(baseUrl + '/products?_limit=5');
+        console.log(res)
         setProducts(res.data);
 
       } catch (error) {
