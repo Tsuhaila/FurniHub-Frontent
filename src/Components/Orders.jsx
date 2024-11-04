@@ -7,14 +7,19 @@ import { useNavigate } from 'react-router-dom'
 export const Orders = () => {
   const navigate = useNavigate()
   const [orders, setOrders] = useState([])
-  const user = localStorage.getItem("id")
+  const baseUrl = process.env.REACT_APP_BASE_URL
 
   useEffect(() => {
     (async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/users/${user}`)
-        if (response && response.data && response.data.orders) {
-          setOrders(response.data.orders)
+        const response = await axios.get(baseUrl + `/orders`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        })
+        console.log(response.data)
+        if (response && response.data) {
+          setOrders(response.data)
         }
 
       } catch (error) {
@@ -52,10 +57,13 @@ export const Orders = () => {
                 <li key={index} className="flex items-center justify-between space-x-4 p-4 bg-white shadow-md rounded-lg">
                   <img src={item.image} alt={item.product} className="w-24 h-24 object-cover rounded-md" />
                   <div className="flex-1">
-                    <h3 className="text-lg font-medium">{item.name}</h3>
-                    <p className="text-gray-600">{item.description}</p>
-                    <p>quantity:{item.quantity}</p>
-                    <p className="text-gray-800 font-semibold mt-2">${item.price}</p>
+                    <h3 className="text-lg font-medium">{item.productName}</h3>
+
+                    <p>quantity: {item.quantity}</p>
+                    <p>Order Id: {item.orderId}</p>
+                    <p>Order Date: {item.orderDate}</p>
+                    <p className="text-gray-800 font-semibold mt-2">${item.totalPrice}</p>
+
                   </div>
 
                 </li>

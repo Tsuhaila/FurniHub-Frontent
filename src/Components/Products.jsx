@@ -4,20 +4,22 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 export const Products = () => {
-  
+
     const [products, setProducts] = useState([]);
-    const [category, setCategory] =useState()
-    const baseUrl=process.env.REACT_APP_BASE_URL
-   
+    const [category, setCategory] = useState()
+    const baseUrl = process.env.REACT_APP_BASE_URL
+
 
     useEffect(() => {
         async function fetchProducts() {
             try {
-                const res = await axios.get(baseUrl+"/products");
-                
-                
-                const filteredProducts = await axios.get(baseUrl+`/products/category-name/${category}`);
-                
+                const res = await axios.get(baseUrl + "/products");
+                console.log(res.data);
+
+
+
+                const filteredProducts = await axios.get(baseUrl + `/products/category-name/${category}`);
+
                 setProducts(filteredProducts.data.length > 0 ? filteredProducts.data : res.data);
                 console.log(products)
             } catch (error) {
@@ -48,7 +50,7 @@ export const Products = () => {
                     </select>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-              
+
                     {products.map((product, index) => (
                         <Link to={`/products/${product.id}`} key={index}>
                             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transform transition-transform duration-300 ease-in-out">
@@ -60,14 +62,13 @@ export const Products = () => {
                                 <h3 className="text-lg font-bold text-gray-700">{product.name}</h3>
 
                                 <p>
-                                    <span className="font-semibold mr-1">Material:</span>
-                                    {product.material}
+                                    <span className="font-semibold mr-1">price:</span>
+                                    {product.price}
                                 </p>
                                 <p>
-                                    <span className="font-semibold mr-1">Rating:</span>
-                                    {product.rating}
+                                    <span className="font-bold mr-4">offer Price:</span>
+                                    {product.offerPrice}
                                 </p>
-                                <p className="text-gray-800 font-bold mt-4">${product.price}</p>
                             </div>
                         </Link>
                     ))}

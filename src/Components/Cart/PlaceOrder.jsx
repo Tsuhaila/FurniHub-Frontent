@@ -1,78 +1,145 @@
 import axios from 'axios';
-import React, { useContext, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { cartContext } from '../../Context/CartProvider';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCart } from '../../Redux/Slices/CartSlice';
+
+const loadScript = src => new Promise((resolve) => {
+  const script = document.createElement('script');
+  script.src = src;
+  script.onload = () => {
+    console.log('razorpay loaded successfully');
+    resolve(true);
+  };
+  script.onerror = () => {
+    console.log('error in loading razorpay');
+    resolve(false);
+  };
+  document.body.appendChild(script);
+});
 
 export const PlaceOrder = () => {
+  const baseUrl = process.env.REACT_APP_BASE_URL
+  const { cart } = useSelector(state => state.cart)
   const navigate = useNavigate()
-  const { clearCart } = useContext(cartContext)
-  const location = useLocation();
-  const { cartItem, totalAmount } = location.state;
+  const dispatch = useDispatch()
+
   const [paymentDetails, setPaymentDetails] = useState({
-    full_Name: "",
-    address: "",
-    city: "",
-    state: "",
-    postal_Code: "",
-    country: "",
-    phone: ""
+    CustomerName: "",
+    CustomerEmail: "",
+    HomeAddress: "",
+    CustomerCity: "",
+    CustomerPhone: ""
 
   })
+  const [displayRazorpay, setDisplayRazorpay] = useState(false);
+  const [orderDetails, setOrderDetails] = useState(null)
 
   function handleChange(e) {
     const { name, value } = e.target
     setPaymentDetails({ ...paymentDetails, [name]: value })
 
   }
-  async function handleSubmit(e) {
-    e.preventDefault()
-    try {
-      const user = localStorage.getItem("id")
-      const existingUser = await axios.get(`http://localhost:3000/users/${user}`)
-      const existingOrder = existingUser.data?.orders
-      let updatedOrders;
-      if (existingOrder) {
-        updatedOrders = existingOrder;
-        
-        updatedOrders.push(...cartItem);
-      } else {
-        updatedOrders = cartItem
+  const totalPrice = cart.reduce((total, item) => total + item.totalPrice * item.quantity, 0)
+  console.log(totalPrice);
+
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!displayRazorpay) {
+      const scriptLoaded = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
+      setDisplayRazorpay(scriptLoaded);
+      if (!scriptLoaded) {
+        toast.error("Failed to load payment gateway. Please try again later.");
+        return;
       }
-
-      await axios.patch(`http://localhost:3000/users/${user}`, {
-        paymentDetails: paymentDetails,
-        orders: updatedOrders
-
-      })
-      clearCart()
-      toast.success("Ordered Successfully")
-      navigate('/orders')
-
-
-    } catch (error) {
-      console.log(error)
     }
 
-  }
+    try {
+      const res = await axios.post(`${baseUrl}/orders/razor?price=${totalPrice}`, {}, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+      });
+
+      const orderId = res.data;
+
+      const options = {
+        amount: totalPrice * 100,
+        currency: "INR",
+        name: "FurniHub",
+        description: "Order Payment",
+        order_id: orderId,
+        handler: async (response) => {
+          const paymentData = {
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature
+          };
+          setOrderDetails(paymentData);
+          try {
+            await axios.post(`${baseUrl}/orders/payment`, paymentData, {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+              }
+            });
+            await axios.post(baseUrl + "/orders", {
+              ...paymentDetails,
+              TotalAmount: totalPrice,
+              OrderString: response.razorpay_order_id,
+              TransactionId: response.razorpay_payment_id
+            }, {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+              }
+            });
+            toast.success("Order placed successfully!");
+            dispatch(fetchCart())
+
+            navigate("/");
+          } catch (error) {
+            console.error("Payment verification failed", error);
+            toast.error("Payment verification failed. Please try again.");
+          }
+        },
+        prefill: {
+          name: paymentDetails.CustomerName,
+          email: paymentDetails.CustomerEmail,
+          contact: paymentDetails.CustomerPhone
+        },
+        theme: {
+          color: "#3399cc"
+        }
+      };
+
+      const razorpay = new window.Razorpay(options);
+      razorpay.open();
+    } catch (error) {
+      console.error("Error creating order", error);
+      toast.error("Error creating order. Please try again.");
+    }
+  };
+
 
   return (
     <div className="bg-gray-100 min-h-screen py-8">
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-         
+
           <div className="bg-white p-8 shadow-md rounded-lg">
             <h2 className="text-3xl font-semibold mb-6 text-center">Shipping Address</h2>
 
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="fullName" className="block text-gray-700 font-medium mb-2">
-                  Full Name
+                <label htmlFor="CustomerName" className="block text-gray-700 font-medium mb-2">
+                  CustomerName
                 </label>
                 <input
                   type="text"
-                  id="fullName"
-                  name="full_Name"
+                  id="CustomerName"
+                  name="CustomerName"
                   placeholder="Your name"
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
                   required
@@ -81,13 +148,42 @@ export const PlaceOrder = () => {
               </div>
 
               <div>
-                <label htmlFor="address" className="block text-gray-700 font-medium mb-2">
-                  Address
+                <label htmlFor="CustomerEmail" className="block text-gray-700 font-medium mb-2">
+                  CustomerEmail
                 </label>
                 <input
                   type="text"
-                  id="address"
-                  name="address"
+                  id="CustomerEmail"
+                  name="CustomerEmail"
+                  placeholder="Your name"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <label htmlFor="CustomerPhone" className="block text-gray-700 font-medium mb-2">
+                  CustomerPhone
+                </label>
+                <input
+                  type="number"
+                  id="CustomerPhone"
+                  name="CustomerPhone"
+                  placeholder="CustomerPhone no"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="HomeAddress" className="block text-gray-700 font-medium mb-2">
+                  HomeAddress
+                </label>
+                <input
+                  type="text"
+                  id="HomeAddress"
+                  name="HomeAddress"
                   placeholder="Your address"
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
                   required
@@ -96,80 +192,20 @@ export const PlaceOrder = () => {
               </div>
 
               <div>
-                <label htmlFor="city" className="block text-gray-700 font-medium mb-2">
-                  City
+                <label htmlFor="CustomerCity" className="block text-gray-700 font-medium mb-2">
+                  CustomerCity
                 </label>
                 <input
                   type="text"
-                  id="city"
-                  name="city"
-                  placeholder="City"
+                  id="CustomerCity"
+                  name="CustomerCity"
+                  placeholder="CustomerCity"
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
                   required
                   onChange={handleChange}
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="state" className="block text-gray-700 font-medium mb-2">
-                    State
-                  </label>
-                  <input
-                    type="text"
-                    id="state"
-                    name="state"
-                    placeholder="State"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
-                    required
-                    onChange={handleChange}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="zip" className="block text-gray-700 font-medium mb-2">
-                    Postal Code
-                  </label>
-                  <input
-                    type="text"
-                    id="postalCode"
-                    name="postal_Code"
-                    placeholder="Postal Code"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
-                    required
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="country" className="block text-gray-700 font-medium mb-2">
-                  Country
-                </label>
-                <input
-                  type="text"
-                  id="country"
-                  name="country"
-                  placeholder="Country"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
-                  required
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">
-                  Phone Number
-                </label>
-                <input
-                  type="number"
-                  id="phone"
-                  name="phone"
-                  placeholder="Phone no"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
-                  required
-                  onChange={handleChange}
-                />
-              </div>
 
               <button
                 type="submit"
@@ -184,7 +220,7 @@ export const PlaceOrder = () => {
           <div className="bg-white p-8 shadow-md rounded-lg">
             <h2 className="text-3xl font-semibold mb-6 text-center">Order Summary</h2>
             <ul className="space-y-4">
-              {cartItem.map((item, index) => (
+              {cart.map((item, index) => (
                 <li key={index} className="flex items-center space-x-4">
                   <img
                     src={item.image}
@@ -192,14 +228,14 @@ export const PlaceOrder = () => {
                     className="w-24 h-24 object-cover rounded-md"
                   />
                   <div>
-                    <h3 className="text-xl font-semibold">{item.name}</h3>
+                    <h3 className="text-xl font-semibold">{item.productName}</h3>
                     <p className="text-gray-600">${item.price}</p>
                   </div>
                 </li>
               ))}
             </ul>
             <div className="mt-6 border-t pt-4">
-              <p className="text-xl font-semibold">Total: ${totalAmount}</p>
+              <p className="text-xl font-semibold">Total: ${totalPrice}</p>
             </div>
           </div>
         </div>

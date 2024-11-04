@@ -1,26 +1,23 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MdDelete } from "react-icons/md";
-import { cartContext } from '../../Context/CartProvider';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeCart } from '../../Redux/Slices/CartSlice';
 
 
 export const Cart = () => {
-  const dispatch=useDispatch()
-  const {cart}=useSelector(state=>state.cart)
+  const dispatch = useDispatch()
+  const { cart } = useSelector(state => state.cart)
   console.log(cart);
-  
+
   const navigate = useNavigate()
- 
+
 
   function calculateTotal() {
-    return cart.reduce((total, item) => total + item.totalPrice*item.quantity, 0)
+    return cart.reduce((total, item) => total + item.totalPrice * item.quantity, 0)
   }
   function handlePlaceOrder() {
-    const totalAmount = calculateTotal()
-    navigate('/placeorder', { state: { cart, totalAmount } })
-
+    navigate('/placeorder')
   }
 
   return (

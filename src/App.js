@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css'
 import Home from './Pages/Home';
@@ -13,9 +13,7 @@ import { About } from './Components/About.jsx';
 import { PlaceOrder } from './Components/Cart/PlaceOrder.jsx';
 import { ProductDetails } from './Components/ProductDetails.jsx';
 import { Search } from './Components/Search.jsx';
-import { cartContext } from './Context/CartProvider.jsx';
 import { Orders } from './Components/Orders.jsx';
-
 import AdminHome from './Pages/Admin/AdminHome.jsx';
 import { Dashboard } from './Components/Admin/Dashboard.jsx';
 import { AllUsers } from './Components/Admin/AllUsers.jsx';
@@ -29,8 +27,6 @@ import { UserDetails } from './Components/Admin/UserDetails.jsx';
 function App() {
   const location = useLocation();
   const shouldHideNavbar = location.pathname === '/login' || location.pathname === '/signup' || location.pathname.startsWith('/admin');
-  const { FetchCart } = useContext(cartContext)
-
 
   return (
     <div>

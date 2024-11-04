@@ -4,7 +4,6 @@ import { FaShoppingCart, FaSearch, FaBars, FaTimes } from 'react-icons/fa';
 import { CgProfile } from "react-icons/cg";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { cartContext } from '../Context/CartProvider';
 import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCart } from '../Redux/Slices/CartSlice';
@@ -18,7 +17,6 @@ export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const user = localStorage.getItem("name");
   const [searchQuery, setSearchQuery] = useState("");
-  const { cartItem } = useContext(cartContext);
   const dropdownRef = useRef(null);
   const sidebarREf = useRef(null)
   const {cart}=useSelector(state=>state.cart)

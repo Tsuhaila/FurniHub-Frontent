@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import CartProvider from './Context/CartProvider';
 import store from './Redux/Store/store';
 import { Provider } from 'react-redux';
 
@@ -16,10 +15,7 @@ root.render(
     <React.StrictMode>
     <ToastContainer/>
     <Provider store={store}>
-    <CartProvider>
     <App />
-  
-    </CartProvider>
     </Provider>
   </React.StrictMode>
   </BrowserRouter>

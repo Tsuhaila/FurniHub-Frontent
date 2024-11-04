@@ -1,13 +1,14 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from "react-icons/fa";
-import { cartContext } from '../Context/CartProvider';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../Redux/Slices/CartSlice';
 
 export const FeaturedProducts = () => {
   const [products, setProducts] = useState([]);
-  const { AddToCart } = useContext(cartContext)
-  const admin=localStorage.getItem("admin")
+  const dispatch = useDispatch()
+  const admin = localStorage.getItem("admin")
   const baseUrl = process.env.REACT_APP_BASE_URL
 
 
@@ -43,18 +44,14 @@ export const FeaturedProducts = () => {
                   className="w-full h-48 object-cover rounded-t-lg mb-4"
                 />
                 <h3 className="text-lg font-bold text-gray-700">{product.name}</h3>
+
                 <p>
-                  <span className="font-semibold mr-1">Material:</span>
-                  {product.material}
-                </p>
-                <p>
-                  <span className="font-semibold mr-1">Rating:</span>
-                  {product.rating}
-                </p>
-                <p className="text-gray-800 font-bold mt-4">${product.price}</p></Link>
-              <button 
-               disabled={admin ? true : false }
-              onClick={() => AddToCart(product, 1)} className="mt-6 w-full  text-black py-2 px-4 rounded-lg border-2 border-black hover:bg-black hover:text-white transition duration-300">
+                  <span className="font-bold mr-4">offer Price:</span>
+                  {product.offerPrice}
+                </p></Link>
+              <button
+                disabled={admin ? true : false}
+                onClick={() => dispatch(addToCart(product.id))} className="mt-6 w-full  text-black py-2 px-4 rounded-lg border-2 border-black hover:bg-black hover:text-white transition duration-300">
                 Add to Cart
               </button>
             </div>
