@@ -1,79 +1,73 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { editProduct, fetchProductById, fetchProducts } from '../../Redux/Slices/ProductSlice';
+import { fetchCategories } from '../../Redux/Slices/CategorySlice';
 
 export const EditProducts = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const { id } = useParams();
+  const { product } = useSelector(state => state.product)
+  const { categories } = useSelector(state => state.category)
   const initialValues = {
     name: '',
     description: '',
     price: '',
-    image: '',
-    material: '',
-    category: '',
-    manufacturer: '',
-    reviews: '',
-    features: [],
-    colors: [],
+    offerPrice: '',
+    image: null,
+    categoryId: ''
   };
-  
-  const [editproduct, setEditProduct] = useState(initialValues);
-  const [featureInput, setFeatureInput] = useState('')
-  const [colorInput, setColorInput] = useState('')
+
+  const [inputvalue, setInputValue] = useState(initialValues);
 
   useEffect(() => {
-    async function fetchProduct() {
-      try {
-        const res = await axios.get(`http://localhost:3000/products/${id}`);
-        setEditProduct(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchProduct();
-  }, [id]);
+    dispatch(fetchProducts())
+    dispatch(fetchCategories())
+  }, dispatch)
 
-  
-  const handleFeatureAdd = () => {
-    if (featureInput && !editproduct.features.includes(featureInput)) {
-      setEditProduct(prevProduct => ({
-        ...prevProduct,
-        features: [...prevProduct.features, featureInput],
-      }))
-      setFeatureInput('')
-    }
-  }
+  useEffect(() => {
+    dispatch(fetchProductById(id))
+  }, [id, dispatch]);
 
-  const handleColorAdd = () => {
-    if (colorInput && !editproduct.colors.includes(colorInput)) {
-      setEditProduct(prevProduct => ({
-        ...prevProduct,
-        colors: [...prevProduct.colors, colorInput],
-      }))
-      setColorInput('')
+  useEffect(() => {
+    if (product) {
+      setInputValue({
+        name: product.name || '',
+        description: product.description || '',
+        price: product.price || '',
+        offerPrice: product.offerPrice || '',
+        image: null,
+        categoryId: product.categoryId || ''
+      });
     }
-  }
-
+  }, [product]);
+  console.log('edit', inputvalue)
 
   async function handleSubmit(e) {
     e.preventDefault();
-    try {
-      await axios.put(`http://localhost:3000/products/${id}`, editproduct);
-      toast.success('Product updated successfully');
-      navigate('/admin/allproducts');
-    } catch (error) {
-      console.log('Error updating product', error);
-    }
+    await dispatch(editProduct({ id, inputvalue }))
+
+
+    navigate('/admin/allproducts');
+    console.log('console', inputvalue);
   }
 
   function handleChange(e) {
-    setEditProduct({ ...editproduct, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === 'image') {
+      setInputValue({ ...inputvalue, image: e.target.files[0] })
+    } else {
+      setInputValue({
+        ...inputvalue, [name]: value
+
+      });
+
+    }
+
   }
 
- 
   return (
     <div className="max-w-2xl mx-auto">
       <h2 className="text-3xl font-bold text-center mb-6">Edit Products</h2>
@@ -84,175 +78,93 @@ export const EditProducts = () => {
           </label>
           <input
             onChange={handleChange}
-            value={editproduct.name}
+            value={inputvalue.name}
             type="text"
             id="name"
             name="name"
             className="block w-full p-3 border border-gray-300 rounded-lg bg-gray-50"
           />
         </div>
-        
+
         <div className="mb-5">
           <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900">
             Description
           </label>
           <input
             onChange={handleChange}
-            value={editproduct.description}
+            value={inputvalue.description}
             type="text"
             id="description"
             name="description"
             className="block w-full p-3 border border-gray-300 rounded-lg bg-gray-50"
           />
         </div>
-        
+
         <div className="mb-5">
           <label htmlFor="price" className="block mb-2 text-sm font-medium text-gray-900">
             Price
           </label>
           <input
             onChange={handleChange}
-            value={editproduct.price}
+            value={inputvalue.price}
             type="number"
             id="price"
             name="price"
             className="block w-full p-3 border border-gray-300 rounded-lg bg-gray-50"
           />
         </div>
-        
+
+        <div className="mb-5">
+          <label htmlFor="offerPrice" className="block mb-2 text-sm font-medium text-gray-900">
+            Offer Price
+          </label>
+          <input
+            onChange={handleChange}
+            value={inputvalue.offerPrice}
+            type="number"
+            id="offerPrice"
+            name="offerPrice"
+            className="block w-full p-3 border border-gray-300 rounded-lg bg-gray-50"
+          />
+        </div>
+
         <div className="mb-5">
           <label htmlFor="image" className="block mb-2 text-sm font-medium text-gray-900">
             Image
           </label>
           <input
             onChange={handleChange}
-            value={editproduct.image}
-            type="text"
+
+            type="file"
             id="image"
             name="image"
             className="block w-full p-3 border border-gray-300 rounded-lg bg-gray-50"
           />
         </div>
-        
-        <div className="mb-5">
-          <label htmlFor="rating" className="block mb-2 text-sm font-medium text-gray-900">
-            Rating
-          </label>
-          <input
-            onChange={handleChange}
-            value={editproduct.rating}
-            type="text"
-            id="rating"
-            name="rating"
-            className="block w-full p-3 border border-gray-300 rounded-lg bg-gray-50"
-          />
-        </div>
-      
-        
-        <div className="mb-5">
-          <label htmlFor="material" className="block mb-2 text-sm font-medium text-gray-900">
-            Material
-          </label>
-          <input
-            onChange={handleChange}
-            value={editproduct.material}
-            type="text"
-            id="material"
-            name="material"
-            className="block w-full p-3 border border-gray-300 rounded-lg bg-gray-50"
-          />
-        </div>
-        
-        <div className="mb-5">
-          <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900">
+
+        <div className="mb-5 mt-10">
+          <label htmlFor="categoryId" className="block mb-2 text-sm font-medium text-gray-900">
             Category
           </label>
           <select
+            id="categoryId"
+            name="categoryId"
+            value={inputvalue.categoryId}
             onChange={handleChange}
-            value={editproduct.category}
-            id="category"
-            name="category"
-            className="block w-full p-3 border border-gray-300 rounded-lg bg-gray-50"
+            required
+            className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
           >
-            <option value="">Select Category</option>
-            <option value="Sofas">Sofas</option>
-            <option value="Beds">Beds</option>
+
+            {categories.map(c => (
+              <option key={c.id} value={c.id}>{c.name}</option>
+            ))}
+
           </select>
         </div>
-        
-        <div className="mb-5">
-          <label htmlFor="manufacturer" className="block mb-2 text-sm font-medium text-gray-900">
-            Manufacturer
-          </label>
-          <input
-            required
-            onChange={handleChange}
-            value={editproduct.manufacturer}
-            type="text"
-            id="manufacturer"
-            name="manufacturer"
-            className="block w-full p-3 border border-gray-300 rounded-lg bg-gray-50"
-          />
-        </div>
-        
-        <div className="mb-4">
-          <label className="block mb-1 text-sm font-medium text-gray-700">Features</label>
-          <div className="flex items-center space-x-2 mb-2">
-            <input
-              type="text"
-              value={featureInput}
-              onChange={(e) => setFeatureInput(e.target.value)}
-              className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-              placeholder="Enter feature"
-            />
-            <button
-              type="button"
-              onClick={handleFeatureAdd}
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            >
-              Add
-            </button>
-          </div>
-          <div>
-            {editproduct.features.length > 0 && editproduct.features.map((feature, index) => (
-              <span key={index} className="inline-block bg-gray-200 rounded px-2 py-1 mr-2 mb-2 text-sm">
-                {feature}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div className="mb-4">
-          <label className="block mb-1 text-sm font-medium text-gray-700">Colors</label>
-          <div className="flex items-center space-x-2 mb-2">
-            <input
-              type="text"
-              value={colorInput}
-              onChange={(e) => setColorInput(e.target.value)}
-              className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-              placeholder="Enter color"
-            />
-            <button
-              type="button"
-              onClick={handleColorAdd}
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            >
-              Add
-            </button>
-          </div>
-          <div>
-            {editproduct.colors.length > 0 && editproduct.colors.map((color, index) => (
-              <span key={index} className="inline-block bg-gray-200 rounded px-2 py-1 mr-2 mb-2 text-sm">
-                {color}
-              </span>
-            ))}
-          </div>
-        </div>
-        
         <div className="text-center py-2">
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 border border-blue-500 rounded-lg shadow"
+            className="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 border border-gray-800 rounded-lg shadow"
           >
             Save
           </button>

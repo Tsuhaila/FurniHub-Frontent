@@ -15,20 +15,25 @@ function Login() {
   const [loginErrors, setLoginErrors] = useState({ Email: "", Password: "" });
 
 
+
   useEffect(() => {
-    if(user && user.result) {
-    navigate(user.result.role ==='admin' ? '/admin' : '/')
+    console.log('userr',user?.result?.role);
+    
+    if(user && user?.result) {
+    navigate(user?.result?.role ==='admin' ? '/admin' : '/')
       
     }
-  },[user])
+  },[user,navigate])
   
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoginErrors({Email:"",Password:""});
     try {
-      dispatch(loginUser(loginValue))
-          setLoginValue({Email: "", Password: "" });
+     await dispatch(loginUser(loginValue)).unwrap()   
+      setLoginValue({Email: "", Password: "" });
+          
+          
          
     } catch (error) {
       console.log(error)

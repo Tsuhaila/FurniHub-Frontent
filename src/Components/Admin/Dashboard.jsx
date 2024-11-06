@@ -30,23 +30,23 @@ export const Dashboard = () => {
 
       <div class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
 
-        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Total Users</h5>
+        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-black">Total Users</h5>
 
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{users.length}</h5>
-
-      </div>
-      <div class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
-
-        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Total Products</h5>
-
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{products.length}</h5>
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">{users.length}</h5>
 
       </div>
       <div class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
 
-        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Total Orders</h5>
+        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-black">Total Products</h5>
 
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{orders.length}</h5>
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">{products.length}</h5>
+
+      </div>
+      <div class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
+
+        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-black">Total Orders</h5>
+
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">{orders.length}</h5>
 
       </div>
     </div>

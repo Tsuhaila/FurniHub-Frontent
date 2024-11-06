@@ -1,48 +1,28 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { blockUser, fetchUser } from '../../Redux/Slices/UserSlice'
 
 
 export const AllUsers = () => {
-
-  const [users, setUsers] = useState([])
+  const { users } = useSelector(state => state.user)
+  const dispatch = useDispatch()
+  console.log("allusers", users);
 
   useEffect(() => {
-    async function fetchUsers() {
-      try {
-        const res = await axios.get('http://localhost:3000/users')
-        setUsers(res.data.filter((data) => data.admin !== true))
 
-      } catch (error) {
-        console.log(error)
-      }
+    dispatch(fetchUser())
 
-    }
-    fetchUsers()
+  }, [dispatch])
+  
 
-  }, [])
-
-  const handleBlock = async (userId, currentStatus) => {
-    try {
-      const newStatus = !currentStatus
-
-      await axios.patch(`http://localhost:3000/users/${userId}`, { is_blocked: newStatus })
-      setUsers(users.map(user =>
-        user.id === userId ? { ...user, is_blocked: newStatus } : user
-
-      ))
-
-    } catch (error) {
-      console.log(error)
-    }
-
-  }
   return (
     <div>
       <div className="relative overflow-x-auto">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">All Users</h2>
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-white">
             <tr>
               <th scope="col" className="px-6 py-3">
                 Id
@@ -59,32 +39,32 @@ export const AllUsers = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map(item => (
-              <tr key={item.id} className="bg-white border-b">
+            {users.map(u => (
+              <tr key={u.id} className="bg-white border-b text-black">
 
                 <th scope="row" className="px-6 py-4 font-medium ">
-                  {item.id}
+                  {u.id}
                 </th>
                 <td className="px-6 py-4">
-                  {item.username}
+                  {u.userName}
                 </td>
                 <td className="px-6 py-4">
-                  {item.email}
+                  {u.email}
                 </td>
                 <td className="px-6 py-4">
 
                   <button
-                    onClick={() => handleBlock(item.id, item.is_blocked)}
-                    className={`px-4 py-2 text-sm font-medium text-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-opacity-50 ${item.is_blocked
-                        ? 'bg-red-600 hover:bg-red-700 focus:ring-red-500'
-                        : 'bg-green-600 hover:bg-green-700 focus:ring-green-500'
+                    onClick={() => dispatch(blockUser(u.id))}
+                    className={`px-4 py-2 text-sm font-medium text-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-opacity-50 ${u.isBlocked
+                      ? 'bg-red-600 hover:bg-red-700 focus:ring-red-500'
+                      : 'bg-green-600 hover:bg-green-700 focus:ring-green-500'
                       }`}
                   >
-                    {item.is_blocked ? 'Unblock' : 'Block'}
+                    {u.isBlocked ? 'Unblock' : 'Block'}
                   </button>
                 </td>
                 <td className="px-6 py-4">
-                  <Link to={`${item.id}`}>
+                  <Link to={`${u.id}`}>
                     <button className="px-3 py-2 text-sm font-medium text-blue-600 border border-blue-600 rounded-lg shadow-md hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50">
                       See More
                     </button>

@@ -1,66 +1,40 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import { deleteProduct, fetchProductByCategory, fetchProducts, searchProducts } from '../../Redux/Slices/ProductSlice'
 
 
 export const AllProducts = () => {
-    const [products, setProducts] = useState([])
     const [category, setCategory] = useState('')
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedProduct, setSelectedProduct] = useState(null)
+    const { products } = useSelector(state => state.product)
+    console.log('all', products);
 
-
+    const dispatch = useDispatch()
     useEffect(() => {
-        async function fetchProducts() {
-            try {
-                const res = await axios.get('http://localhost:3000/products')
-                const filteredProducts = category ?
-                    res.data.filter(data => data.category == category) :
-                    res.data
-                setProducts(filteredProducts)
-
-            } catch (error) {
-                console.log(error)
-            }
+        if (category) {
+            dispatch(fetchProductByCategory(category))
+        } else if(searchQuery){
+            dispatch(searchProducts(searchQuery))
+        }else{
+            dispatch(fetchProducts())
         }
-        fetchProducts()
 
-    }, [category])
+    }, [category, dispatch,searchQuery])
 
-    async function handleDelete(item) {
-        try {
-            const updatedItems = products.filter((x) => x.id !== item.id)
-            setProducts(updatedItems)
-            await axios.delete(`http://localhost:3000/products/${item.id}`)
-            toast.success('Product deleted successfully')
-        } catch (error) {
-            console.log(error)
-            toast.warn('failed to delete product. please try again')
-        }
+    async function handleDelete(id) {
+        dispatch(deleteProduct(id))
 
     }
     async function handleSearch(e) {
         const query = e.target.value;
-        setSearchQuery(query);
-        if (!query) {
-            return;
-        }
-        e.preventDefault();
-
-        try {
-            const result = await axios.get("http://localhost:3000/products");
-            const combinedResult = result.data;
-            const filteredResult = combinedResult.filter((item) =>
-                item.name.toLowerCase().includes(searchQuery.toLowerCase())
-            );
-            setProducts(filteredResult)
-        } catch (error) {
-            console.log(error);
-        }
+        setSearchQuery(query)   
     }
 
     const handleDetails = (item) => {
+        console.log(item)
         setSelectedProduct(item)
     }
 
@@ -122,7 +96,7 @@ export const AllProducts = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {products.map(item => (
+                        {products?.map(item => (
                             <tr key={item.id} class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -178,53 +152,22 @@ export const AllProducts = () => {
                                         {selectedProduct.description}
                                     </p>
                                 )}
-                                {selectedProduct.material && (
+                                {selectedProduct.category && (
                                     <p>
-                                        <span className="font-bold">Material:</span> {selectedProduct.material}
+                                        <span className="font-bold">category:</span> {selectedProduct.category}
                                     </p>
                                 )}
-                                {selectedProduct.manufacturer && (
+                              
+                                {selectedProduct.price && (
                                     <p>
-                                        <span className="font-bold">Manufacturer:</span> {selectedProduct.manufacturer}
-                                    </p>
-                                )}
-                                {selectedProduct.colors && (
-                                    <p>
-                                        <span className="font-bold">Colors:</span>
-                                        <ul>
-                                            {selectedProduct.colors.map((color, index) => (
-                                                <li key={index}>{color}</li>
-                                            ))}
-                                        </ul>
-                                    </p>
-                                )}
-                                <p>
-                                    <span className="font-bold">Features:</span>
-                                    {selectedProduct.features?.length > 0 ? (
-                                        <ul>
-                                            {selectedProduct.features.map((feature, index) => (
-                                                <li key={index}>{feature}</li>
-                                            ))}
-                                        </ul>
-                                    ) : (
-                                        <span>No features available.</span>
-                                    )}
-                                </p>
-                                {selectedProduct.rating && (
-                                    <p>
-                                        <span className="font-bold">Rating:</span> {selectedProduct.rating}
-                                    </p>
-                                )}
-                                {selectedProduct.reviews && (
-                                    <p>
-                                        <span className="font-bold">Reviews:</span> {selectedProduct.reviews}
+                                        <span className="font-bold">price:$</span> {selectedProduct.price}
                                     </p>
                                 )}
 
-                                <br></br>
-                                {selectedProduct.price && (
+
+                                {selectedProduct.offerPrice && (
                                     <p>
-                                        <span className="font-bold">${selectedProduct.price}</span>
+                                        <span className="font-bold">offer price:$</span> {selectedProduct.offerPrice}
                                     </p>
                                 )}
                                 <div className="mt-auto flex justify-end">

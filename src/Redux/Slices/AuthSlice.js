@@ -11,7 +11,10 @@ const initialState = {
 export const loginUser = createAsyncThunk('auth/loginUser', async (loginData, { rejectWithValue }) => {
     try {
         const response = await axios.post(baseUrl+'/auth/login',loginData);
+        console.log(response.data);
         return response.data;
+        
+        
        
     } catch (error) {
         console.error("Login error:", error);
@@ -46,6 +49,8 @@ const authSlice = createSlice({
                     localStorage.setItem("id", action.payload.result.id);
                     localStorage.setItem("name", action.payload.result.name);
                     localStorage.setItem("role", action.payload.result.role);
+                    console.log('user',state.user);
+                    
                     toast.success("Successfully logged in");
                 }
            
