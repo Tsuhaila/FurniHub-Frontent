@@ -59,7 +59,7 @@ export const AllProducts = () => {
                             onChange={(e) => setCategory(e.target.value)}
                             id="category-select"
                             name="category"
-                            className="block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm hover:bg-gray-200 transition-colors duration-200 ease-in-out cursor-pointer"
+                            className="block w-full p-2.5 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs"
                         >
                             <option value="">All Categories</option>
                             <option>Sofas</option>
@@ -92,6 +92,9 @@ export const AllProducts = () => {
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 price
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                
                             </th>
                         </tr>
                     </thead>

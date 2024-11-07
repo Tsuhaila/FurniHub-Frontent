@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaShoppingCart, FaSearch, FaBars, FaTimes } from 'react-icons/fa';
 import { CgProfile } from "react-icons/cg";
+import { FaHeart } from 'react-icons/fa';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -151,6 +152,9 @@ export const Navbar = () => {
           <p className='absolute top-0 right-0 bg-red-500 text-white rounded-full w-3 h-3 flex items-center justify-center text-[8px]'>
             {cart?.length}
           </p>
+        </NavLink>
+        <NavLink to='/wishlist' className={({ isActive }) => `relative text-black h-5 w-5 font-semibold hover:text-gray-400 transition-colors ${isActive ? 'border-b-2 border-gray-900' : ''}`}>
+        <FaHeart />
         </NavLink>
 
         {user && (

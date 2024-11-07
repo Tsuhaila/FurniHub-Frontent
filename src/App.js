@@ -22,6 +22,7 @@ import { AllProducts } from './Components/Admin/AllProducts.jsx';
 import { AdminOrders } from './Components/Admin/AdminOrders.jsx';
 import { EditProducts } from './Components/Admin/EditProducts.jsx';
 import { UserDetails } from './Components/Admin/UserDetails.jsx';
+import { WishList } from './Components/User/WishList.jsx';
 
 
 function App() {
@@ -41,8 +42,10 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/placeorder' element={<PlaceOrder />} />
         <Route path='/products/:id' element={<ProductDetails />} />
+        <Route path='cart/products/:id' element={<ProductDetails />} />
         <Route path='search' element={<Search />} />
         <Route path='/orders' element={<Orders />} />
+        <Route path='/wishlist' element={<WishList/>}/>
 
         <Route path='/admin' element={<AdminHome />}>
           <Route index element={<Dashboard />} />

@@ -36,6 +36,9 @@ export const AllUsers = () => {
               <th scope="col" className="px-6 py-3">
                 Action
               </th>
+              <th scope="col" className="px-6 py-3">
+                
+              </th>
             </tr>
           </thead>
           <tbody>

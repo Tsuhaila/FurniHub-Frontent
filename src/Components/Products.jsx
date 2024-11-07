@@ -1,12 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { fetchWishlist, toggleWishlist } from '../Redux/Slices/WishlistSlice';
 
 export const Products = () => {
 
     const [products, setProducts] = useState([]);
-    const [category, setCategory] = useState()
+    const [category, setCategory] = useState();
+    const dispatch=useDispatch()
+    const {wishlist}=useSelector(state=>state.wishlist)
     const baseUrl = process.env.REACT_APP_BASE_URL
 
 
@@ -29,6 +33,17 @@ export const Products = () => {
         fetchProducts();
     }, [category]);
 
+    const handleWishlist = (productId) => {
+       dispatch(toggleWishlist(productId))
+       dispatch(fetchWishlist())
+       console.log(wishlist);
+       
+      };
+    
+    
+      const isWishlist = (productId) => {
+        return wishlist.some(item=>item.productId==productId)   
+      };
     return (
         <section className="bg-gray-100 py-12">
             <div className="container mx-auto">
@@ -52,13 +67,25 @@ export const Products = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
 
                     {products.map((product, index) => (
-                        <Link to={`/products/${product.id}`} key={index}>
+                        
                             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transform transition-transform duration-300 ease-in-out">
+                                <Link to={`/products/${product.id}`} key={index}>
                                 <img
                                     src={product.image}
                                     alt={product.name}
                                     className="w-full h-48 object-cover rounded-t-lg mb-4"
                                 />
+                                </Link>
+                                 <button
+                onClick={() => handleWishlist(product.id)}
+                className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-lg"
+              >
+                {isWishlist(product.id) ? (
+                  <AiFillHeart size={24} className="text-red-500" />
+                ) : (
+                  <AiOutlineHeart size={24} className="text-gray-500" />
+                )}
+              </button>
                                 <h3 className="text-lg font-bold text-gray-700">{product.name}</h3>
 
                                 <p>
@@ -70,7 +97,7 @@ export const Products = () => {
                                     {product.offerPrice}
                                 </p>
                             </div>
-                        </Link>
+                        
                     ))}
                 </div>
             </div>

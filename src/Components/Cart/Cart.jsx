@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from 'react-redux';
 import { removeCart } from '../../Redux/Slices/CartSlice';
@@ -44,7 +44,9 @@ export const Cart = () => {
             <ul className="space-y-4">
               {cart.map((item, index) => (
                 <li key={index} className="flex items-center justify-between space-x-4 p-4 bg-white shadow-md rounded-lg">
+                  <Link to={`products/${item.id}`}>
                   <img src={item.image} alt={item.product} className="w-24 h-24 object-cover rounded-md" />
+                  </Link>
                   <div className="flex-1">
                     <h3 className="text-lg font-medium">{item.productName}</h3>
                     <p className="text-gray-600">{item.description}</p>

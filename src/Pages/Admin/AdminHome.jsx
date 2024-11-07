@@ -12,15 +12,8 @@ function Homes() {
   const navigate=useNavigate()
   const [isOpen, setIsOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
-  const baseUrl=process.env.REACT_APP_BASE_URL
 
   const role=localStorage.getItem('role')
- 
-  
-
-  // useEffect(() => {
-  //   fetchUser();
-  // }, []);
 
   useEffect(()=>{
     if(role==='admin'){
@@ -28,20 +21,7 @@ function Homes() {
     }
   },[])
 
-  // async function fetchUser() {
-  //   const userId = localStorage.getItem('id');
-  //   console.log(userId)
-  //   if (userId) {
-  //     try {
-  //       const res = await axios.get(baseUrl+`/users/${userId}`);
-  //       console.log('resuult',res);
-        
-  //       if (user?.result?.role === 'admin') setIsAdmin(true);
-  //     } catch (error) {
-  //       console.error('Error fetching user data:', error);
-  //     }
-  //   }
-  // }
+
 
   const Data = [
     { title: "Dashboard", url: "dashboard"},
@@ -49,7 +29,7 @@ function Homes() {
     { title: "Add Products", url: "addproducts"},
     { title: "All Products", url: "allproducts" },
     { title: "Orders", url: "Orders" },
-    // { title: "Home", url: "/" }
+  
   ];
 
   if (!isAdmin) {

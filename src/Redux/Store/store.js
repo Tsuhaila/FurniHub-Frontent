@@ -5,6 +5,7 @@ import userReducer from '../Slices/UserSlice'
 import productReducer from '../Slices/ProductSlice'
 import orderReducer from '../Slices/OrderSlice'
 import categoryReducer from '../Slices/CategorySlice'
+import wishlistReducer from '../Slices/WishlistSlice'
 
 const store=configureStore({
     reducer:{
@@ -13,7 +14,8 @@ const store=configureStore({
         user:userReducer,
         product:productReducer,
         order:orderReducer,
-        category:categoryReducer
+        category:categoryReducer,
+        wishlist:wishlistReducer
     }
 })
 export default store

@@ -1,32 +1,26 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchUser } from '../../Redux/Slices/UserSlice'
+import { fetchProducts } from '../../Redux/Slices/ProductSlice'
+import { fetchTotalProductsPurchased, fetchTotalRevenue } from '../../Redux/Slices/OrderSlice'
 
 export const Dashboard = () => {
-
-  const [users, setUsers] = useState([])
-  const [products, setProducts] = useState([])
-  const [orders, setOrders] = useState([])
+  const dispatch = useDispatch()
+  const { users } = useSelector(state => state.user)
+  const { products } = useSelector(state => state.product)
+  const { totalProductsPurchased } = useSelector(state => state.order)
+  const { totalRevenue } = useSelector(state => state.order)
 
   useEffect(() => {
-    async function fetch() {
-      try {
-        const response = await axios.get('http://localhost:3000/products')
-        setProducts(response.data)
-        const res = await axios.get('http://localhost:3000/users')
-        setUsers(res.data.filter((user) => user.admin !== true))
-        const orderList = res.data.flatMap((user) => user.orders || [])
-        setOrders(orderList)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    fetch()
-  }, [])
+    dispatch(fetchUser())
+    dispatch(fetchProducts())
+    dispatch(fetchTotalProductsPurchased())
+    dispatch(fetchTotalRevenue())
+  }, [dispatch])
 
   return (
-    <div className='grid gap-5 grid-cols-2 md:grid-cols-3 '>
-
+    <div className='grid gap-5 grid-cols-2 md:grid-cols-4 '>
 
       <div class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
 
@@ -46,7 +40,14 @@ export const Dashboard = () => {
 
         <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-black">Total Orders</h5>
 
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">{orders.length}</h5>
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">{totalProductsPurchased}</h5>
+
+      </div>
+      <div class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
+
+        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-black">Total Revenue</h5>
+
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">{totalRevenue}</h5>
 
       </div>
     </div>
