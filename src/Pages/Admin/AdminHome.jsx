@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import axios from "axios";
-// import { MdDashboard } from "react-icons/md";
-// import { FaUsers } from "react-icons/fa";
-// import { IoMdAdd } from "react-icons/io";
 import { CiMenuBurger } from "react-icons/ci";
 import Swal from "sweetalert2";
-import { useSelector } from "react-redux";
 
 function Homes() {
   const navigate=useNavigate()

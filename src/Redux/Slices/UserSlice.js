@@ -3,8 +3,8 @@ import axios from "axios";
 
 const initialState = {
     loading: false,
-    users: [],       // For the list of all users
-    user: null,      // For a single user's details
+    users: [],
+    user: null,      
     error: ''
 };
 
@@ -47,9 +47,8 @@ export const blockUser = createAsyncThunk('user/blockuser', async (id, { rejectW
                 Authorization: `Bearer ${localStorage.getItem("token")}`
             }
         });
-        dispatch(fetchUser())
         console.log(res.data);
-        return res.data;
+        return {data: res.data, id};
     } catch (error) {
         console.log(error);
         return rejectWithValue(error);
@@ -90,7 +89,16 @@ const userSlice = createSlice({
                 state.loading = false;
                 state.user = null;
                 state.error = action.error.message;
-            });
+            })
+            .addCase(blockUser.fulfilled, (state, action) => {
+                state.loading = false;
+                const status = action.payload?.data.result || false
+                const id = action.payload.id
+                const index = state.users.result.findIndex((item) => item.id === id);
+        if (index !== -1) {
+          state.users.result[index].isBlocked = status;
+        }
+            })
     }
 });
 

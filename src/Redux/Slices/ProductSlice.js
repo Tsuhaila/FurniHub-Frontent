@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, isRejectedWithValue } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 const initialState={
     loading:false,
@@ -11,7 +11,7 @@ export const fetchProducts=createAsyncThunk('product/fetchproducts',async(_,{rej
     try{
         const res=await axios.get(baseUrl+'/products')
         console.log(res.data)
-        return res.data
+        return res.data;
 
     }catch(error){
         console.log(error);
@@ -40,35 +40,34 @@ export const fetchProductByCategory=createAsyncThunk('product/fetchproductbycate
         return rejectWithValue(error)
     }
 })
-export const deleteProduct=createAsyncThunk('product/delreproduct',async({id},{rejectWithValue,dispatch})=>{
+export const deleteProduct=createAsyncThunk('product/delreproduct',async(id,{rejectWithValue,dispatch})=>{
     try{
+        console.log('id',id);
+        
         const res=await axios.delete(baseUrl+`/products/${id}`,{
             headers:{
                 Authorization:`Bearer ${localStorage.getItem("token")}`
             }
         })
         dispatch(fetchProducts())
+        dispatch(fetchProductById(id))
         console.log(res.data);
         
-       
-        
-        
-        
-
     }catch(error){
         console.log(error)
         return rejectWithValue(error)
     }
 })
-export const addProduct=createAsyncThunk('product/addproduct',async(inputvalue,{rejectWithValue,dispatch})=>{
+export const addProduct=createAsyncThunk('product/addproduct',async(inputvalue,{rejectWithValue})=>{
     try{
-        const res=axios.post(baseUrl+`/products`,inputvalue,{
+        console.log('after pass input',inputvalue);
+        
+        const res=await axios.post(baseUrl+`/products`,inputvalue,{
             headers:{
                 "Content-Type":"multipart/form-data",
                 Authorization:`Bearer ${localStorage.getItem("token")}`
             }
         })
-        dispatch(fetchProducts())
         console.log(res.data)
         return res.data
 
@@ -81,7 +80,7 @@ export const addProduct=createAsyncThunk('product/addproduct',async(inputvalue,{
 
 export const editProduct=createAsyncThunk('product/editproduct',async({id,inputvalue},{rejectWithValue,dispatch})=>{
     try{
-        const res=axios.put(baseUrl+`/products/${id}`,inputvalue,{
+        const res=await axios.put(baseUrl+`/products/${id}`,inputvalue,{
             headers:{
                 "Content-Type":"multipart/form-data",
                 Authorization:`Bearer ${localStorage.getItem("token")}`

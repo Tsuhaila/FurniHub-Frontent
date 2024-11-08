@@ -22,7 +22,7 @@ export const addToCart=createAsyncThunk('cart/addtocart',async(id,{dispatch,reje
         console.log(localStorage.getItem("token"))
         
         console.log(response.data)
-        toast.success("item added to cart")
+        toast.success(response.data.message)
         return response.data;
        
     }catch(error){
@@ -58,7 +58,7 @@ export const removeCart=createAsyncThunk('cart/removecart',async(id,{dispatch,re
             }
         })
         dispatch(fetchCart())
-        toast.success(response.data)
+        toast.success(response.data.message)
         console.log(response.data);
         
         return response.data
@@ -72,6 +72,53 @@ export const removeCart=createAsyncThunk('cart/removecart',async(id,{dispatch,re
     }
     
 })
+
+export const increaseQuantity=createAsyncThunk('cart/increasequantity',async(productId,{dispatch,rejectWithValue})=>{
+    try{
+        console.log(productId);
+        
+        const response=await axios.put(baseUrl+`/cart/items/${productId}/increase`,{},{
+            headers:{
+                Authorization:`Bearer ${localStorage.getItem("token")}`
+            }
+        })
+        dispatch(fetchCart())
+        console.log(response.data);
+        
+        return response.data
+
+    }catch(error){
+        console.log(error.response.data.message);
+        toast.warn(error.response.data.message);
+        return rejectWithValue(error.response.data.message)
+        
+
+    }
+    
+})
+
+export const decreaseQuantity=createAsyncThunk('cart/decreasequantity',async(productId,{dispatch,rejectWithValue})=>{
+    try{
+        console.log(productId);
+        
+        const response=await axios.put(baseUrl+`/cart/items/${productId}/decrease`,{},{
+            headers:{
+                Authorization:`Bearer ${localStorage.getItem("token")}`
+            }
+        })
+        dispatch(fetchCart())
+        console.log(response.data);
+        
+        return response.data
+
+    }catch(error){
+        console.log(error.response.data.message);
+        toast.warn(error.response.data.message);
+        return rejectWithValue(error.response.data.message)
+       
+    }  
+})
+
 const cartSlice=createSlice({
     name:'cart',
     initialState,
@@ -124,6 +171,40 @@ const cartSlice=createSlice({
             console.log(action.payload)
             state.error=action.payload
         })
+        // .addCase(increaseQuantity.pending,(state)=>{
+        //     state.loading=true;
+        //     state.error=''
+        // })
+        // .addCase(increaseQuantity.fulfilled,(state,action)=>{
+        //     state.loading=false;
+        //     state.cart=action.payload
+         
+        //     console.log(action.payload);
+            
+        //     state.error=''
+        // })
+        // .addCase(increaseQuantity.rejected,(state,action)=>{
+        //     state.loading=false;
+        //     console.log(action.payload)
+        //     state.error=action.payload
+        // })
+        // .addCase(decreaseQuantity.pending,(state)=>{
+        //     state.loading=true;
+        //     state.error=''
+        // })
+        // .addCase(decreaseQuantity.fulfilled,(state,action)=>{
+        //     state.loading=false;
+        //     state.cart=action.payload;
+         
+        //     console.log(action.payload);
+            
+        //     state.error=''
+        // })
+        // .addCase(decreaseQuantity.rejected,(state,action)=>{
+        //     state.loading=false;
+        //     console.log(action.payload)
+        //     state.error=action.payload
+        // })
 
     }
 })

@@ -2,8 +2,6 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-
-
 export const Orders = () => {
   const navigate = useNavigate()
   const [orders, setOrders] = useState([])
@@ -62,7 +60,7 @@ export const Orders = () => {
                     <p>quantity: {item.quantity}</p>
                     <p>Order Id: {item.orderId}</p>
                     <p>Order Date: {item.orderDate}</p>
-                    <p className="text-gray-800 font-semibold mt-2">${item.totalPrice}</p>
+                    <p className="text-gray-800 font-semibold mt-2">${item.totalAmount}</p>
 
                   </div>
 

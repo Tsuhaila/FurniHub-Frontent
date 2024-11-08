@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCart } from '../Redux/Slices/CartSlice';
+import { fetchProducts, searchProducts } from '../Redux/Slices/ProductSlice';
 
 
 export const Navbar = () => {
@@ -21,6 +22,7 @@ export const Navbar = () => {
   const dropdownRef = useRef(null);
   const sidebarREf = useRef(null)
   const {cart}=useSelector(state=>state.cart)
+  const {products}=useSelector(state=>state.product)
   const dispatch=useDispatch()
 
   useEffect(() => {
@@ -70,9 +72,11 @@ export const Navbar = () => {
     e.preventDefault();
 
     try {
-      const result = await axios.get("http://localhost:3000/products");
-      const combinedResult = result.data;
-      const filteredResult = combinedResult.filter((item) =>
+      if(searchQuery){
+        dispatch(searchProducts(searchQuery));
+      }
+      
+      const filteredResult = products?.result?.filter((item) =>
         item.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
       navigate('/search', { state: { results: filteredResult } });
@@ -150,7 +154,7 @@ export const Navbar = () => {
         <NavLink to='/cart' className={({ isActive }) => `relative text-black h-5 w-5 font-semibold hover:text-gray-400 transition-colors ${isActive ? 'border-b-2 border-gray-900' : ''}`}>
           <FaShoppingCart />
           <p className='absolute top-0 right-0 bg-red-500 text-white rounded-full w-3 h-3 flex items-center justify-center text-[8px]'>
-            {cart?.length}
+            {cart?.result?.length || 0}
           </p>
         </NavLink>
         <NavLink to='/wishlist' className={({ isActive }) => `relative text-black h-5 w-5 font-semibold hover:text-gray-400 transition-colors ${isActive ? 'border-b-2 border-gray-900' : ''}`}>

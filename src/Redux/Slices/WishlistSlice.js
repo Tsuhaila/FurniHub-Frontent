@@ -50,6 +50,7 @@ export const fetchWishlist=createAsyncThunk('wishlist/fetchwishlist',async(_,{re
     
 })
 
+
 const wishlistSlice=createSlice({
     name:'wishlist',
     initialState,

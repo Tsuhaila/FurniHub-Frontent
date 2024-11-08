@@ -41,7 +41,7 @@ export const PlaceOrder = () => {
     setPaymentDetails({ ...paymentDetails, [name]: value })
 
   }
-  const totalPrice = cart.reduce((total, item) => total + item.totalPrice * item.quantity, 0)
+  const totalPrice = cart?.result?.reduce((total, item) => total + item.offerPrice * item.quantity, 0)
   console.log(totalPrice);
 
 
@@ -216,30 +216,44 @@ export const PlaceOrder = () => {
             </form>
           </div>
 
+
           {/* Order Summary */}
-          <div className="bg-white p-8 shadow-md rounded-lg">
-            <h2 className="text-3xl font-semibold mb-6 text-center">Order Summary</h2>
-            <ul className="space-y-4">
-              {cart.map((item, index) => (
-                <li key={index} className="flex items-center space-x-4">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-24 h-24 object-cover rounded-md"
-                  />
-                  <div>
-                    <h3 className="text-xl font-semibold">{item.productName}</h3>
-                    <p className="text-gray-600">${item.price}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 border-t pt-4">
-              <p className="text-xl font-semibold">Total: ${totalPrice}</p>
-            </div>
-          </div>
+<div className="bg-white shadow-md rounded-lg p-6 border border-gray-200">
+  <h2 className="text-2xl font-bold mb-4 text-gray-800">Summary</h2>
+
+  {/* Order Items */}
+  <ul className="space-y-4 mb-4">
+    {cart?.result?.map((item, index) => (
+      <li key={index} className="flex items-center space-x-4">
+        <img
+          src={item.image}
+          alt={item.productName}
+          className="w-16 h-16 object-cover rounded-md"
+        />
+        <div className="flex-1">
+          <h3 className="text-lg font-semibold text-gray-800">{item.productName}</h3>
+          <p className="text-sm text-gray-600">Price: ₹{item.price}</p>
+          <p className="text-sm text-gray-600">Qty: {item.quantity}</p>
         </div>
-      </div>
+      </li>
+    ))}
+  </ul>
+
+  {/* Pricing Section */}
+  <div className="border-t pt-4 text-gray-700">
+   
+  </div>
+
+  {/* Total Section */}
+  <div className="flex justify-between text-xl font-bold mt-4 text-gray-800">
+    <span>Total</span>
+    <span>₹{totalPrice}</span>
+  </div>
+
+</div>
+
+    </div>
+    </div>
     </div>
   );
 };

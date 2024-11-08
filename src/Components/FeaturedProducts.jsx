@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaArrowRight } from "react-icons/fa";
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../Redux/Slices/CartSlice';
+import { toast } from 'react-toastify';
 
 export const FeaturedProducts = () => {
   const [products, setProducts] = useState([]);
@@ -15,9 +16,9 @@ export const FeaturedProducts = () => {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const res = await axios.get(baseUrl + '/products?_limit=5');
+        const res = await axios.get(baseUrl + '/products/paginated?page=1&limit=5');
         console.log(res)
-        setProducts(res.data);
+        setProducts(res?.data?.result);
 
       } catch (error) {
         console.log('Error fetching products:', error);
@@ -45,13 +46,24 @@ export const FeaturedProducts = () => {
                 />
                 <h3 className="text-lg font-bold text-gray-700">{product.name}</h3>
 
-                <p>
-                  <span className="font-bold mr-4">offer Price:</span>
-                  {product.offerPrice}
-                </p></Link>
+                <div className="flex items-center mb-4">
+                            <span className="text-lg text-gray-500 line-through mr-2">
+                                ${product.price}
+                            </span>
+                            <span className="text-xl font-semibold text-red-600">
+                                ${product.offerPrice}
+                            </span>
+                        </div></Link>
               <button
                 disabled={admin ? true : false}
-                onClick={() => dispatch(addToCart(product.id))} className="mt-6 w-full  text-black py-2 px-4 rounded-lg border-2 border-black hover:bg-black hover:text-white transition duration-300">
+                onClick={() =>{
+                  if(product.quantity<1){
+                      toast.warn("out of stock")
+                  }else{
+                      dispatch(addToCart(product.id))
+                  }
+                                             }
+              } className="mt-6 w-full  text-black py-2 px-4 rounded-lg border-2 border-black hover:bg-black hover:text-white transition duration-300">
                 Add to Cart
               </button>
             </div>

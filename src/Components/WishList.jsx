@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchWishlist, toggleWishlist } from '../../Redux/Slices/WishlistSlice';
-import { addToCart } from '../../Redux/Slices/CartSlice';
+import { fetchWishlist, toggleWishlist } from '../Redux/Slices/WishlistSlice';
+import { addToCart } from '../Redux/Slices/CartSlice';
+import { toast } from 'react-toastify';
 
 export const WishList = () => {
     const dispatch=useDispatch()
@@ -13,7 +14,6 @@ export const WishList = () => {
 
     useEffect(()=>{
         dispatch(fetchWishlist())
-
     },[dispatch])
     
     const isWishlist=(productId)=>{
@@ -61,17 +61,29 @@ export const WishList = () => {
                   <p className="text-gray-500 text-sm mb-1">
                     {item.categoryName}
                   </p>
-                  <p className="text-gray-900 font-bold text-lg mt-1">
-                    ₹{item.price}
-                  </p>
+                  <div className="flex items-center mb-4">
+                            <span className="text-lg text-gray-500 line-through mr-2">
+                                ${item.price}
+                            </span>
+                            <span className="text-xl font-semibold text-red-600">
+                                ${item.offerPrice}
+                            </span>
+                        </div>
                 </Link>
 
                
                 <button
                   className="mt-4 w-full bg-gray-700 text-white py-2 rounded-md font-medium hover:bg-gray-800 transition-colors"
-                  onClick={() => dispatch(addToCart(item.productId))}
+                  onClick={() =>{
+                    if(item.quantity<1){
+                        toast.warn("out of stock")
+                    }else{
+                        dispatch(addToCart(item.id))
+                    }
+                                               }
+                }
                 >
-                  Move to Cart
+                  Add to Cart
                 </button>
               </div>
             ))}

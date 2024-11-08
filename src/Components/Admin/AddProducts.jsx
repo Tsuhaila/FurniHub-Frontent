@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { addProduct } from '../../Redux/Slices/ProductSlice'
+import { addProduct, fetchProductById } from '../../Redux/Slices/ProductSlice'
 import { fetchCategories } from '../../Redux/Slices/CategorySlice'
 
 export const AddProducts = () => {
@@ -13,6 +13,7 @@ export const AddProducts = () => {
     price: '',
     offerPrice: '',
     image: null,
+    quantity:'',
     categoryId: ''
   }
   const [inputvalue, setInputValue] = useState(initialValues)
@@ -37,9 +38,11 @@ export const AddProducts = () => {
   async function handleSubmit(e) {
     try {
       e.preventDefault()
+      console.log(inputvalue);
+      
       await dispatch(addProduct(inputvalue))
       toast.success('Product added successfully')
-      navigate('/admin/allproducts')
+      // navigate('/admin/allproducts')
       setInputValue(initialValues)
     } catch (error) {
       console.log(error)
@@ -121,6 +124,20 @@ dispatch(fetchCategories())
             type="file"
             id="image"
             name="image"
+            className="block w-full p-3 border border-gray-300 rounded-lg bg-gray-50"
+          />
+        </div>
+
+        <div className="mb-5">
+          <label htmlFor="quantity" className="block mb-2 text-sm font-medium text-gray-900">
+            Quantity
+          </label>
+          <input
+            onChange={handleChange}
+            value={inputvalue.quantity}
+            type="number"
+            id="quantity"
+            name="quantity"
             className="block w-full p-3 border border-gray-300 rounded-lg bg-gray-50"
           />
         </div>

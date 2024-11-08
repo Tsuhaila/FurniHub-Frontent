@@ -9,30 +9,45 @@ export const AllProducts = () => {
     const [category, setCategory] = useState('')
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedProduct, setSelectedProduct] = useState(null)
-    const { products } = useSelector(state => state.product)
+    const [allproducts,setallproducts]=useState([])
+    const { products, product } = useSelector(state => state.product)
     console.log('all', products);
+    
 
     const dispatch = useDispatch()
     useEffect(() => {
         if (category) {
-            dispatch(fetchProductByCategory(category))
-        } else if(searchQuery){
-            dispatch(searchProducts(searchQuery))
-        }else{
-            dispatch(fetchProducts())
+            dispatch(fetchProductByCategory(category));
+        } else {
+            dispatch(fetchProducts());
         }
-
-    }, [category, dispatch,searchQuery])
+    }, [category, dispatch]);
+    
+    useEffect(() => {
+        setallproducts(products?.result || []);
+    }, [products]);
+    
 
     async function handleDelete(id) {
+        console.log('before id',id);
+        
         dispatch(deleteProduct(id))
 
     }
     async function handleSearch(e) {
         const query = e.target.value;
-        setSearchQuery(query)   
+        setSearchQuery(query);
+    
+        if (!query) {
+            setallproducts(products?.result || []); // Restore original products
+            return;
+        }
+    
+        const filteredResult = (products?.result || []).filter((item) =>
+            item.name.toLowerCase().includes(query.toLowerCase())
+        );
+        setallproducts(filteredResult);
     }
-
     const handleDetails = (item) => {
         console.log(item)
         setSelectedProduct(item)
@@ -99,7 +114,7 @@ export const AllProducts = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {products?.map(item => (
+                        {allproducts?.map((item) => (
                             <tr key={item.id} class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -123,7 +138,7 @@ export const AllProducts = () => {
                                     </Link>
 
                                     <button
-                                        onClick={() => handleDelete(item)}
+                                        onClick={() => handleDelete(item.id)}
                                         className="text-red-600 hover:text-red-800 font-semibold"
                                     >
                                         Delete
@@ -157,20 +172,25 @@ export const AllProducts = () => {
                                 )}
                                 {selectedProduct.category && (
                                     <p>
-                                        <span className="font-bold">category:</span> {selectedProduct.category}
+                                        <span className="font-bold">Category:</span> {selectedProduct.category}
+                                    </p>
+                                )}
+                                 {selectedProduct.quantity && (
+                                    <p>
+                                        <span className="font-bold">Quantity:</span> {selectedProduct.quantity}
                                     </p>
                                 )}
                               
                                 {selectedProduct.price && (
                                     <p>
-                                        <span className="font-bold">price:$</span> {selectedProduct.price}
+                                        <span className="font-bold">Price:$</span> {selectedProduct.price}
                                     </p>
                                 )}
 
 
                                 {selectedProduct.offerPrice && (
                                     <p>
-                                        <span className="font-bold">offer price:$</span> {selectedProduct.offerPrice}
+                                        <span className="font-bold">Offer Price:$</span> {selectedProduct.offerPrice}
                                     </p>
                                 )}
                                 <div className="mt-auto flex justify-end">

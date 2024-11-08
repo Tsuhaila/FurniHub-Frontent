@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../Redux/Slices/AuthSlice';
 
@@ -32,19 +30,10 @@ function Login() {
     try {
      await dispatch(loginUser(loginValue)).unwrap()   
       setLoginValue({Email: "", Password: "" });
-          
-          
-         
+                  
     } catch (error) {
       console.log(error)
-      if(error.statusCode===409){
-        toast.warn(error.error)
-      }else{
-        toast.error(error.error||"error logging in")
-      }
-        
-    
-      
+
     }
    
   };

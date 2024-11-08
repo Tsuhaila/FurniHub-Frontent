@@ -12,13 +12,12 @@ export const loginUser = createAsyncThunk('auth/loginUser', async (loginData, { 
     try {
         const response = await axios.post(baseUrl+'/auth/login',loginData);
         console.log(response.data);
-        return response.data;
-        
-        
+        toast.success(response.data)
+        return response.data;    
        
     } catch (error) {
         console.error("Login error:", error);
-        toast.error("An error occurred, please try again");
+        toast.error(error.response.data);
         return rejectWithValue(error.message);
     }
 });
@@ -26,8 +25,13 @@ export const loginUser = createAsyncThunk('auth/loginUser', async (loginData, { 
 export const signupUser = createAsyncThunk('auth/signupUser', async (userData, { rejectWithValue }) => {
     try {
         const response = await axios.post(baseUrl+"/auth/register", userData);
+        console.log(response.data)
+        toast.success(response.data)
         return response.data;
+        
+        
     } catch (error) {
+        toast.error(error.response.data)
         return rejectWithValue(error.response.data);
     }
 });

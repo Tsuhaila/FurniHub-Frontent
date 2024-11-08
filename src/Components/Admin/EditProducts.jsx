@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { editProduct, fetchProductById, fetchProducts } from '../../Redux/Slices/ProductSlice';
 import { fetchCategories } from '../../Redux/Slices/CategorySlice';
+import { toast } from 'react-toastify';
 
 export const EditProducts = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ export const EditProducts = () => {
     price: '',
     offerPrice: '',
     image: null,
+    quantity:'',
     categoryId: ''
   };
 
@@ -25,21 +27,22 @@ export const EditProducts = () => {
   useEffect(() => {
     dispatch(fetchProducts())
     dispatch(fetchCategories())
-  }, dispatch)
+  }, [dispatch])
 
   useEffect(() => {
     dispatch(fetchProductById(id))
   }, [id, dispatch]);
 
   useEffect(() => {
-    if (product) {
+    if (product?.result) {
       setInputValue({
-        name: product.name || '',
-        description: product.description || '',
-        price: product.price || '',
-        offerPrice: product.offerPrice || '',
+        name: product?.result?.name || '',
+        description: product?.result?.description || '',
+        price: product?.result?.price || '',
+        offerPrice: product?.result?.offerPrice || '',
         image: null,
-        categoryId: product.categoryId || ''
+        quantity:product?.result?.quantity ||'',
+        categoryId: product?.result?.categoryId || ''
       });
     }
   }, [product]);
@@ -48,7 +51,8 @@ export const EditProducts = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     await dispatch(editProduct({ id, inputvalue }))
-
+    toast.success("product updated")
+    dispatch(fetchProductById(id))
 
     navigate('/admin/allproducts');
     console.log('console', inputvalue);
@@ -138,6 +142,20 @@ export const EditProducts = () => {
             type="file"
             id="image"
             name="image"
+            className="block w-full p-3 border border-gray-300 rounded-lg bg-gray-50"
+          />
+        </div>
+
+        <div className="mb-5">
+          <label htmlFor="quantity" className="block mb-2 text-sm font-medium text-gray-900">
+            Quantity
+          </label>
+          <input
+            onChange={handleChange}
+            value={inputvalue.quantity}
+            type="number"
+            id="quantity"
+            name="quantity"
             className="block w-full p-3 border border-gray-300 rounded-lg bg-gray-50"
           />
         </div>

@@ -22,7 +22,8 @@ import { AllProducts } from './Components/Admin/AllProducts.jsx';
 import { AdminOrders } from './Components/Admin/AdminOrders.jsx';
 import { EditProducts } from './Components/Admin/EditProducts.jsx';
 import { UserDetails } from './Components/Admin/UserDetails.jsx';
-import { WishList } from './Components/User/WishList.jsx';
+import { WishList } from './Components/WishList.jsx';
+
 
 
 function App() {

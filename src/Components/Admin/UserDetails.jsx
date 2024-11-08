@@ -9,7 +9,7 @@ export const UserDetails = () => {
   const { user } = useSelector(state => state.user)
   const { order } = useSelector(state => state.order)
   console.log('order', order)
-  console.log('user', user);
+  console.log('user', user?.result);
 
   const dispatch = useDispatch()
   useEffect(() => {
@@ -23,17 +23,17 @@ export const UserDetails = () => {
     }
 
   }, [id, dispatch])
-  if (!user) {
+  if (!user?.result) {
     return <div>Loading...</div>
   }
   return (
     <div>
       <div className="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
         <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-          {user.userName}
+          {user.result.userName}
         </h5>
-        <p className="font-normal text-gray-700 dark:text-gray-400">Id: {user.id}</p>
-        <p className="font-normal text-gray-700 dark:text-gray-400">Email: {user.email}</p>
+        <p className="font-normal text-gray-700 dark:text-gray-400">Id: {user?.result?.id}</p>
+        <p className="font-normal text-gray-700 dark:text-gray-400">Email: {user?.result?.email}</p>
 
         {order && order.length > 0 ? (
           <div>

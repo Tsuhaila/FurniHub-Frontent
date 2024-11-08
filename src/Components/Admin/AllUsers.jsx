@@ -8,13 +8,18 @@ import { blockUser, fetchUser } from '../../Redux/Slices/UserSlice'
 export const AllUsers = () => {
   const { users } = useSelector(state => state.user)
   const dispatch = useDispatch()
-  console.log("allusers", users);
+  console.log("allusers", users.result);
 
   useEffect(() => {
 
     dispatch(fetchUser())
 
-  }, [dispatch])
+  }, [])
+
+  const blockUserData = (id) => {
+    dispatch(blockUser(id))
+
+  }
   
 
   return (
@@ -42,7 +47,7 @@ export const AllUsers = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map(u => (
+            {users?.result?.map(u => (
               <tr key={u.id} className="bg-white border-b text-black">
 
                 <th scope="row" className="px-6 py-4 font-medium ">
@@ -57,7 +62,7 @@ export const AllUsers = () => {
                 <td className="px-6 py-4">
 
                   <button
-                    onClick={() => dispatch(blockUser(u.id))}
+                    onClick={() => blockUserData(u.id)}
                     className={`px-4 py-2 text-sm font-medium text-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-opacity-50 ${u.isBlocked
                       ? 'bg-red-600 hover:bg-red-700 focus:ring-red-500'
                       : 'bg-green-600 hover:bg-green-700 focus:ring-green-500'
